@@ -1,9 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey_300"
     tools:context=".HomeActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:background="@color/blue_bg"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/userIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/user_white"
+            android:layout_margin="10dp" />
+
+        <LinearLayout
+            android:layout_width="280dp"
+            android:orientation="horizontal"
+            android:id="@+id/search"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_rectangle"
+            android:gravity="center_vertical"
+            android:layout_height="40dp">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="30dp"
+                android:src="@drawable/search"/>
+
+            <EditText
+                android:layout_width="230dp"
+                android:layout_height="40dp"
+                android:hint="Search"
+                android:textColorHint="@color/Black"
+                android:id="@+id/searchItem"
+                android:layout_marginRight="30dp"/>
+
+        </LinearLayout>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/chatBtn"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/chat_white"
+            android:layout_marginTop="10dp"
+             />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_below="@id/topBar"
+        android:layout_height="wrap_content">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"/>
+    </ScrollView>
+
+
+    <com.gauravk.bubblenavigation.BubbleNavigationConstraintView
+        android:id="@+id/bottomNav"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        app:bnc_mode="spread"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/rounded_rectangle"
+        android:layout_marginBottom="10dp"
+        >
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/c_item_menu"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:bt_active="true"
+            app:bt_colorActive="@color/blue_bg"
+            app:bt_colorInactive="@color/Black"
+            app:bt_badgeBackgroundColor="@color/LightGreen"
+            app:bt_icon="@drawable/home" />
+
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/c_item_reminder"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:bt_active="true"
+            android:background="@color/LightGreen"
+            app:bt_badgeBackgroundColor="@color/LightGreen"
+            app:bt_colorActive="@color/DodgerBlue"
+            app:bt_colorInactive="@color/Black"
+            app:bt_icon="@drawable/ambulance_dark"
+            />
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/c_item_add"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:bt_active="true"
+            android:background="@color/LightGreen"
+            app:bt_colorActive="@color/DodgerBlue"
+            app:bt_colorInactive="@color/Black"
+            app:bt_icon="@drawable/list"
+            />
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/c_item_check"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:bt_active="true"
+            app:bt_colorActive="@color/DodgerBlue"
+            app:bt_colorInactive="@color/Black"
+            app:bt_icon="@drawable/cart"
+            />
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/c_item_profile"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:bt_active="true"
+            app:bt_colorActive="@color/DodgerBlue"
+            app:bt_colorInactive="@color/Black"
+            app:bt_icon="@drawable/search"
+            />
+
+    </com.gauravk.bubblenavigation.BubbleNavigationConstraintView>
+
+</RelativeLayout>
