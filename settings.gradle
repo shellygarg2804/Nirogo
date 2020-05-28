@@ -1,0 +1,2 @@
+rootProject.name='Nirogo'
+include ':app'
