@@ -11,12 +11,31 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class DoctorActivity extends Activity {
 
-    EditText username, password, speciality;
-    ImageButton back;
-    TextView signup;
-    ImageView google, facebook;
+    private GoogleSignInClient mGoogleSignInClient;
+    private ImageView googleimage;
+    private final static int RC_SIGN_IN = 123;
+    private FirebaseAuth mAuth;
+    private String LOG_TAG= DoctorActivity.class.getSimpleName();
+
+    @Override
+    public void onStart() {
+
+        super.onStart();
+        FirebaseUser user= mAuth.getCurrentUser();
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        if(user!=null){
+            Intent intent = new Intent(DoctorActivity.this, HomeActivity.class);
+            startActivity(intent);
+        }
+    }
 
 
     @Override
@@ -24,14 +43,7 @@ public class DoctorActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor);
 
-        signup = findViewById(R.id.signupDoctor);
-        signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DoctorActivity.this, HomeActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
     }
 }
