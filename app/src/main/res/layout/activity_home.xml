@@ -88,8 +88,9 @@
             app:bt_active="true"
             app:bt_colorActive="@color/blue_bg"
             app:bt_colorInactive="@color/Black"
-            app:bt_badgeBackgroundColor="@color/LightGreen"
-            app:bt_icon="@drawable/home" />
+            app:bt_icon="@drawable/home"/>
+        <!--            app:bt_badgeBackgroundColor="#90EE90"-->
+
 
 
         <com.gauravk.bubblenavigation.BubbleToggleView
@@ -97,12 +98,13 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             app:bt_active="true"
-            android:background="@color/LightGreen"
-            app:bt_badgeBackgroundColor="@color/LightGreen"
+            android:background="#90EE90"
+
             app:bt_colorActive="@color/DodgerBlue"
             app:bt_colorInactive="@color/Black"
-            app:bt_icon="@drawable/ambulance_dark"
-            />
+            app:bt_icon="@drawable/ambulance_dark"/>
+        <!--            app:bt_badgeBackgroundColor="#90EE90"-->
+
 
         <com.gauravk.bubblenavigation.BubbleToggleView
             android:id="@+id/c_item_add"

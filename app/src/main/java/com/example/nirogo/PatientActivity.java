@@ -61,7 +61,7 @@ public class PatientActivity extends Activity {
 
         //setting up google request
         creategooglerequest();
-        googleimage = (ImageView)findViewById(R.id.googleDoc);
+        googleimage = (ImageView)findViewById(R.id.googlePat);
 
         //setting up onclick Listener
         googleimage.setOnClickListener(new View.OnClickListener(){
@@ -79,6 +79,8 @@ public class PatientActivity extends Activity {
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
+
+
 
         // getting the GoogleSignInClient object from GoogleSignIn class
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
