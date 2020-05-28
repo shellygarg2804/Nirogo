@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "693632372585",
+    "firebase_url": "https://nirogo-aedd0.firebaseio.com",
+    "project_id": "nirogo-aedd0",
+    "storage_bucket": "nirogo-aedd0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:693632372585:android:2ecedc153d89d0bb2077f8",
+        "android_client_info": {
+          "package_name": "com.example.nirogo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "693632372585-7lg1gj78lsrs2hce1p6rl8480eupovpo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARmhcAbpmc_f3CeSQtpXTsA5cbDVa-PlE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "693632372585-7lg1gj78lsrs2hce1p6rl8480eupovpo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
