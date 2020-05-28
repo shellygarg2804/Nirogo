@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DoctorActivity"
+    tools:context=".PatientActivity"
     android:background="@color/blue_bg"
     android:orientation="vertical">
 
@@ -15,30 +15,44 @@
         android:layout_height="40dp"
         android:background="@drawable/back"
         android:layout_marginStart="20dp"
-        android:id="@+id/backDoc"
+        android:id="@+id/backPatient"
         />
-
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_regular"
-        android:text="SIGN UP"
-        android:layout_marginTop="20dp"
-        android:id="@+id/signUpSupplier"
-        android:layout_marginLeft="20dp"
-        android:textSize="40sp"
-        android:textColor="#FFF"
-        android:textStyle="bold"
-        />
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:text="SIGN UP"
+            android:layout_marginTop="20dp"
+            android:id="@+id/signUpSupplier"
+            android:layout_marginLeft="20dp"
+            android:textSize="40sp"
+            android:textColor="#FFF"
+            android:textStyle="bold"
+            />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/doctor"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="100dp"
+            android:layout_gravity="center"
+            android:src="@drawable/patient"
+            app:civ_border_color="@color/White"
+            app:civ_border_width="2dp"/>
+    </LinearLayout>
 
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="80dp">
+        android:layout_marginTop="140dp">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:background="@drawable/white_rectangle">
 
@@ -123,7 +137,7 @@
                 android:background="@drawable/rounded_rectangle"
                 android:backgroundTint="#1a237e"
                 android:textColor="#FFF"
-                android:id="@+id/signupDoctor"
+                android:id="@+id/signupPatient"
                 >
 
             </TextView>
@@ -154,7 +168,7 @@
                     android:layout_marginRight="20dp"
                     android:layout_gravity="start"
                     android:src="@drawable/google"
-                    android:id="@+id/googleDoc">
+                    android:id="@+id/googlePat">
 
                 </ImageView>
 
@@ -164,8 +178,8 @@
                     android:layout_marginLeft="20dp"
                     android:layout_gravity="start"
                     android:src="@drawable/facebook"
-                    android:layout_marginBottom="20dp"
-                    android:id="@+id/facebookDoc">
+                    android:layout_marginBottom="30dp"
+                    android:id="@+id/facebookPat">
 
                 </ImageView>
             </LinearLayout>

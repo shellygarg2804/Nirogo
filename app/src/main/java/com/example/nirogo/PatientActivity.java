@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -26,6 +27,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 import static android.content.ContentValues.TAG;
+
+import android.view.View;
+import android.widget.TextView;
 
 public class PatientActivity extends Activity {
 
@@ -51,6 +55,7 @@ public class PatientActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient);
+
 
         mAuth= FirebaseAuth.getInstance();
 
@@ -138,5 +143,15 @@ public class PatientActivity extends Activity {
                         // ...
                     }
                 });
+
+        TextView signup = findViewById(R.id.signupPatient);
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PatientActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
