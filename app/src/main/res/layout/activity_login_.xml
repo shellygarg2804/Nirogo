@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PatientActivity"
+    tools:context=".login_Activity"
     android:background="@color/blue_bg"
     android:orientation="vertical">
 
@@ -15,7 +15,7 @@
         android:layout_height="40dp"
         android:background="@drawable/back"
         android:layout_marginStart="20dp"
-        android:id="@+id/backPatient"
+        android:id="@+id/Loginback"
         />
     <LinearLayout
         android:layout_width="wrap_content"
@@ -26,9 +26,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_regular"
-            android:text="SIGN UP"
+            android:text="SIGN IN"
             android:layout_marginTop="20dp"
-            android:id="@+id/signUpSupplier"
+            android:id="@+id/signin"
             android:layout_marginLeft="20dp"
             android:textSize="40sp"
             android:textColor="#FFF"
@@ -61,7 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Welcome User"
+                android:text="Welcome"
                 android:textAlignment="center"
                 android:textSize="30sp"
                 android:fontFamily="@font/roboto_regular"
@@ -88,7 +88,7 @@
                 android:hint="  Enter  email"
                 android:textColorHighlight="#000"
                 android:background="@drawable/rounded_rectangle"
-                android:id="@+id/EmailPatient">
+                android:id="@+id/loginEmail">
 
             </EditText>
 
@@ -111,7 +111,7 @@
                 android:inputType="textPassword"
                 android:textColorHint="@color/Black"
                 android:background="@drawable/rounded_rectangle"
-                android:id="@+id/passwordPatient">
+                android:id="@+id/loginpassword">
             </EditText>
 
             <TextView
@@ -130,7 +130,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Sign up"
+                android:text="Sign In"
                 android:layout_marginHorizontal="20dp"
                 android:textAlignment="gravity"
                 android:gravity="center"
@@ -139,7 +139,7 @@
                 android:background="@drawable/rounded_rectangle"
                 android:backgroundTint="#1a237e"
                 android:textColor="#FFF"
-                android:id="@+id/signupPatient"
+                android:id="@+id/Signinbutton"
                 >
 
             </TextView>
@@ -147,10 +147,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="___________OR SIGNUP USING __________"
+                android:text="________OR SIGNIN USING _______"
                 android:textAlignment="center"
-                android:textSize="20sp"
-                android:layout_marginTop="20dp"
+                android:textSize="15sp"
+                android:layout_marginTop="30dp"
                 android:textColor="#000">
             </TextView>
 
@@ -165,30 +165,39 @@
 
 
                 <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:layout_marginRight="20dp"
                     android:layout_gravity="start"
                     android:src="@drawable/google"
-                    android:id="@+id/googlePat">
+                    android:id="@+id/logingoogle">
 
                 </ImageView>
 
                 <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:layout_marginLeft="20dp"
                     android:layout_gravity="start"
                     android:src="@drawable/facebook"
-                    android:layout_marginBottom="30dp"
-                    android:id="@+id/facebookPat">
+
+                    android:id="@+id/loginfacebook">
 
                 </ImageView>
             </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="20dp"
+                android:text="haven't registered yet? Signup here."
+                android:textStyle="bold"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/blue_bg"
+                android:layout_marginTop="40dp"
+                android:id="@+id/signupfromlogin"
+                ></TextView>
         </LinearLayout>
     </ScrollView>
 
 </LinearLayout>
-
-
-

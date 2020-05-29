@@ -6,55 +6,52 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInApi;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseAuthUserCollisionException;
-import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 import static android.content.ContentValues.TAG;
 
-import android.view.View;
-import android.widget.TextView;
+public class login_Activity extends Activity {
 
-public class PatientActivity extends Activity {
-
-    private GoogleSignInClient mGoogleSignInClient;
-    private ImageView googleimage;
-    private final static int RC_SIGN_IN = 123;
-    private FirebaseAuth mAuth;
-    private String LOG_TAG= PatientActivity.class.getSimpleName();
-    private TextView signup;
     private EditText email;
     private EditText password;
+    private TextView signin;
+    private ImageView googleLogin;
+    private ImageView facebookLogin;
+    private TextView signupfromlogin;
+    private final static int RC_SIGN_IN = 123;
+    private FirebaseAuth mAuth;
+    private Intent intent;
+    private String Type;
+    private GoogleSignInClient mGoogleSignInClient;
 
     @Override
     public void onStart() {
-
         super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser user= mAuth.getCurrentUser();
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         if(user!=null){
-            Intent intent = new Intent(PatientActivity.this, HomeActivity.class);
+            Intent intent = new Intent(login_Activity.this, HomeActivity.class);
             startActivity(intent);
         }
     }
@@ -62,52 +59,100 @@ public class PatientActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_patient);
+        setContentView(R.layout.activity_login_);
 
+        mAuth = FirebaseAuth.getInstance();
+        email= (EditText)findViewById(R.id.loginEmail);
+        password=(EditText) findViewById(R.id.loginpassword);
+        intent= getIntent();
+        Type= intent.getStringExtra("type");
+        if(Type==null){
+            Log.i("TAG","Reachedddd");
+        }
 
-        mAuth= FirebaseAuth.getInstance();
-        googleimage = (ImageView)findViewById(R.id.googlePat);
-        signup= (TextView)findViewById(R.id.signupPatient);
-        email= (EditText) findViewById(R.id.EmailPatient);
-        password=(EditText) findViewById(R.id.passwordPatient);
-
-        //setting up google request
+        googleLogin = (ImageView)findViewById(R.id.logingoogle);
+        signin= (TextView)findViewById(R.id.Signinbutton);
+        signupfromlogin= (TextView) findViewById(R.id.signupfromlogin);
 
         creategooglerequest();
 
-        //setting up onclick listener for signup via email/pw
-        signup.setOnClickListener(new View.OnClickListener() {
+        signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String emailtext= email.getText().toString().trim();
-                String passwordtext= password.getText().toString();
+                String EmailText= email.getText().toString().trim();
+                String PassWordText= password.getText().toString().trim();
+                if(TextUtils.isEmpty(EmailText)){
+                    Toast.makeText(login_Activity.this,"Enter valid email",Toast.LENGTH_SHORT);
+                    return;
 
-                //check constraints that email and password shouldnot be empty
-                if(TextUtils.isEmpty(emailtext)){
-                    Toast.makeText(getApplicationContext(),"Please Enter Email",Toast.LENGTH_SHORT).show();
-                    return;
                 }
-                if(TextUtils.isEmpty(passwordtext)){
-                    Toast.makeText(getApplicationContext(),"Please Enter Password",Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if(password.length()<6){
-                    Toast.makeText(getApplicationContext(),"PAssword too short",Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                createrequestusingEmailPassword(emailtext,passwordtext);
-            }});
 
-        //setting up onclick Listener for googlesignup
-        googleimage.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                signIn();   //calling method to send intent to google client
+                if(TextUtils.isEmpty(PassWordText)){
+                    Toast.makeText(login_Activity.this,"Enter Password",Toast.LENGTH_SHORT);
+                    return;
+
+                }
+
+                setemailLogin(EmailText,PassWordText);
             }
         });
+
+       googleLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signIn();
+            }
+        });
+
+        signupfromlogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(Type.equals("Doctor")){
+                    Intent i= new Intent(login_Activity.this,DoctorActivity.class);
+                    startActivity(i);
+                    return;
+                }
+                 if(Type.equals("Patient")){
+                    Intent i= new Intent(login_Activity.this,PatientActivity.class);
+                     startActivity(i);
+                    return;
+                }
+
+                if(Type.equals("Supplier")){
+                    Intent i= new Intent(login_Activity.this,SupplierActivity.class);
+                    startActivity(i);
+                    return;
+                }
+            }
+        });
+
+
     }
 
 
+
+    private void setemailLogin(String email, String password){
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            Intent intent = new Intent(login_Activity.this, HomeActivity.class);
+                            startActivity(intent);
+
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w("TAG", "signInWithEmail:failure", task.getException());
+                            Toast.makeText(login_Activity.this, "wrong Email or password", Toast.LENGTH_SHORT).show();
+                        }
+
+                        // ...
+                    }
+                });
+    }
 
     private  void creategooglerequest(){
         // Configure Google Sign In
@@ -143,7 +188,7 @@ public class PatientActivity extends Activity {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
 
-                Log.d(LOG_TAG, "firebaseAuthWithGoogle:" + account.getId());
+                Log.d("LOG_TAG", "firebaseAuthWithGoogle:" + account.getId());
 
                 firebaseAuthWithGoogle(account.getIdToken());
 
@@ -152,7 +197,7 @@ public class PatientActivity extends Activity {
 
                 Toast.makeText(this, "signup failed", Toast.LENGTH_SHORT).show();
 
-                Log.e (LOG_TAG,"failed status code:"+ e.getStatusCode());
+                Log.e ("LOG_TAG","failed status code:"+ e.getStatusCode());
 
             }
         }
@@ -168,7 +213,7 @@ public class PatientActivity extends Activity {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intent = new Intent(PatientActivity.this, HomeActivity.class);
+                            Intent intent = new Intent(login_Activity.this, HomeActivity.class);
                             startActivity(intent);
                         }
 
@@ -185,38 +230,4 @@ public class PatientActivity extends Activity {
     }
 
 
-
-
-    private void createrequestusingEmailPassword(String email, String password){
-
-        mAuth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-        @Override
-        public void onComplete(@NonNull Task<AuthResult> task) {
-            if (task.isSuccessful()) {
-                if (!task.isSuccessful()) {
-                    try {
-                        throw task.getException();
-                    }
-                    // if user enters wrong email.
-
-                    catch (FirebaseAuthInvalidCredentialsException malformedEmail) {
-                        Log.d(TAG, "onComplete: malformed_email");
-                        Toast.makeText(PatientActivity.this, "Enter Correct Email", Toast.LENGTH_SHORT).show();
-                        return;
-
-                    } catch (FirebaseAuthUserCollisionException existEmail) {
-                        Log.d(TAG, "onComplete: exist_email");
-                        Toast.makeText(PatientActivity.this, "Email already Exist", Toast.LENGTH_SHORT).show();
-                        return;
-
-
-                    } catch (Exception e) {
-                        Log.d(TAG, "onComplete: " + e.getMessage());
-                    }
-                }
-            }
-        }
-            });
-    }
 }
