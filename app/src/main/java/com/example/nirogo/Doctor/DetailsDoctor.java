@@ -11,6 +11,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.EditText;
@@ -36,7 +37,7 @@ public class DetailsDoctor extends Activity {
     String Storage_Path = "";
 
     // Root Database Name for Firebase Database.
-    String Database_Path = "";
+    String Database_Path = "Info/";
 
     Uri filePath;
 
@@ -126,9 +127,6 @@ public class DetailsDoctor extends Activity {
         }
     }
 
-
-
-
     public String GetFileExtension(Uri uri) {
 
         ContentResolver contentResolver = getContentResolver();
@@ -151,7 +149,7 @@ public class DetailsDoctor extends Activity {
             progressDialog.show();
 
             // Creating second StorageReference.
-            StorageReference storageReference2nd = storageReference.child(Storage_Path + System.currentTimeMillis() + "." + GetFileExtension(filePath));
+            final StorageReference storageReference2nd = storageReference.child(Storage_Path + System.currentTimeMillis() + "." + GetFileExtension(filePath));
 
             // Adding addOnSuccessListener to second StorageReference.
             storageReference2nd.putFile(filePath)
@@ -160,7 +158,7 @@ public class DetailsDoctor extends Activity {
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
                             // Getting image name from EditText and store into string variable.
-                            String userName = nameIn.getText().toString().trim();
+                            final String userName = nameIn.getText().toString().trim();
 
                             // Hiding the progressDialog after done uploading.
                             progressDialog.dismiss();
@@ -168,22 +166,18 @@ public class DetailsDoctor extends Activity {
                             // Showing toast message after done uploading.
                             Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
 
-                            @SuppressWarnings("VisibleForTests")
-                            ImageUploadInfo imageUploadInfo = new ImageUploadInfo(userName, taskSnapshot.getStorage().getDownloadUrl().toString());
-
-                            // Getting image upload ID.
-                            String ImageUploadId = databaseReference.push().getKey();
-
-                            // Adding image upload id s child element into databaseReference.
-                            databaseReference.child(ImageUploadId).setValue(imageUploadInfo);
-
-                            StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl("storage ref url in string");
-                            storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            storageReference2nd.child("").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
-                                    uri.toString();
-                                }
+                                    ImageUploadInfo imageUploadInfo = new ImageUploadInfo(userName, uri.toString());
+                                   Toast.makeText(DetailsDoctor.this, uri.toString(), Toast.LENGTH_LONG).show();
+
+                                    databaseReference.child("ImageUploadId").setValue(uri.toString());
+
+                                        }
                             });
+                            // Getting image upload ID.
+                            // Adding image upload id s child element into databaseReference.
 
                         }
                     })
@@ -210,6 +204,7 @@ public class DetailsDoctor extends Activity {
 
                         }
                     });
+
 
 
         }
