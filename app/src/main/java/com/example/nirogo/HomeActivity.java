@@ -35,7 +35,7 @@ public class HomeActivity extends Activity {
         postAdapter.notifyDataSetChanged();
 
         ItemAdapter itemAdapter = new ItemAdapter();
-        itemAdapter.setImageUser(R.drawable.user);
+        itemAdapter.setImageUser(R.drawable.ic_user);
         itemAdapter.setImagePost(R.drawable.img_sample_1);
         itemAdapter.setPostDetails("I completed this Course that I started a week ago");
         itemAdapter.setUserName("Abhishek Mishra");
@@ -44,7 +44,7 @@ public class HomeActivity extends Activity {
         list.add(itemAdapter);
 
         itemAdapter = new ItemAdapter();
-        itemAdapter.setImageUser(R.drawable.user);
+        itemAdapter.setImageUser(R.drawable.ic_user);
         itemAdapter.setImagePost(R.drawable.img_sample_2);
         itemAdapter.setPostDetails("I completed this Course which I started 2 months ago");
         itemAdapter.setUserName("Kautuk Dwivedi");
@@ -54,7 +54,7 @@ public class HomeActivity extends Activity {
 
 
         itemAdapter = new ItemAdapter();
-        itemAdapter.setImageUser(R.drawable.user);
+        itemAdapter.setImageUser(R.drawable.ic_user);
         itemAdapter.setImagePost(R.drawable.sample_image_3);
         itemAdapter.setPostDetails("I completed this Course");
         itemAdapter.setUserName("Anmol Sharma");
@@ -64,7 +64,7 @@ public class HomeActivity extends Activity {
 
 
         itemAdapter = new ItemAdapter();
-        itemAdapter.setImageUser(R.drawable.user);
+        itemAdapter.setImageUser(R.drawable.ic_user);
         itemAdapter.setImagePost(R.drawable.sample_image_4);
         itemAdapter.setPostDetails("I completed this Course which i never started");
         itemAdapter.setUserName("XYZ ABC");
@@ -91,7 +91,14 @@ public class HomeActivity extends Activity {
 
                 else if(position == 4)
                     Toast.makeText(HomeActivity.this, "Opening Search", Toast.LENGTH_LONG).show();
+
+                else if(position == 5)
+                    Toast.makeText(HomeActivity.this, "User Profile ", Toast.LENGTH_LONG).show();
+
+
             }
         });
+
+
     }
 }

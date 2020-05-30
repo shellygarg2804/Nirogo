@@ -1,19 +1,20 @@
-package com.example.nirogo;
+package com.example.nirogo.Supplier;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nirogo.HomeActivity;
+import com.example.nirogo.OptionActivity;
+import com.example.nirogo.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -29,13 +30,13 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 import static android.content.ContentValues.TAG;
 
-public class DoctorActivity extends Activity {
+public class SupplierActivity extends Activity {
 
     private GoogleSignInClient mGoogleSignInClient;
     private ImageView googleimage;
     private final static int RC_SIGN_IN = 123;
     private FirebaseAuth mAuth;
-    private String LOG_TAG= DoctorActivity.class.getSimpleName();
+    private String LOG_TAG= SupplierActivity.class.getSimpleName();
 
     @Override
     public void onStart() {
@@ -44,7 +45,7 @@ public class DoctorActivity extends Activity {
         FirebaseUser user= mAuth.getCurrentUser();
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         if(user!=null){
-            Intent intent = new Intent(DoctorActivity.this, HomeActivity.class);
+            Intent intent = new Intent(SupplierActivity.this, HomeActivity.class);
             startActivity(intent);
         }
     }
@@ -53,13 +54,22 @@ public class DoctorActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_doctor);
+        setContentView(R.layout.activity_supplier);
+
+        Button back = findViewById(R.id.backSup);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SupplierActivity.this, OptionActivity.class);
+                startActivity(intent);
+            }
+        });
 
         mAuth= FirebaseAuth.getInstance();
 
         //setting up google request
         creategooglerequest();
-        googleimage = (ImageView)findViewById(R.id.googleDoc);
+        googleimage = (ImageView)findViewById(R.id.googleSup);
 
         //setting up onclick Listener
         googleimage.setOnClickListener(new View.OnClickListener(){
@@ -71,8 +81,8 @@ public class DoctorActivity extends Activity {
         });
 
 
-
     }
+
 
     private  void creategooglerequest(){
         // Configure Google Sign In
@@ -133,7 +143,7 @@ public class DoctorActivity extends Activity {
 
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intent = new Intent(DoctorActivity.this, HomeActivity.class);
+                            Intent intent = new Intent(SupplierActivity.this, HomeActivity.class);
                             startActivity(intent);
                         }
 
@@ -147,14 +157,15 @@ public class DoctorActivity extends Activity {
                     }
                 });
 
-        TextView signup = findViewById(R.id.signupDoctor);
+        TextView signup = findViewById(R.id.signupSupplier);
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DoctorActivity.this, HomeActivity.class);
+                Intent intent = new Intent(SupplierActivity.this, HomeActivity.class);
                 startActivity(intent);
             }
         });
 
     }
+
 }

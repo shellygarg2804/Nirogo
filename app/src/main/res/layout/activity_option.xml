@@ -31,56 +31,56 @@
         >
 <LinearLayout
     android:layout_width="match_parent"
+    android:id="@+id/doctor"
     android:layout_height="0dp"
     android:gravity="center_horizontal"
     android:layout_weight="1"
     android:orientation="vertical"
     >
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/doctor"
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:layout_gravity="center"
-            android:src="@drawable/doctor"
-            app:civ_border_color="@color/White"
-            app:civ_border_width="6dp"/>
+            android:src="@drawable/ic_doctor"
+            />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Doctor"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/roboto_regular"
-            android:textColor="@color/White"
-            android:layout_marginTop="10dp"/>
+    <TextView
+        android:layout_width="160dp"
+        android:layout_height="35dp"
+        android:text="DOCTOR"
+        android:background="@drawable/rounded_rectangle"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/Black"/>
         </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:id="@+id/user"
         android:layout_weight="1"
         android:orientation="vertical"
         android:gravity="center_horizontal"
         >
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/patient"
+
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:layout_gravity="center"
-            android:src="@drawable/patient"
-            app:civ_border_color="@color/White"
-            app:civ_border_width="6dp"/>
+            android:src="@drawable/ic_user"/>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Patient"
-            android:textSize="30sp"
+            android:layout_width="160dp"
+            android:layout_height="35dp"
+            android:text="USER"
+            android:background="@drawable/rounded_rectangle"
+            android:textSize="24sp"
             android:textStyle="bold"
+            android:textAlignment="center"
             android:fontFamily="@font/roboto_regular"
-            android:textColor="@color/White"
-            android:layout_marginTop="10dp"/>
+            android:textColor="@color/Black"/>
     </LinearLayout>
 
 
@@ -89,26 +89,26 @@
         android:layout_height="0dp"
         android:gravity="center_horizontal"
         android:layout_weight="1"
+        android:id="@+id/supplier"
         android:orientation="vertical"
         >
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/supplier"
+
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:layout_gravity="center"
-            android:src="@drawable/supplier"
-            app:civ_border_color="@color/White"
-            app:civ_border_width="6dp"/>
+            android:src="@drawable/ic_supplier"/>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Supplier"
-            android:textSize="30sp"
+            android:layout_width="160dp"
+            android:layout_height="35dp"
+            android:text="SUPPLIER"
+            android:background="@drawable/rounded_rectangle"
+            android:textSize="24sp"
             android:textStyle="bold"
+            android:textAlignment="center"
             android:fontFamily="@font/roboto_regular"
-            android:textColor="@color/White"
-            android:layout_marginTop="10dp"/>
+            android:textColor="@color/Black"/>
     </LinearLayout>
 
     </LinearLayout>

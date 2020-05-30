@@ -25,7 +25,7 @@
             android:layout_width="280dp"
             android:orientation="horizontal"
             android:id="@+id/search"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/rounded_rectangle"
             android:gravity="center_vertical"
@@ -89,7 +89,6 @@
             app:bt_colorActive="@color/blue_bg"
             app:bt_colorInactive="@color/Black"
             app:bt_icon="@drawable/home"/>
-        <!--            app:bt_badgeBackgroundColor="#90EE90"-->
 
 
 
@@ -99,8 +98,7 @@
             android:layout_height="60dp"
             app:bt_active="true"
             android:background="#90EE90"
-
-            app:bt_colorActive="@color/DodgerBlue"
+            app:bt_colorActive="@color/blue_bg"
             app:bt_colorInactive="@color/Black"
             app:bt_icon="@drawable/ambulance_dark"/>
         <!--            app:bt_badgeBackgroundColor="#90EE90"-->
@@ -112,7 +110,7 @@
             android:layout_height="60dp"
             app:bt_active="true"
             android:background="@color/LightGreen"
-            app:bt_colorActive="@color/DodgerBlue"
+            app:bt_colorActive="@color/blue_bg"
             app:bt_colorInactive="@color/Black"
             app:bt_icon="@drawable/list"
             />
@@ -122,7 +120,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             app:bt_active="true"
-            app:bt_colorActive="@color/DodgerBlue"
+            app:bt_colorActive="@color/blue_bg"
             app:bt_colorInactive="@color/Black"
             app:bt_icon="@drawable/cart"
             />
@@ -132,9 +130,20 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             app:bt_active="true"
-            app:bt_colorActive="@color/DodgerBlue"
+            app:bt_colorActive="@color/blue_bg"
             app:bt_colorInactive="@color/Black"
             app:bt_icon="@drawable/search"
+            />
+
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/c_item_user"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:bt_active="true"
+            app:bt_colorActive="@color/blue_bg"
+            app:bt_colorInactive="@color/Black"
+            app:bt_icon="@drawable/user"
             />
 
     </com.gauravk.bubblenavigation.BubbleNavigationConstraintView>
