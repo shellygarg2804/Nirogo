@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DoctorActivity"
+    tools:context=".Doctor.DoctorActivity"
     android:background="@color/blue_bg"
     android:orientation="vertical">
 
@@ -21,35 +21,23 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_regular"
-        android:text="SIGN UP"
-        android:layout_marginTop="20dp"
-        android:id="@+id/signUpSupplier"
-        android:layout_marginLeft="20dp"
-        android:textSize="40sp"
-        android:textColor="#FFF"
-        android:textStyle="bold"
-        />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/doctor"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="100dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_gravity="center"
-            android:src="@drawable/doctor"
-            app:civ_border_color="@color/White"
-            app:civ_border_width="2dp"/>
+            android:background="@drawable/ic_doctor"/>
     </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="40dp">
+        android:layout_marginTop="60dp">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -123,29 +111,6 @@
             android:textColor="#000"
             android:layout_marginTop="5dp"
             />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"
-            android:textColor="@color/Black"
-            android:text="SPECIALIST IN"
-            android:textSize="20sp">
-        </TextView>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="5dp"
-            android:hint=" eg. Gynecologist"
-            android:textColorHighlight="#000"
-            android:textColorHint="@color/Black"
-            android:background="@drawable/rounded_rectangle"
-            android:id="@+id/specialityDoc">
-        </EditText>
-
 
 
         <TextView

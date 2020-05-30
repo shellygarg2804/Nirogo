@@ -1,19 +1,20 @@
-package com.example.nirogo;
+package com.example.nirogo.Doctor;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nirogo.HomeActivity;
+import com.example.nirogo.OptionActivity;
+import com.example.nirogo.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -21,31 +22,21 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseAuthUserCollisionException;
-import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 import static android.content.ContentValues.TAG;
 
-import android.view.View;
-import android.widget.TextView;
-
-public class PatientActivity extends Activity {
+public class DoctorActivity extends Activity {
 
     private GoogleSignInClient mGoogleSignInClient;
     private ImageView googleimage;
     private final static int RC_SIGN_IN = 123;
     private FirebaseAuth mAuth;
-    private String LOG_TAG= PatientActivity.class.getSimpleName();
-    private TextView signup;
-    private EditText email;
-    private EditText password;
+    private String LOG_TAG= DoctorActivity.class.getSimpleName();
 
     @Override
     public void onStart() {
@@ -54,7 +45,7 @@ public class PatientActivity extends Activity {
         FirebaseUser user= mAuth.getCurrentUser();
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         if(user!=null){
-            Intent intent = new Intent(PatientActivity.this, HomeActivity.class);
+            Intent intent = new Intent(DoctorActivity.this, HomeActivity.class);
             startActivity(intent);
         }
     }
@@ -62,52 +53,43 @@ public class PatientActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_patient);
-
+        setContentView(R.layout.activity_doctor);
 
         mAuth= FirebaseAuth.getInstance();
-        googleimage = (ImageView)findViewById(R.id.googlePat);
-        signup= (TextView)findViewById(R.id.signupPatient);
-        email= (EditText) findViewById(R.id.EmailPatient);
-        password=(EditText) findViewById(R.id.passwordPatient);
 
-        //setting up google request
-
-        creategooglerequest();
-
-        //setting up onclick listener for signup via email/pw
-        signup.setOnClickListener(new View.OnClickListener() {
+        Button back = findViewById(R.id.backDoc);
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String emailtext= email.getText().toString().trim();
-                String passwordtext= password.getText().toString();
+                Intent intent = new Intent(DoctorActivity.this, OptionActivity.class);
+                startActivity(intent);
+            }
+        });
 
-                //check constraints that email and password shouldnot be empty
-                if(TextUtils.isEmpty(emailtext)){
-                    Toast.makeText(getApplicationContext(),"Please Enter Email",Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if(TextUtils.isEmpty(passwordtext)){
-                    Toast.makeText(getApplicationContext(),"Please Enter Password",Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if(password.length()<6){
-                    Toast.makeText(getApplicationContext(),"PAssword too short",Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                createrequestusingEmailPassword(emailtext,passwordtext);
-            }});
+        TextView txt = findViewById(R.id.signupDoctor);
+        txt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DoctorActivity.this, DetailsDoctor.class);
+                startActivity(intent);
+            }
+        });
+        //setting up google request
+        creategooglerequest();
+        googleimage = (ImageView)findViewById(R.id.googleDoc);
 
-        //setting up onclick Listener for googlesignup
+        //setting up onclick Listener
         googleimage.setOnClickListener(new View.OnClickListener(){
+
             @Override
             public void onClick(View v) {
                 signIn();   //calling method to send intent to google client
             }
         });
+
+
+
     }
-
-
 
     private  void creategooglerequest(){
         // Configure Google Sign In
@@ -147,8 +129,7 @@ public class PatientActivity extends Activity {
 
                 firebaseAuthWithGoogle(account.getIdToken());
 
-            }
-            catch (ApiException e) {
+            } catch (ApiException e) {
 
                 Toast.makeText(this, "signup failed", Toast.LENGTH_SHORT).show();
 
@@ -166,9 +147,10 @@ public class PatientActivity extends Activity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intent = new Intent(PatientActivity.this, HomeActivity.class);
+                            Intent intent = new Intent(DoctorActivity.this, HomeActivity.class);
                             startActivity(intent);
                         }
 
@@ -182,41 +164,14 @@ public class PatientActivity extends Activity {
                     }
                 });
 
-    }
-
-
-
-
-    private void createrequestusingEmailPassword(String email, String password){
-
-        mAuth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-        @Override
-        public void onComplete(@NonNull Task<AuthResult> task) {
-            if (task.isSuccessful()) {
-                if (!task.isSuccessful()) {
-                    try {
-                        throw task.getException();
-                    }
-                    // if user enters wrong email.
-
-                    catch (FirebaseAuthInvalidCredentialsException malformedEmail) {
-                        Log.d(TAG, "onComplete: malformed_email");
-                        Toast.makeText(PatientActivity.this, "Enter Correct Email", Toast.LENGTH_SHORT).show();
-                        return;
-
-                    } catch (FirebaseAuthUserCollisionException existEmail) {
-                        Log.d(TAG, "onComplete: exist_email");
-                        Toast.makeText(PatientActivity.this, "Email already Exist", Toast.LENGTH_SHORT).show();
-                        return;
-
-
-                    } catch (Exception e) {
-                        Log.d(TAG, "onComplete: " + e.getMessage());
-                    }
-                }
+        TextView signup = findViewById(R.id.signupDoctor);
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DoctorActivity.this, HomeActivity.class);
+                startActivity(intent);
             }
-        }
-            });
+        });
+
     }
 }

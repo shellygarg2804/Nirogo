@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PatientActivity"
+    tools:context=".User.UserActivity"
     android:background="@color/blue_bg"
     android:orientation="vertical">
 
@@ -15,42 +15,29 @@
         android:layout_height="40dp"
         android:background="@drawable/back"
         android:layout_marginStart="20dp"
-        android:id="@+id/backPatient"
+        android:id="@+id/backUser"
         />
     <LinearLayout
         android:layout_width="wrap_content"
         android:orientation="horizontal"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="40dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_regular"
-            android:text="SIGN UP"
-            android:layout_marginTop="20dp"
-            android:id="@+id/signUpSupplier"
-            android:layout_marginLeft="20dp"
-            android:textSize="40sp"
-            android:textColor="#FFF"
-            android:textStyle="bold"
-            />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/doctor"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="100dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_gravity="center"
-            android:src="@drawable/patient"
-            app:civ_border_color="@color/White"
-            app:civ_border_width="2dp"/>
+            android:src="@drawable/ic_user"/>
+
     </LinearLayout>
 
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="40dp">
+        android:layout_marginTop="50dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
