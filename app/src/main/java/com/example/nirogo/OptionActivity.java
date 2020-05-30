@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import java.util.function.Supplier;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class OptionActivity extends Activity {
@@ -28,7 +30,9 @@ public class OptionActivity extends Activity {
                 }
                 else
                     doctor.setBorderColor(getResources().getColor(R.color.colorAccent));
-                Intent intent = new Intent(OptionActivity.this, DoctorActivity.class);
+                Intent intent = new Intent(OptionActivity.this, login_Activity.class);
+
+                intent.putExtra("type","Doctor");
                 startActivity(intent);
             }
         });
@@ -40,9 +44,11 @@ public class OptionActivity extends Activity {
                 if (patient.getBorderColor() == getResources().getColor(R.color.colorAccent)){
                     patient.setBorderColor(getResources().getColor(R.color.White));
                 }
-                else
+                else {
                     patient.setBorderColor(getResources().getColor(R.color.colorAccent));
-                Intent intent = new Intent(OptionActivity.this, PatientActivity.class);
+                }
+                Intent intent = new Intent(OptionActivity.this, login_Activity.class);
+                intent.putExtra("type","Patient");
                 startActivity(intent);
             }
         });
@@ -54,10 +60,13 @@ public class OptionActivity extends Activity {
                 if (supplier.getBorderColor() == getResources().getColor(R.color.colorAccent)){
                     supplier.setBorderColor(getResources().getColor(R.color.White));
                 }
-                else
+                else {
                     supplier.setBorderColor(getResources().getColor(R.color.colorAccent));
+                }
 
-                Intent intent = new Intent(OptionActivity.this, SupplierActivity.class);
+                Intent intent = new Intent(OptionActivity.this, login_Activity.class);
+                String Type= "Supplier";
+                intent.putExtra("type",Type);
                 startActivity(intent);
             }
         });
