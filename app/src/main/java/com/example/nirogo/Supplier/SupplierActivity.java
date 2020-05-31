@@ -5,9 +5,11 @@ import androidx.annotation.NonNull;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 import com.example.nirogo.HomeActivity;
 import com.example.nirogo.OptionActivity;
 import com.example.nirogo.R;
+import com.example.nirogo.User.UserActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -25,6 +28,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
@@ -37,6 +42,9 @@ public class SupplierActivity extends Activity {
     private final static int RC_SIGN_IN = 123;
     private FirebaseAuth mAuth;
     private String LOG_TAG= SupplierActivity.class.getSimpleName();
+    private TextView signup;
+    private EditText email;
+    private EditText password;
 
     @Override
     public void onStart() {
@@ -66,10 +74,15 @@ public class SupplierActivity extends Activity {
         });
 
         mAuth= FirebaseAuth.getInstance();
+        googleimage = (ImageView)findViewById(R.id.googleSup);
+        signup= (TextView)findViewById(R.id.signupSupplier);
+        email= (EditText) findViewById(R.id.usernameSup);
+        password=(EditText) findViewById(R.id.passwordSup);
 
         //setting up google request
+
         creategooglerequest();
-        googleimage = (ImageView)findViewById(R.id.googleSup);
+
 
         //setting up onclick Listener
         googleimage.setOnClickListener(new View.OnClickListener(){
@@ -80,14 +93,29 @@ public class SupplierActivity extends Activity {
             }
         });
 
-        TextView signup = findViewById(R.id.signupSupplier);
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SupplierActivity.this, DetailsSupplier.class);
-                startActivity(intent);
-            }
-        });
+                String emailtext= email.getText().toString().trim();
+                String passwordtext= password.getText().toString();
+
+                //check constraints that email and password shouldnot be empty
+                if(TextUtils.isEmpty(emailtext)){
+                    Toast.makeText(getApplicationContext(),"Please Enter Email",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(TextUtils.isEmpty(passwordtext)){
+                    Toast.makeText(getApplicationContext(),"Please Enter Password",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(password.length()<6){
+                    Toast.makeText(getApplicationContext(),"PAssword too short",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                createrequestusingEmailPassword(emailtext,passwordtext);
+            }});
+
+
     }
 
 
@@ -150,6 +178,8 @@ public class SupplierActivity extends Activity {
 
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            Toast.makeText(SupplierActivity.this,"SignIn Successful",Toast.LENGTH_SHORT).show();
+
                             Intent intent = new Intent(SupplierActivity.this, HomeActivity.class);
                             startActivity(intent);
                         }
@@ -175,4 +205,41 @@ public class SupplierActivity extends Activity {
 
     }
 
+    private void createrequestusingEmailPassword(String email, String password){
+
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(SupplierActivity.this,"Signup Successful",Toast.LENGTH_SHORT);
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            Intent intent = new Intent(SupplierActivity.this, HomeActivity.class);
+                            startActivity(intent);
+
+                        }
+                        else {
+                            try {
+                                throw task.getException();
+                            }
+                            // if user enters wrong email.
+
+                            catch (FirebaseAuthInvalidCredentialsException malformedEmail) {
+                                Log.d(TAG, "onComplete: malformed_email");
+                                Toast.makeText(SupplierActivity.this, "Enter Correct Email", Toast.LENGTH_SHORT).show();
+                                return;
+
+                            } catch (FirebaseAuthUserCollisionException existEmail) {
+                                Log.d(TAG, "onComplete: exist_email");
+                                Toast.makeText(SupplierActivity.this, "Email already Exist", Toast.LENGTH_SHORT).show();
+                                return;
+
+
+                            } catch (Exception e) {
+                                Log.d(TAG, "onComplete: " + e.getMessage());
+                            }
+                        }
+                    }
+                });
+    }
 }
