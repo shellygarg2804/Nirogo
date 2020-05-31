@@ -25,20 +25,19 @@
             android:layout_width="280dp"
             android:orientation="horizontal"
             android:id="@+id/search"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/rounded_rectangle"
             android:gravity="center_vertical"
-            android:layout_height="40dp">
+            android:layout_height="30dp">
 
             <ImageView
-                android:layout_width="30dp"
+                android:layout_width="20dp"
                 android:layout_marginLeft="10dp"
-                android:layout_height="30dp"
+                android:layout_height="20dp"
                 android:src="@drawable/search"/>
 
             <EditText
-                android:layout_width="230dp"
+                android:layout_width="240dp"
                 android:layout_height="40dp"
                 android:hint="Search"
                 android:textColorHint="@color/Black"
@@ -49,9 +48,9 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/chatBtn"
-            android:layout_width="50dp"
+            android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="10dp"
             android:background="@drawable/chat_white"
             android:layout_marginTop="10dp"
              />
@@ -143,7 +142,7 @@
             app:bt_active="true"
             app:bt_colorActive="@color/blue_bg"
             app:bt_colorInactive="@color/Black"
-            app:bt_icon="@drawable/user"
+            app:bt_icon="@drawable/user_black"
             />
 
     </com.gauravk.bubblenavigation.BubbleNavigationConstraintView>

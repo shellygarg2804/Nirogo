@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.example.nirogo.User.UserActivity;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class OptionActivity extends Activity {
@@ -15,7 +17,7 @@ public class OptionActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_option);
 
-        LinearLayout doctor, patient, supplier;
+        LinearLayout doctor, user, supplier;
 
         doctor = findViewById(R.id.doctor);
         doctor.setOnClickListener(new View.OnClickListener() {
@@ -27,11 +29,11 @@ public class OptionActivity extends Activity {
             }
         });
 
-        patient = findViewById(R.id.user);
-        patient.setOnClickListener(new View.OnClickListener() {
+        user = findViewById(R.id.user);
+        user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(OptionActivity.this, LoginActivity.class);
+                Intent intent = new Intent(OptionActivity.this, UserActivity.class);
                 intent.putExtra("type","User");
                 startActivity(intent);
             }
