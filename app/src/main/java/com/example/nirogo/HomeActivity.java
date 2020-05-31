@@ -27,6 +27,9 @@ public class HomeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        String type_user = getIntent().getStringExtra("type");
+        Toast.makeText(HomeActivity.this, type_user,Toast.LENGTH_LONG).show();
+
         RecyclerView recyclerview = findViewById(R.id.recyclerView);
 
         postAdapter = new FeedAdapter(list, this);

@@ -1,6 +1,4 @@
-package com.example.nirogo.Doctor;
-
-import androidx.annotation.NonNull;
+package com.example.nirogo.User;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -17,9 +15,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.example.nirogo.HomeActivity;
 import com.example.nirogo.R;
-import com.example.nirogo.Supplier.DetailsSupplier;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
@@ -31,13 +30,13 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
 
-public class DetailsDoctor extends Activity {
+public class DetailsUser extends Activity {
 
     // Folder path for Firebase Storage.
     String Storage_Path = "";
 
     // Root Database Name for Firebase Database.
-    String Database_Path = "Doctor/";
+    String Database_Path = "User/";
 
     Uri FilePathUri;
 
@@ -48,46 +47,44 @@ public class DetailsDoctor extends Activity {
     ProgressDialog progressDialog ;
 
     private static final int CAMERA_REQUEST = 1888;
-
-    String name, age, speciality, city;
-
-    EditText nameIn, ageIn, specIn, cityIn;
+    String name, age, city;
+    EditText nameIn, ageIn, cityIn;
     ImageView cameraBut, cameraDisp;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_details_doctor);
+        setContentView(R.layout.activity_details_user);
+
 
         storageReference = FirebaseStorage.getInstance().getReference();
 
         // Assign FirebaseDatabase instance with root database name.
         databaseReference = FirebaseDatabase.getInstance().getReference(Database_Path);
 
-        nameIn = findViewById(R.id.nameDoc);
-        ageIn = findViewById(R.id.ageDoc);
-        specIn = findViewById(R.id.specDoc);
-        cityIn = findViewById(R.id.cityDoc);
-
+        nameIn = findViewById(R.id.nameUser);
+        ageIn = findViewById(R.id.ageUser);
+        cityIn = findViewById(R.id.cityUser);
         cameraBut = findViewById(R.id.imageButton);
         cameraDisp = findViewById(R.id.imageDisp);
 
         progressDialog  = new ProgressDialog(this);
 
         cameraBut.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
+            @Override
+            public void onClick(View v) {
 //            Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 //            startActivityForResult(cameraIntent, CAMERA_REQUEST);
-            Intent intent = new Intent();
-            intent.setType("image/*");
-            intent.setAction(Intent.ACTION_GET_CONTENT);
-            startActivityForResult(Intent.createChooser(intent, "Please Select Image"), Image_Request_Code);
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "Please Select Image"), Image_Request_Code);
 
-             }
-    });
+            }
+        });
 
-        TextView submit  = findViewById(R.id.sumbitDoc);
+        TextView submit  = findViewById(R.id.sumbitUser);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,7 +92,6 @@ public class DetailsDoctor extends Activity {
             }
         });
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -157,7 +153,6 @@ public class DetailsDoctor extends Activity {
                             // Getting image name from EditText and store into string variable.
                             name = nameIn.getText().toString();
                             age = ageIn.getText().toString();
-                            speciality = specIn.getText().toString();
                             city = cityIn.getText().toString();
 
                             // Hiding the progressDialog after done uploading.
@@ -167,17 +162,18 @@ public class DetailsDoctor extends Activity {
                             Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
 
                             @SuppressWarnings("VisibleForTests")
-                            DocUploadInfo docUploadInfo = new DocUploadInfo("Doctor",name, storageReference2nd.getDownloadUrl().toString(), age, city, speciality);
+                            UserUploadInfo docUploadInfo = new UserUploadInfo("User",name, storageReference2nd.getDownloadUrl().toString(), age, city);
 
                             // Getting image upload ID.
-                            String ImageUploadId = databaseReference.push().getKey();
+                            String id = databaseReference.push().getKey();
 
                             // Adding image upload id s child element into databaseReference.
-                            databaseReference.child(ImageUploadId).setValue(docUploadInfo);
+                            databaseReference.child(id).setValue(docUploadInfo);
 
-                            Intent intent = new Intent(DetailsDoctor.this, HomeActivity.class);
-                            intent.putExtra("type","Doctor");
+                            Intent intent = new Intent(DetailsUser.this, HomeActivity.class);
+                            intent.putExtra("type","User");
                             startActivity(intent);
+
                         }
                     })
                     // If something goes wrong .
@@ -188,8 +184,8 @@ public class DetailsDoctor extends Activity {
                             // Hiding the progressDialog.
                             progressDialog.dismiss();
 
-                            // Showing exception erro message.
-                            Toast.makeText(DetailsDoctor.this, exception.getMessage(), Toast.LENGTH_LONG).show();
+                            // Showing exception error message.
+                            Toast.makeText(DetailsUser.this, exception.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     })
 
@@ -206,10 +202,11 @@ public class DetailsDoctor extends Activity {
         }
         else {
 
-            Toast.makeText(DetailsDoctor.this, "Please Select Image or Add Image Name", Toast.LENGTH_LONG).show();
+            Toast.makeText(DetailsUser.this, "Please Select Image or Add Image Name", Toast.LENGTH_LONG).show();
 
         }
     }
-
 }
+
+
 

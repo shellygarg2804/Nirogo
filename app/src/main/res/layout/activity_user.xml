@@ -126,7 +126,7 @@
                 android:background="@drawable/rounded_rectangle"
                 android:backgroundTint="#1a237e"
                 android:textColor="#FFF"
-                android:id="@+id/signupPatient"
+                android:id="@+id/signupUser"
                 >
 
             </TextView>

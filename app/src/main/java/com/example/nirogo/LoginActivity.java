@@ -151,11 +151,7 @@ public class LoginActivity extends Activity {
                 }
             }
         });
-
-
     }
-
-
 
     private void setemailLogin(String email, String password){
         mAuth.signInWithEmailAndPassword(email, password)
