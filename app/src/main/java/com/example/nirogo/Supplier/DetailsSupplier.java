@@ -1,6 +1,7 @@
-package com.example.nirogo.Doctor;
+package com.example.nirogo.Supplier;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -17,9 +18,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nirogo.Doctor.DetailsDoctor;
+import com.example.nirogo.Doctor.DocUploadInfo;
 import com.example.nirogo.HomeActivity;
 import com.example.nirogo.R;
-import com.example.nirogo.Supplier.DetailsSupplier;
+import com.example.nirogo.User.DetailsUser;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
@@ -31,13 +34,13 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
 
-public class DetailsDoctor extends Activity {
+public class DetailsSupplier extends Activity {
 
     // Folder path for Firebase Storage.
     String Storage_Path = "";
 
     // Root Database Name for Firebase Database.
-    String Database_Path = "Doctor/";
+    String Database_Path = "Supplier/";
 
     Uri FilePathUri;
 
@@ -53,21 +56,19 @@ public class DetailsDoctor extends Activity {
 
     EditText nameIn, ageIn, specIn, cityIn;
     ImageView cameraBut, cameraDisp;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_details_doctor);
-
+        setContentView(R.layout.activity_details_supplier);
         storageReference = FirebaseStorage.getInstance().getReference();
 
         // Assign FirebaseDatabase instance with root database name.
         databaseReference = FirebaseDatabase.getInstance().getReference(Database_Path);
 
-        nameIn = findViewById(R.id.nameDoc);
-        ageIn = findViewById(R.id.ageDoc);
-        specIn = findViewById(R.id.specDoc);
-        cityIn = findViewById(R.id.cityDoc);
+        nameIn = findViewById(R.id.nameSup);
+        ageIn = findViewById(R.id.ageSup);
+        specIn = findViewById(R.id.serviceSup);
+        cityIn = findViewById(R.id.citySup);
 
         cameraBut = findViewById(R.id.imageButton);
         cameraDisp = findViewById(R.id.imageDisp);
@@ -75,19 +76,19 @@ public class DetailsDoctor extends Activity {
         progressDialog  = new ProgressDialog(this);
 
         cameraBut.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
+            @Override
+            public void onClick(View v) {
 //            Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 //            startActivityForResult(cameraIntent, CAMERA_REQUEST);
-            Intent intent = new Intent();
-            intent.setType("image/*");
-            intent.setAction(Intent.ACTION_GET_CONTENT);
-            startActivityForResult(Intent.createChooser(intent, "Please Select Image"), Image_Request_Code);
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "Please Select Image"), Image_Request_Code);
 
-             }
-    });
+            }
+        });
 
-        TextView submit  = findViewById(R.id.sumbitDoc);
+        TextView submit  = findViewById(R.id.sumbitSup);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -167,17 +168,18 @@ public class DetailsDoctor extends Activity {
                             Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
 
                             @SuppressWarnings("VisibleForTests")
-                            DocUploadInfo docUploadInfo = new DocUploadInfo("Doctor",name, storageReference2nd.getDownloadUrl().toString(), age, city, speciality);
+                            SupplierUploadInfo supplierUploadInfo = new SupplierUploadInfo("Doctor",name, storageReference2nd.getDownloadUrl().toString(), age, city, speciality);
 
                             // Getting image upload ID.
                             String ImageUploadId = databaseReference.push().getKey();
 
                             // Adding image upload id s child element into databaseReference.
-                            databaseReference.child(ImageUploadId).setValue(docUploadInfo);
+                            databaseReference.child(ImageUploadId).setValue(supplierUploadInfo);
 
-                            Intent intent = new Intent(DetailsDoctor.this, HomeActivity.class);
-                            intent.putExtra("type","Doctor");
+                            Intent intent = new Intent(DetailsSupplier.this, HomeActivity.class);
+                            intent.putExtra("type","Supplier");
                             startActivity(intent);
+
                         }
                     })
                     // If something goes wrong .
@@ -189,7 +191,7 @@ public class DetailsDoctor extends Activity {
                             progressDialog.dismiss();
 
                             // Showing exception erro message.
-                            Toast.makeText(DetailsDoctor.this, exception.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(DetailsSupplier.this, exception.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     })
 
@@ -206,10 +208,11 @@ public class DetailsDoctor extends Activity {
         }
         else {
 
-            Toast.makeText(DetailsDoctor.this, "Please Select Image or Add Image Name", Toast.LENGTH_LONG).show();
+            Toast.makeText(DetailsSupplier.this, "Please Select Image or Add Image Name", Toast.LENGTH_LONG).show();
 
         }
     }
+
 
 }
 

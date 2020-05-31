@@ -62,7 +62,7 @@ public class UserActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_patient);
+        setContentView(R.layout.activity_user);
 
         Button back = findViewById(R.id.backUser);
         back.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +75,7 @@ public class UserActivity extends Activity {
 
         mAuth= FirebaseAuth.getInstance();
         googleimage = (ImageView)findViewById(R.id.googlePat);
-        signup= (TextView)findViewById(R.id.signupPatient);
+        signup= (TextView)findViewById(R.id.signupUser);
         email= (EditText) findViewById(R.id.EmailPatient);
         password=(EditText) findViewById(R.id.passwordPatient);
 
@@ -89,6 +89,9 @@ public class UserActivity extends Activity {
             public void onClick(View v) {
                 String emailtext= email.getText().toString().trim();
                 String passwordtext= password.getText().toString();
+
+                Intent intent = new Intent(UserActivity.this, DetailsUser.class);
+                startActivity(intent);
 
                 //check constraints that email and password shouldnot be empty
                 if(TextUtils.isEmpty(emailtext)){
@@ -157,9 +160,7 @@ public class UserActivity extends Activity {
 
             }
             catch (ApiException e) {
-
                 Toast.makeText(this, "signup failed", Toast.LENGTH_SHORT).show();
-
                 Log.e (LOG_TAG,"failed status code:"+ e.getStatusCode());
 
             }
@@ -176,7 +177,7 @@ public class UserActivity extends Activity {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intent = new Intent(UserActivity.this, HomeActivity.class);
+                            Intent intent = new Intent(UserActivity.this, DetailsUser.class);
                             startActivity(intent);
                         }
 
@@ -185,15 +186,10 @@ public class UserActivity extends Activity {
                             Toast.makeText(getApplicationContext(), "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         }
-
                         // ...
                     }
                 });
-
     }
-
-
-
 
     private void createrequestusingEmailPassword(String email, String password){
 
@@ -202,6 +198,7 @@ public class UserActivity extends Activity {
         @Override
         public void onComplete(@NonNull Task<AuthResult> task) {
             if (task.isSuccessful()) {
+
                 if (!task.isSuccessful()) {
                     try {
                         throw task.getException();

@@ -80,7 +80,14 @@ public class SupplierActivity extends Activity {
             }
         });
 
-
+        TextView signup = findViewById(R.id.signupSupplier);
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SupplierActivity.this, DetailsSupplier.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
