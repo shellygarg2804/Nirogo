@@ -62,7 +62,7 @@ public class UserActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_patient);
+        setContentView(R.layout.activity_user);
 
         Button back = findViewById(R.id.backUser);
         back.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +75,7 @@ public class UserActivity extends Activity {
 
         mAuth= FirebaseAuth.getInstance();
         googleimage = (ImageView)findViewById(R.id.googlePat);
-        signup= (TextView)findViewById(R.id.signupPatient);
+        signup= (TextView)findViewById(R.id.signupUser);
         email= (EditText) findViewById(R.id.EmailPatient);
         password=(EditText) findViewById(R.id.passwordPatient);
 

@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -96,7 +97,9 @@ public class HomeActivity extends Activity {
                     Toast.makeText(HomeActivity.this, "Opening Search", Toast.LENGTH_LONG).show();
 
                 else if(position == 5)
-                    Toast.makeText(HomeActivity.this, "User Profile ", Toast.LENGTH_LONG).show();
+                {
+                    startActivity(new Intent(getApplicationContext(),profile.class));
+                }
 
 
             }
