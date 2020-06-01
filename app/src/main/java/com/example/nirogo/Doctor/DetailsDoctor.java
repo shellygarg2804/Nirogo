@@ -1,6 +1,7 @@
 package com.example.nirogo.Doctor;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -22,14 +23,19 @@ import com.example.nirogo.R;
 import com.example.nirogo.Supplier.DetailsSupplier;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
+import java.util.UUID;
 
 public class DetailsDoctor extends Activity {
 
@@ -64,6 +70,7 @@ public class DetailsDoctor extends Activity {
         // Assign FirebaseDatabase instance with root database name.
         databaseReference = FirebaseDatabase.getInstance().getReference(Database_Path);
 
+        checkUser();
         nameIn = findViewById(R.id.nameDoc);
         ageIn = findViewById(R.id.ageDoc);
         specIn = findViewById(R.id.specDoc);
@@ -94,6 +101,42 @@ public class DetailsDoctor extends Activity {
                 UploadImageFileToFirebaseStorage();
             }
         });
+    }
+
+    private void checkUser() {
+        DatabaseReference databaseReference2;
+        databaseReference2 = FirebaseDatabase.getInstance().getReference(Database_Path);
+        databaseReference2.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//                if (id.equals(UUID.randomUUID().toString()))
+//                    Toast.makeText(DetailsDoctor.this, "Same User", Toast.LENGTH_LONG).show();
+//
+//                else  Toast.makeText(DetailsDoctor.this, "New User", Toast.LENGTH_LONG).show();
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
 
@@ -166,8 +209,9 @@ public class DetailsDoctor extends Activity {
                             // Showing toast message after done uploading.
                             Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
 
+                            String uniqueId = UUID.randomUUID().toString();
                             @SuppressWarnings("VisibleForTests")
-                            DocUploadInfo docUploadInfo = new DocUploadInfo("Doctor",name, storageReference2nd.getDownloadUrl().toString(), age, city, speciality);
+                            DocUploadInfo docUploadInfo = new DocUploadInfo(uniqueId,"Doctor",name, storageReference2nd.getDownloadUrl().toString(), age, city, speciality);
 
                             // Getting image upload ID.
                             String ImageUploadId = databaseReference.push().getKey();

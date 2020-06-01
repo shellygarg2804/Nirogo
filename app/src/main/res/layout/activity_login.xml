@@ -8,15 +8,30 @@
     android:background="@color/blue_bg"
     android:orientation="vertical">
 
-
-    <Button
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_marginTop="20dp"
+        android:layout_height="wrap_content">
+    <Button
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:background="@drawable/back"
         android:layout_marginStart="20dp"
         android:id="@+id/Loginback"
         />
+
+        <Button
+            android:id="@+id/skipBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/skip_white"
+            />
+
+    </RelativeLayout>
+
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:orientation="horizontal"
