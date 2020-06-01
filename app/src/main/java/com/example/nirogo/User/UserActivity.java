@@ -90,9 +90,6 @@ public class UserActivity extends Activity {
                 String emailtext= email.getText().toString().trim();
                 String passwordtext= password.getText().toString();
 
-                Intent intent = new Intent(UserActivity.this, DetailsUser.class);
-                startActivity(intent);
-
                 //check constraints that email and password shouldnot be empty
                 if(TextUtils.isEmpty(emailtext)){
                     Toast.makeText(getApplicationContext(),"Please Enter Email",Toast.LENGTH_SHORT).show();
@@ -160,7 +157,9 @@ public class UserActivity extends Activity {
 
             }
             catch (ApiException e) {
+
                 Toast.makeText(this, "signup failed", Toast.LENGTH_SHORT).show();
+
                 Log.e (LOG_TAG,"failed status code:"+ e.getStatusCode());
 
             }
@@ -177,7 +176,8 @@ public class UserActivity extends Activity {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intent = new Intent(UserActivity.this, DetailsUser.class);
+                            Toast.makeText(UserActivity.this,"SignIn Successful",Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(UserActivity.this, HomeActivity.class);
                             startActivity(intent);
                         }
 
@@ -186,10 +186,15 @@ public class UserActivity extends Activity {
                             Toast.makeText(getApplicationContext(), "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         }
+
                         // ...
                     }
                 });
+
     }
+
+
+
 
     private void createrequestusingEmailPassword(String email, String password){
 
@@ -198,8 +203,13 @@ public class UserActivity extends Activity {
         @Override
         public void onComplete(@NonNull Task<AuthResult> task) {
             if (task.isSuccessful()) {
+                Toast.makeText(UserActivity.this,"Signup Successful",Toast.LENGTH_SHORT);
+                FirebaseUser user = mAuth.getCurrentUser();
+                Intent intent = new Intent(UserActivity.this, HomeActivity.class);
+                startActivity(intent);
 
-                if (!task.isSuccessful()) {
+               }
+               else {
                     try {
                         throw task.getException();
                     }
@@ -221,7 +231,6 @@ public class UserActivity extends Activity {
                     }
                 }
             }
-        }
             });
     }
 }

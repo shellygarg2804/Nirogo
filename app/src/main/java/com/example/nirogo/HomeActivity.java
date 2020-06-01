@@ -109,7 +109,9 @@ public class HomeActivity extends Activity {
                     Toast.makeText(HomeActivity.this, "Opening Search", Toast.LENGTH_LONG).show();
 
                 else if(position == 5)
-                    Toast.makeText(HomeActivity.this, "User Profile ", Toast.LENGTH_LONG).show();
+                {
+                    startActivity(new Intent(getApplicationContext(),profile.class));
+                }
 
             }
         });
