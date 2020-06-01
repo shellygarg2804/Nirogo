@@ -76,6 +76,15 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        Button skip = findViewById(R.id.skipBtn);
+        skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
         Button back = findViewById(R.id.Loginback);
         back.setOnClickListener(new View.OnClickListener() {
             @Override

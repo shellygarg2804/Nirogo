@@ -1,4 +1,4 @@
-package com.example.nirogo.Adapters;
+package com.example.nirogo.Adapters.Feed;
 
 public class ItemAdapter {
     private int imageUser, imagePost;

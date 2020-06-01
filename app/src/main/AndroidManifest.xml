@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Supplier.DetailsSupplier"></activity>
+        <activity android:name=".MessageActivity"></activity>
+        <activity android:name=".Supplier.DetailsSupplier" />
         <activity android:name=".User.DetailsUser" />
         <activity android:name=".Doctor.DetailsDoctor" />
         <activity android:name=".LoginActivity" />

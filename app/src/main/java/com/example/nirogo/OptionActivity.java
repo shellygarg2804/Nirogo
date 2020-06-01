@@ -33,7 +33,7 @@ public class OptionActivity extends Activity {
         user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(OptionActivity.this, UserActivity.class);
+                Intent intent = new Intent(OptionActivity.this, LoginActivity.class);
                 intent.putExtra("type","User");
                 startActivity(intent);
             }
@@ -43,7 +43,6 @@ public class OptionActivity extends Activity {
         supplier.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(OptionActivity.this, LoginActivity.class);
                 String Type= "Supplier";
                 intent.putExtra("type",Type);

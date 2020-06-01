@@ -1,21 +1,24 @@
 package com.example.nirogo;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.nirogo.Adapters.FeedAdapter;
-import com.example.nirogo.Adapters.ItemAdapter;
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+import com.example.nirogo.Adapters.Feed.FeedAdapter;
+import com.example.nirogo.Adapters.Feed.ItemAdapter;
 import com.gauravk.bubblenavigation.BubbleNavigationConstraintView;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomeActivity extends Activity {
 
@@ -26,6 +29,16 @@ public class HomeActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        CircleImageView chatbtn = findViewById(R.id.chatBtn);
+        chatbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, MessageActivity.class);
+                startActivity(intent);
+                Animatoo.animateSwipeRight(HomeActivity.this);
+            }
+        });
 
         String type_user = getIntent().getStringExtra("type");
         Toast.makeText(HomeActivity.this, type_user,Toast.LENGTH_LONG).show();
@@ -98,10 +111,10 @@ public class HomeActivity extends Activity {
                 else if(position == 5)
                     Toast.makeText(HomeActivity.this, "User Profile ", Toast.LENGTH_LONG).show();
 
-
             }
         });
 
-
     }
+
+
 }

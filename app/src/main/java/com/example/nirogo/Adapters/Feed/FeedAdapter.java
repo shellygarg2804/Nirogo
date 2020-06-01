@@ -1,4 +1,4 @@
-package com.example.nirogo.Adapters;
+package com.example.nirogo.Adapters.Feed;
 
 
 import android.content.Context;
