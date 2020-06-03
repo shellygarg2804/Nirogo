@@ -1,6 +1,7 @@
 package com.example.nirogo.Adapters.Messages;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nirogo.Adapters.Feed.ItemAdapter;
+import com.example.nirogo.ProfileActivity;
 import com.example.nirogo.R;
 
 import java.util.List;
@@ -67,6 +69,14 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             imgUser = itemView.findViewById(R.id.imageText);
             imgMessage = itemView.findViewById(R.id.messageIcon);
 
+            nameUser.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), ProfileActivity.class);
+                    intent.putExtra("docname", nameUser.getText());
+                    v.getContext().startActivity(intent);
+                }
+            });
             imgUser.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

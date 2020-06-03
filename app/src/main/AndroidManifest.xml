@@ -15,6 +15,7 @@
         <activity android:name=".SearchActivity"></activity>
         <activity android:name=".CartActivity" />
         <activity android:name=".AmbulanceActivity" />
+        <activity android:name=".appointmentsActivity"/>
         <activity android:name=".ProfileActivity" />
         <activity android:name=".MessageActivity" />
         <activity android:name=".Supplier.DetailsSupplier" />
