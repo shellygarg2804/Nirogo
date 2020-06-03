@@ -2,7 +2,20 @@ package com.example.nirogo.Adapters.Feed;
 
 public class ItemAdapter {
     private int imageUser, imagePost;
-    private String userName, userDetails, postDetails, timeAgo;
+    private String userName;
+    private String userDetails;
+    private String postDetails;
+    private String timeAgo;
+
+    public String getNoLikes() {
+        return noLikes;
+    }
+
+    public void setNoLikes(String noLikes) {
+        this.noLikes = noLikes;
+    }
+
+    private String noLikes;
 
     public int getImageUser() {
         return imageUser;

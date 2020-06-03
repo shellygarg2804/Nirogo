@@ -197,6 +197,14 @@ public class DetailsDoctor extends Activity {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
+                            storageReference2nd.putFile(FilePathUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                @Override
+                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                                }
+                            });
+
+
                             // Getting image name from EditText and store into string variable.
                             name = nameIn.getText().toString();
                             age = ageIn.getText().toString();
@@ -208,7 +216,7 @@ public class DetailsDoctor extends Activity {
 
                             // Showing toast message after done uploading.
                             Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
-
+                            Toast.makeText(DetailsDoctor.this, FilePathUri.toString(),Toast.LENGTH_LONG).show();
                             String uniqueId = UUID.randomUUID().toString();
                             @SuppressWarnings("VisibleForTests")
                             DocUploadInfo docUploadInfo = new DocUploadInfo(uniqueId,"Doctor",name, storageReference2nd.getDownloadUrl().toString(), age, city, speciality);

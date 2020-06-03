@@ -74,10 +74,10 @@ public class SupplierActivity extends Activity {
         });
 
         mAuth= FirebaseAuth.getInstance();
-        googleimage = (ImageView)findViewById(R.id.googleSup);
-        signup= (TextView)findViewById(R.id.signupSupplier);
-        email= (EditText) findViewById(R.id.usernameSup);
-        password=(EditText) findViewById(R.id.passwordSup);
+        googleimage = findViewById(R.id.googleSup);
+        signup= findViewById(R.id.signupSupplier);
+        email= findViewById(R.id.usernameSup);
+        password= findViewById(R.id.passwordSup);
 
         //setting up google request
 

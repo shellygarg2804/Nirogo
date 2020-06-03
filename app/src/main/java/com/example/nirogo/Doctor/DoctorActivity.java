@@ -75,10 +75,10 @@ public class DoctorActivity extends Activity {
         });
 
 
-        googleimage = (ImageView) findViewById(R.id.googleDoc);
-        signup = (TextView) findViewById(R.id.signupDoctor);
-        email = (EditText) findViewById(R.id.usernameDoc);
-        password = (EditText) findViewById(R.id.passwordDoc);
+        googleimage = findViewById(R.id.googleDoc);
+        signup = findViewById(R.id.signupDoctor);
+        email = findViewById(R.id.usernameDoc);
+        password = findViewById(R.id.passwordDoc);
 
         //setting up google request
         creategooglerequest();

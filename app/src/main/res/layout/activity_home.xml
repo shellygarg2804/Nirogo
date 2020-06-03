@@ -81,6 +81,7 @@
         >
 
         <com.gauravk.bubblenavigation.BubbleToggleView
+           
             android:id="@+id/c_item_menu"
             android:layout_width="60dp"
             android:layout_height="60dp"
@@ -92,6 +93,8 @@
 
 
         <com.gauravk.bubblenavigation.BubbleToggleView
+            android:defaultFocusHighlightEnabled="true"
+            android:focusedByDefault="true"
             android:id="@+id/c_item_reminder"
             android:layout_width="60dp"
             android:layout_height="60dp"

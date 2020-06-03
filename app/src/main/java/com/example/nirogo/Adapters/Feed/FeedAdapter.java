@@ -2,6 +2,7 @@ package com.example.nirogo.Adapters.Feed;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.nirogo.ProfileActivity;
 import com.example.nirogo.R;
 
 import java.util.List;
@@ -48,6 +50,7 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         ((ViewHolder) holder).timePost.setText(itemAdapter.getTimeAgo());
         ((ViewHolder) holder).imgUser.setImageResource(itemAdapter.getImageUser());
         ((ViewHolder) holder).imgPost.setImageResource(itemAdapter.getImagePost());
+        ((ViewHolder) holder).numLikes.setText(itemAdapter.getNoLikes());
 
     }
 
@@ -61,7 +64,7 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         public ImageView imgUser, imgPost;
         LinearLayout likelay, share, comment;
         ImageView btnLike;
-        TextView txtLike;
+        TextView txtLike, numLikes;
 
 
         public ViewHolder(View itemView) {
@@ -77,22 +80,27 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             likelay = itemView.findViewById(R.id.likeLayout);
             btnLike = itemView.findViewById(R.id.btnLike);
             txtLike = itemView.findViewById(R.id.likeTxt);
+            numLikes = itemView.findViewById(R.id.noLikes);
 
             final Context context = itemView.getContext();
             likelay.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    int like = Integer.parseInt((String) numLikes.getText());
+
                     if (txtLike.getCurrentTextColor() == context.getResources().getColor(R.color.Black))
                     {
                         txtLike.setTextColor(context.getResources().getColor(R.color.blue_like));
                         btnLike.setImageResource(R.drawable.like_blue);
+                        like++;
                     }
 
                     else{
                         txtLike.setTextColor(context.getResources().getColor(R.color.Black));
                         btnLike.setImageResource(R.drawable.like_thumb);
+                        like--;
                     }
-
+                    numLikes.setText(Integer.toString(like));
                 }
             });
 
@@ -101,6 +109,9 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(v.getContext(), "Opening User Profile", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(v.getContext(), ProfileActivity.class);
+                    intent.putExtra("docname", nameUser.getText());
+                    v.getContext().startActivity(intent);
                 }
             });
 

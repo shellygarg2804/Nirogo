@@ -12,9 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".profile"></activity>
-        <activity android:name=".MessageActivity"></activity>
+        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".CartActivity" />
+        <activity android:name=".AmbulanceActivity" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".MessageActivity" />
         <activity android:name=".Supplier.DetailsSupplier" />
         <activity android:name=".User.DetailsUser" />
         <activity android:name=".Doctor.DetailsDoctor" />

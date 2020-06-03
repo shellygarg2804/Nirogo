@@ -97,17 +97,17 @@ public class LoginActivity extends Activity {
 
 
         mAuth = FirebaseAuth.getInstance();
-        email= (EditText)findViewById(R.id.loginEmail);
-        password=(EditText) findViewById(R.id.loginpassword);
+        email= findViewById(R.id.loginEmail);
+        password= findViewById(R.id.loginpassword);
         intent= getIntent();
         Type= intent.getStringExtra("type");
         if(Type==null){
             Log.i("TAG","Reachedddd");
         }
 
-        googleLogin = (ImageView)findViewById(R.id.logingoogle);
-        signin= (TextView)findViewById(R.id.Signinbutton);
-        signupfromlogin= (TextView) findViewById(R.id.signupfromlogin);
+        googleLogin = findViewById(R.id.logingoogle);
+        signin= findViewById(R.id.Signinbutton);
+        signupfromlogin= findViewById(R.id.signupfromlogin);
 
         creategooglerequest();
 
@@ -171,7 +171,7 @@ public class LoginActivity extends Activity {
                             // Sign in success, update UI with the signed-in user's information
 
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(LoginActivity.this,"Signin Successful",Toast.LENGTH_SHORT).show();;
+                            Toast.makeText(LoginActivity.this,"Signin Successful",Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                             startActivity(intent);
 

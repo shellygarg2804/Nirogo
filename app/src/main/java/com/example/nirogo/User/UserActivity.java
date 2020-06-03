@@ -74,10 +74,10 @@ public class UserActivity extends Activity {
         });
 
         mAuth= FirebaseAuth.getInstance();
-        googleimage = (ImageView)findViewById(R.id.googlePat);
-        signup= (TextView)findViewById(R.id.signupUser);
-        email= (EditText) findViewById(R.id.EmailPatient);
-        password=(EditText) findViewById(R.id.passwordPatient);
+        googleimage = findViewById(R.id.googlePat);
+        signup= findViewById(R.id.signupUser);
+        email= findViewById(R.id.EmailPatient);
+        password= findViewById(R.id.passwordPatient);
 
         //setting up google request
 
