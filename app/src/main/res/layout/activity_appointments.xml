@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".appointmentsActivity"
+    android:background="@color/WhiteSmoke">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="book Appointments"
+        android:textSize="30sp"
+        android:fontFamily="@font/neue_regular"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/White"
+        android:background="@color/blue_bg"
+        android:textStyle="bold"
+        >
+    </TextView>
+    <androidx.cardview.widget.CardView
+        android:layout_margin="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/Honeydew"
+            >
+
+            <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CHAT BOX"
+            android:textSize="30sp"
+            android:textAlignment="center"
+            android:textColor="@color/HotPink"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="gravity"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="Coming Soon"
+                android:textSize="30sp">
+
+            </TextView>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <ListView
+        android:background="@color/PowderBlue"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listViewAppointments"
+        >
+
+    </ListView>
+
+
+
+
+</LinearLayout>
