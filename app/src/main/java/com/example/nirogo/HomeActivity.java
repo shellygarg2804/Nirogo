@@ -114,7 +114,7 @@ public class HomeActivity extends Activity {
                 }
 
                 else if(position == 2){
-                    Toast.makeText(HomeActivity.this, "Opening Checkist", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(HomeActivity.this,appointmentsActivity.class));
                 }
                 else if(position == 3)
                 {
