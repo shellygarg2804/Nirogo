@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
     android:layout_width="match_parent">
+
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -15,9 +16,20 @@
         android:id="@+id/blueTop"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:background="@drawable/profile_about_rectangle"
+        android:background="@drawable/profile_about_rectangle">
+
+        <ImageView
+            android:id="@+id/update"
+            android:layout_height="40dp"
+            android:layout_width="40dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/pencil"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
 
         />
+    </RelativeLayout>
+
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/ProfilePic"
@@ -41,7 +53,7 @@
             >
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/nameProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SHELLY GARG"
@@ -50,7 +62,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/AgeProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -59,10 +71,10 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/designation"
+            android:id="@+id/spectialityprofile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Designation"
+            android:text="Speciality"
             android:layout_below="@+id/nameAge"
             android:textAlignment="center"
             android:textSize="25sp"
@@ -75,7 +87,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="30dp"
-            android:layout_below="@id/designation"
+            android:layout_below="@id/spectialityprofile"
             android:id="@+id/connections">
 
             <TextView
@@ -91,7 +103,7 @@
                 />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/connectionsprofile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -131,9 +143,10 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="10dp"
-            android:maxLines="6"
+            android:maxLines="8"
             android:text="xzcbzhjfchshfhsdhfghs sdfvhsahfgas sghfdghasgfas dhfggagfhasg dhgawsfghdah asdfvgashfA"
             android:textSize="18dp"
+            android:id="@+id/aboutprofile"
             />
 
 
@@ -180,6 +193,7 @@
                 android:textColor="@color/White"
                 android:text="xzcbzhjfchshfhsdhfghs sdfvhsahfgas sghfdghasgfas dhfggagfhasg dhgawsfghdah asdfvgashfA"
                 android:textSize="18dp"
+                android:id="@+id/experienceprofile"
                 />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -199,6 +213,7 @@
             android:orientation="vertical">
 
             <TextView
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
@@ -208,32 +223,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="10dp"
-                android:textColor="@color/White"
-                android:text="xzcbzhjfchshfhsdhfghs sdfvhsahfgas sghfdghasgfas dhfggagfhasg dhgawsfghdah asdfvgashfA"
-                android:textSize="18dp"
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="Education"
-                android:textColor="@color/White"
-                android:textSize="25sp"
-                android:textStyle="bold" />
-
-            <TextView
+                android:id="@+id/educationprofile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -273,35 +263,32 @@
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
-           <EditText
+           <TextView
+               android:id="@+id/emailprofile"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:hint="Email"
+               android:text="Email"
+               android:textSize="25sp"
                android:layout_marginHorizontal="10dp"
-               android:textColorHint="@color/DarkBlue">
+               android:textColor="@color/Black">
 
-           </EditText>
+           </TextView>
 
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="PhoneNo."
+                android:text="Phone no."
+                android:textSize="25sp"
                 android:layout_marginHorizontal="10dp"
-                android:textColorHint="@color/DarkBlue">
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/Black"
+                android:id="@+id/phoneprofile">
 
-            </EditText>
+            </TextView>
 
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
-
-
-
-
-
-
-
 </RelativeLayout>
 </ScrollView>
 

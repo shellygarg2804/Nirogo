@@ -101,9 +101,6 @@ public class LoginActivity extends Activity {
         password= findViewById(R.id.loginpassword);
         intent= getIntent();
         Type= intent.getStringExtra("type");
-        if(Type==null){
-            Log.i("TAG","Reachedddd");
-        }
 
         googleLogin = findViewById(R.id.logingoogle);
         signin= findViewById(R.id.Signinbutton);
