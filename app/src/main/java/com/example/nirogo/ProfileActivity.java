@@ -93,10 +93,15 @@ public class ProfileActivity extends Activity {
                 startActivity(i);
 
 
-
             }
         });
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(this, HomeActivity.class));
     }
 }

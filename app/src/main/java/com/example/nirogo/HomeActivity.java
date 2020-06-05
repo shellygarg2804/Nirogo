@@ -6,12 +6,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.nirogo.Adapters.Feed.FeedAdapter;
 import com.example.nirogo.Adapters.Feed.ItemAdapter;
+import com.example.nirogo.Adapters.Appointments.AppointmentsActivity;
 import com.gauravk.bubblenavigation.BubbleNavigationConstraintView;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
 
@@ -101,44 +103,73 @@ public class HomeActivity extends Activity {
         list.add(itemAdapter);
 
 
-        BubbleNavigationConstraintView bubblenavigation = findViewById(R.id.bottomNav);
+        final BubbleNavigationConstraintView bubblenavigation = findViewById(R.id.bottomNav);
+        bubblenavigation.setCurrentActiveItem(0);
         bubblenavigation.setNavigationChangeListener(new BubbleNavigationChangeListener() {
             @Override
             public void onNavigationChanged(View view, int position) {
 
-                if(position == 1)
-                {
+                if (position == 1) {
                     Toast.makeText(HomeActivity.this, "Calling Ambulance", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(HomeActivity.this, AmbulanceActivity.class));
-
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            bubblenavigation.setCurrentActiveItem(0);
+                        }
+                    }, 1000);
                 }
 
-                else if(position == 2){
-                    startActivity(new Intent(HomeActivity.this,appointmentsActivity.class));
+                else if (position == 2) {
+                    startActivity(new Intent(HomeActivity.this, AppointmentsActivity.class));
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            bubblenavigation.setCurrentActiveItem(0);
+                        }
+                    }, 1000);
                 }
-                else if(position == 3)
-                {
+
+             else if (position == 3) {
                     Toast.makeText(HomeActivity.this, "Opening Cart", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(HomeActivity.this, CartActivity.class));
-
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            bubblenavigation.setCurrentActiveItem(0);
+                        }
+                    }, 1000);
                 }
 
-                else if(position == 4)
-                {
+             else if (position == 4) {
                     Toast.makeText(HomeActivity.this, "Opening Search", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(HomeActivity.this, SearchActivity.class));
-
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            bubblenavigation.setCurrentActiveItem(0);
+                        }
+                    }, 1000);
                 }
 
                 else if(position == 5)
                 {
                     startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-                }
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            bubblenavigation.setCurrentActiveItem(0);
+                        }
+                    }, 1000);
+                    }
 
             }
         });
 
-    }
+    }}
 
-
-}

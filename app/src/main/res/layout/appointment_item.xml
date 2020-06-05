@@ -1,133 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:layout_margin="5dp"
+    android:background="@drawable/rounded_button_black"
+    android:layout_height="wrap_content">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginVertical="10dp"
-        android:layout_marginHorizontal="5dp"
-        android:layout_weight="0"
-        android:outlineAmbientShadowColor="@color/Blue"
-        android:outlineSpotShadowColor="@color/Blue"
-        >
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="140dp"
-                    android:layout_marginHorizontal="5dp"
-                    android:src="@drawable/ic_doctor"></ImageView>
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="20sp"
-                    android:text="View Profile"
-                    android:textAllCaps="false"
-                    android:textSize="12sp"
-                    android:textColor="@color/White"
-                    android:paddingHorizontal="2dp"
-                    android:background="@color/blue_bg"
-                    android:layout_marginHorizontal="5dp"
-                    ></Button>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Name"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/Black"
-                    android:id="@+id/docname"
-                    ></TextView>
-
-
-
-                <TextView
-                    android:id="@+id/docspec"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Speciality"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/Black"
-                    ></TextView>
-                <TextView
-                    android:id="@+id/distancedoc"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="5km away"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/Black"
-                    ></TextView>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="5dp"
-                    android:text="Verified"
-                    android:textColor="@color/Blue"
-                    android:textSize="20sp"
-                    android:textStyle="bold"></TextView>
-
-            </LinearLayout>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginVertical="10dp"
-        android:orientation="vertical"
-        android:layout_weight="3"
+        android:background="@drawable/rounded_button_black"
+        android:layout_height="wrap_content">
 
-        >
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:scaleType="fitStart"
-        android:paddingTop="30dp"
-        android:src="@drawable/appointmenticon"
-        ></ImageView>
+        <ImageView
+            android:id="@+id/imageText"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="10dp"/>
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="BOOK"
-            android:textColor="@color/DarkBlue"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:layout_marginVertical="5dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="5dp"
+            android:id="@+id/nameDoc"
+            android:textSize="24sp"
             android:textStyle="bold"
-            android:background="@color/LightSteelBlue">
+            android:textColor="@color/Black"
+            android:layout_toRightOf="@id/imageText"
+            android:layout_marginTop="11dp"
+            android:layout_marginLeft="15dp"/>
 
-        </TextView>
-    </LinearLayout>
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_verified"
+            android:layout_marginTop="11dp"
+            android:layout_toRightOf="@id/nameDoc"/>
+        <TextView
+            android:id="@+id/specialityText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:textSize="15sp"
+            android:layout_toRightOf="@id/imageText"
+            android:layout_below="@id/nameDoc"
+            />
 
+        <TextView
+            android:id="@+id/distanceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:textSize="15sp"
+            android:layout_toRightOf="@id/imageText"
+            android:layout_below="@id/specialityText"
+            />
 
-</LinearLayout>
+        <ImageView
+            android:background="@drawable/appointment"
+            android:id="@+id/appointmentIcon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+</RelativeLayout>

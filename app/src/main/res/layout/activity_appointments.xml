@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".appointmentsActivity"
+    tools:context=".Adapters.Appointments.AppointmentsActivity"
     android:background="@color/WhiteSmoke">
     <TextView
         android:layout_width="match_parent"
@@ -60,18 +60,19 @@
 
     </androidx.cardview.widget.CardView>
 
-    <ListView
-        android:background="@color/PowderBlue"
-        android:layout_marginTop="10dp"
-        android:layout_marginHorizontal="15dp"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nearby Doctors"
+        android:textSize="24sp"
+        android:textColor="@color/Black"
+        android:layout_marginLeft="10dp"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/listViewAppointments"
-        >
-
-    </ListView>
-
-
-
+        android:id="@+id/recAppointment"
+        android:background="@color/White"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
