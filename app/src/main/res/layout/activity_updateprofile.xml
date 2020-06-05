@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".updateprofile"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    
+    <ImageView
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="500px"
+        android:src="@drawable/first_screen"
+        >
+    </ImageView>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:id="@+id/nameupdate"
+        android:textColorHint="@color/DarkRed"
+        android:hint="Display name"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="20dp"
+        ></EditText>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:id="@+id/ageupdate"
+        android:textColorHint="@color/DarkRed"
+        android:hint="Date of birth"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="20dp"
+        ></EditText>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="8"
+        android:id="@+id/specialityupdate"
+        android:textColorHint="@color/DarkRed"
+        android:hint="Speciality"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="20dp"
+        ></EditText>
+
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="8"
+        android:id="@+id/aboutupdate"
+        android:textColorHint="@color/DarkRed"
+        android:hint="About"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="20dp"
+        ></EditText>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="6"
+        android:id="@+id/Experienceupdate"
+        android:textColorHint="@color/DarkRed"
+        android:hint="Experience summary"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="20dp"
+        ></EditText>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="8"
+        android:id="@+id/educationupdate"
+        android:textColorHint="@color/DarkRed"
+        android:hint="Education Summary"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="20dp"
+        ></EditText>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/emailupdate"
+        android:textColorHint="@color/DarkRed"
+        android:hint="Contact Email"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="20dp"
+        ></EditText>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/phoneupdate"
+        android:textColorHint="@color/DarkRed"
+        android:hint="Phone no."
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="20dp"
+        ></EditText>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="SUBMIT"
+        android:background="@color/DarkBlue"
+        android:textColor="@color/White"
+        android:paddingHorizontal="10dp"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:id="@+id/submitupdate"
+        >
+    </Button>
+
+    </LinearLayout>
+
+
+
+</ScrollView>
