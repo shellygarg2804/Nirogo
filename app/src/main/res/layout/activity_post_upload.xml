@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/grey_300"
+    android:layout_height="match_parent"
+    tools:context=".Post.PostUploadActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:background="@color/blue_bg"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/backBtn"
+            android:layout_width="30dp"
+            android:layout_centerVertical="true"
+            android:layout_height="30dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/back"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nirogo"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/neue_regular"
+            android:textSize="35sp"
+            android:textColor="@color/White"
+            />
+    </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/camera"
+            android:layout_width="80dp"
+            android:layout_marginTop="20dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_camera"
+            />
+
+    <ImageView
+
+        android:layout_marginTop="20dp"
+        android:id="@+id/imagePost"
+        android:layout_width="300dp"
+        android:src="@drawable/postimage_sample"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="300dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/white_rectangle"
+    android:layout_height="match_parent">
+
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="40dp"
+    android:layout_marginLeft="20dp"
+    android:text="Post Details"
+    android:fontFamily="@font/roboto_regular"
+    android:textColor="@color/Black"
+    android:textSize="25sp"
+    />
+
+    <EditText
+        android:id="@+id/enterText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Post Text"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/Black"
+        android:textSize="20sp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:layout_marginHorizontal="20dp"
+        android:textAlignment="gravity"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="40dp"
+        android:textSize="30sp"
+        android:background="@drawable/rounded_rectangle"
+        android:backgroundTint="#1a237e"
+        android:textColor="#FFF"
+        android:id="@+id/sumbitPost"
+        />
+</LinearLayout>
+    </ScrollView>
+</LinearLayout>
