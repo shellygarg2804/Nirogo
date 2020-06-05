@@ -63,7 +63,7 @@ public class DetailsDoctor extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_details_doctor);
+        setContentView(R.layout.activity_details_doctor_small);
 
         storageReference = FirebaseStorage.getInstance().getReference();
 

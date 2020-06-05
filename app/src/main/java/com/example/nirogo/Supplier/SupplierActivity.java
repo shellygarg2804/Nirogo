@@ -62,7 +62,7 @@ public class SupplierActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_supplier);
+        setContentView(R.layout.activity_supplier_small);
 
         Button back = findViewById(R.id.backSup);
         back.setOnClickListener(new View.OnClickListener() {

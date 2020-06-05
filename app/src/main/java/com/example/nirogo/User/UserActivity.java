@@ -62,7 +62,7 @@ public class UserActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user);
+        setContentView(R.layout.activity_user_small);
 
         Button back = findViewById(R.id.backUser);
         back.setOnClickListener(new View.OnClickListener() {
