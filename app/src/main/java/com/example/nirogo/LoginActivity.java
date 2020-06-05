@@ -46,6 +46,7 @@ public class LoginActivity extends Activity {
     private String Type;
     private GoogleSignInClient mGoogleSignInClient;
 
+
     @Override
     public void onStart() {
         super.onStart();
@@ -74,7 +75,13 @@ public class LoginActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_small);
+
+        if ((MainActivity.size).equalsIgnoreCase("Small")) {
+            setContentView(R.layout.activity_login_small);
+            Log.i("Screen Return Value","Small");
+        }
+        else
+            setContentView(R.layout.activity_login);
 
         Button skip = findViewById(R.id.skipBtn);
         skip.setOnClickListener(new View.OnClickListener() {

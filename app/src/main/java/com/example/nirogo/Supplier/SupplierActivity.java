@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nirogo.HomeActivity;
+import com.example.nirogo.MainActivity;
 import com.example.nirogo.OptionActivity;
 import com.example.nirogo.R;
 import com.example.nirogo.User.UserActivity;
@@ -62,16 +63,12 @@ public class SupplierActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_supplier_small);
-
-        Button back = findViewById(R.id.backSup);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SupplierActivity.this, OptionActivity.class);
-                startActivity(intent);
-            }
-        });
+        if ((MainActivity.size).equalsIgnoreCase("Small")) {
+            setContentView(R.layout.activity_supplier_small);
+            Log.i("Screen Return Value","Small");
+        }
+        else
+            setContentView(R.layout.activity_supplier);
 
         mAuth= FirebaseAuth.getInstance();
         googleimage = findViewById(R.id.googleSup);
