@@ -22,26 +22,27 @@
             android:layout_margin="10dp" />
 
         <LinearLayout
-            android:layout_width="280dp"
+            android:layout_width="260dp"
+            android:layout_marginLeft="10dp"
             android:orientation="horizontal"
             android:id="@+id/search"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/rounded_rectangle"
             android:gravity="center_vertical"
-            android:layout_height="40dp">
+            android:layout_height="30dp">
 
             <ImageView
                 android:layout_width="20dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_height="20dp"
                 android:src="@drawable/search"/>
 
             <EditText
-                android:layout_width="260dp"
+                android:layout_width="220dp"
                 android:layout_height="40dp"
                 android:hint="Search"
                 android:textColorHint="@color/Black"
-                android:id="@+id/searchItem"/>
+                android:id="@+id/searchItem" />
 
         </LinearLayout>
 
@@ -49,6 +50,7 @@
             android:id="@+id/chatBtn"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
             android:background="@drawable/chat_white"
             android:layout_marginTop="10dp"
@@ -68,7 +70,6 @@
         android:layout_marginTop="10dp"
         />
     </ScrollView>
-
     <com.gauravk.bubblenavigation.BubbleNavigationConstraintView
         android:id="@+id/bottomNav"
         android:layout_alignParentBottom="true"
@@ -84,8 +85,9 @@
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             app:bt_active="true"
-            app:bt_colorActive="@color/White"
-            app:bt_colorInactive="@color/Black"
+            android:background="@color/blue_bg"
+            app:bt_colorActive="@color/Black"
+            app:bt_colorInactive="@color/White"
             app:bt_icon="@drawable/home"
             app:bt_title="Home"
             />
@@ -97,8 +99,9 @@
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             app:bt_active="true"
-            app:bt_colorActive="@color/White"
-            app:bt_colorInactive="@color/Black"
+            android:background="@color/blue_bg"
+            app:bt_colorActive="@color/Black"
+            app:bt_colorInactive="@color/White"
             app:bt_title="Ambulance"
             app:bt_icon="@drawable/ambulance_dark"/>
         <!--            app:bt_badgeBackgroundColor="#90EE90"-->
@@ -109,8 +112,9 @@
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             app:bt_active="true"
-            app:bt_colorActive="@color/White"
-            app:bt_colorInactive="@color/Black"
+            android:background="@color/blue_bg"
+            app:bt_colorActive="@color/Black"
+            app:bt_colorInactive="@color/White"
             app:bt_icon="@drawable/list"
             app:bt_title="Appointment"
             />
@@ -120,8 +124,9 @@
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             app:bt_active="true"
-            app:bt_colorActive="@color/White"
-            app:bt_colorInactive="@color/Black"
+            android:background="@color/blue_bg"
+            app:bt_colorActive="@color/Black"
+            app:bt_colorInactive="@color/White"
             app:bt_icon="@drawable/cart"
             app:bt_title="Cart"
             />
@@ -131,8 +136,9 @@
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             app:bt_active="true"
-            app:bt_colorActive="@color/White"
-            app:bt_colorInactive="@color/Black"
+            android:background="@color/blue_bg"
+            app:bt_colorActive="@color/Black"
+            app:bt_colorInactive="@color/White"
             app:bt_icon="@drawable/user_black"
             app:bt_title="@string/profile_tab"
             />

@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -30,6 +31,14 @@ public class HomeActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        ScreenSize screenSize = new ScreenSize();
+        String size = screenSize.screenCheck(HomeActivity.this);
+        if (size.equalsIgnoreCase("Small")) {
+            setContentView(R.layout.activity_home_small);
+            Log.i("Screen Return Value","Small");
+        }
+        else
         setContentView(R.layout.activity_home);
 
         CircleImageView chatbtn = findViewById(R.id.chatBtn);
@@ -50,6 +59,7 @@ public class HomeActivity extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+
             }
         });
 
@@ -111,19 +121,23 @@ public class HomeActivity extends Activity {
 
                 if (position == 1) {
                     startActivity(new Intent(HomeActivity.this, AmbulanceActivity.class));
+                    Animatoo.animateSwipeLeft(HomeActivity.this);
                 }
 
                 else if (position == 2) {
                     startActivity(new Intent(HomeActivity.this, AppointmentsActivity.class));
+                    Animatoo.animateSwipeLeft(HomeActivity.this);
                 }
 
              else if (position == 3) {
                     startActivity(new Intent(HomeActivity.this, CartActivity.class));
-                   }
+                    Animatoo.animateSwipeLeft(HomeActivity.this);
+             }
 
                 else if(position == 4)
                 {
                     startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                    Animatoo.animateSwipeLeft(HomeActivity.this);
                     }
 
             }

@@ -42,37 +42,12 @@
         android:layout_height="200dp"
         >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="@color/Honeydew"
-            >
-
-            <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="CHAT BOX"
-            android:textSize="30sp"
-            android:textAlignment="center"
-            android:textColor="@color/HotPink"
-            android:textStyle="bold"
-            android:layout_marginTop="10dp">
-
-            </TextView>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textAlignment="gravity"
-                android:gravity="center"
-                android:layout_marginTop="10dp"
-                android:text="Coming Soon"
-                android:textSize="30sp">
-
-            </TextView>
-
-        </LinearLayout>
+            <ImageView
+               android:layout_width="200dp"
+               android:layout_height="250dp"
+               android:layout_gravity="center_horizontal"
+               android:background="@drawable/rsz_chatbot"
+               />
 
     </androidx.cardview.widget.CardView>
 

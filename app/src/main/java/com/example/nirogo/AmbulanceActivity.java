@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.nirogo.Adapters.Appointments.AppointmentsActivity;
 import com.gauravk.bubblenavigation.BubbleNavigationConstraintView;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
@@ -35,12 +36,16 @@ public class AmbulanceActivity extends Activity {
             public void onNavigationChanged(View view, int position) {
                 if (position == 0) {
                     startActivity(new Intent(AmbulanceActivity.this, HomeActivity.class));
+                    Animatoo.animateSwipeLeft(AmbulanceActivity.this);
                 } else if (position == 2) {
                     startActivity(new Intent(AmbulanceActivity.this, AppointmentsActivity.class));
+                    Animatoo.animateSwipeLeft(AmbulanceActivity.this);
                 } else if (position == 3) {
                     startActivity(new Intent(AmbulanceActivity.this, CartActivity.class));
+                    Animatoo.animateSwipeLeft(AmbulanceActivity.this);
                  } else if (position == 4) {
                     startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                    Animatoo.animateSwipeLeft(AmbulanceActivity.this);
                 }
             }});
     }
@@ -49,5 +54,6 @@ public class AmbulanceActivity extends Activity {
     public void onBackPressed() {
         super.onBackPressed();
         startActivity(new Intent(this, HomeActivity.class));
+        Animatoo.animateSlideLeft(AmbulanceActivity.this);
     }
 }

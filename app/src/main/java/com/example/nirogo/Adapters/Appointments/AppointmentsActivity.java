@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.nirogo.Adapters.Feed.FeedAdapter;
 import com.example.nirogo.AmbulanceActivity;
 import com.example.nirogo.CartActivity;
@@ -84,13 +85,17 @@ public class AppointmentsActivity extends Activity {
             public void onNavigationChanged(View view, int position) {
                 if (position == 0) {
                     startActivity(new Intent(AppointmentsActivity.this, HomeActivity.class));
+                    Animatoo.animateSwipeLeft(AppointmentsActivity.this);
                    } else if (position == 1) {
                     startActivity(new Intent(AppointmentsActivity.this, AmbulanceActivity.class));
+                    Animatoo.animateSwipeLeft(AppointmentsActivity.this);
                   } else if (position == 2) {
                   } else if (position == 3) {
                     startActivity(new Intent(AppointmentsActivity.this, CartActivity.class));
+                    Animatoo.animateSwipeLeft(AppointmentsActivity.this);
                   } else if (position == 4) {
                     startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                    Animatoo.animateSwipeLeft(AppointmentsActivity.this);
                   }
             }});
     }
@@ -100,5 +105,6 @@ public class AppointmentsActivity extends Activity {
     public void onBackPressed() {
         super.onBackPressed();
         startActivity(new Intent(this, HomeActivity.class));
+        Animatoo.animateSwipeLeft(AppointmentsActivity.this);
     }
 }

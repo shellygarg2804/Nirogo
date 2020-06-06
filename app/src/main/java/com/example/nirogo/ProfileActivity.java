@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.nirogo.Adapters.Appointments.AppointmentsActivity;
 import com.gauravk.bubblenavigation.BubbleNavigationConstraintView;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
@@ -35,14 +36,6 @@ public class ProfileActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        Button back = findViewById(R.id.backBtn);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                   startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-            }
-        });
-
         name=(TextView) findViewById(R.id.nameProfile);
         age=(TextView)findViewById(R.id.AgeProfile);
         speciality=(TextView)findViewById(R.id.spectialityprofile);
@@ -52,6 +45,10 @@ public class ProfileActivity extends Activity {
         email=(TextView)findViewById(R.id.emailprofile);
         phoneno=(TextView)findViewById(R.id.phoneprofile);
 
+        if (getIntent().hasExtra("docname")){
+            String nameUser = getIntent().getStringExtra("docname");
+            name.setText(nameUser);
+        }
 
         Intent intent= this.getIntent();
         if(intent!=null){
@@ -85,13 +82,6 @@ public class ProfileActivity extends Activity {
             }
         }
 
-
-       /* if (getIntent().hasExtra("docname")){
-            String name = getIntent().getStringExtra("docname");
-            TextView nameTxt = findViewById(R.id.textView);
-            nameTxt.setText(name);
-        }*/
-
         update= (ImageView) findViewById(R.id.update);
         update.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,18 +109,21 @@ public class ProfileActivity extends Activity {
                 if (position == 0) {
                     bubblenavigation.setCurrentActiveItem(5);
                     startActivity(new Intent(ProfileActivity.this, HomeActivity.class));
+                    Animatoo.animateSwipeLeft(ProfileActivity.this);
                     }
 
                    else if (position == 1) {
                     startActivity(new Intent(ProfileActivity.this, AmbulanceActivity.class));
-
+                    Animatoo.animateSwipeLeft(ProfileActivity.this);
                 }
                    else if (position == 2) {
                     startActivity(new Intent(ProfileActivity.this, AppointmentsActivity.class));
-                    }
+                    Animatoo.animateSwipeLeft(ProfileActivity.this);
+                   }
                    else if (position == 3) {
                     startActivity(new Intent(ProfileActivity.this, CartActivity.class));
-                     }
+                    Animatoo.animateSwipeLeft(ProfileActivity.this);
+                   }
             }});
 
             }
@@ -139,6 +132,7 @@ public class ProfileActivity extends Activity {
     public void onBackPressed() {
         super.onBackPressed();
         startActivity(new Intent(this, HomeActivity.class));
+        Animatoo.animateSlideLeft(ProfileActivity.this);
     }
 }
 
