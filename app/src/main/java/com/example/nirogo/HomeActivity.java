@@ -110,62 +110,20 @@ public class HomeActivity extends Activity {
             public void onNavigationChanged(View view, int position) {
 
                 if (position == 1) {
-                    Toast.makeText(HomeActivity.this, "Calling Ambulance", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(HomeActivity.this, AmbulanceActivity.class));
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            bubblenavigation.setCurrentActiveItem(0);
-                        }
-                    }, 1000);
                 }
 
                 else if (position == 2) {
                     startActivity(new Intent(HomeActivity.this, AppointmentsActivity.class));
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            bubblenavigation.setCurrentActiveItem(0);
-                        }
-                    }, 1000);
                 }
 
              else if (position == 3) {
-                    Toast.makeText(HomeActivity.this, "Opening Cart", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(HomeActivity.this, CartActivity.class));
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            bubblenavigation.setCurrentActiveItem(0);
-                        }
-                    }, 1000);
-                }
+                   }
 
-             else if (position == 4) {
-                    Toast.makeText(HomeActivity.this, "Opening Search", Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(HomeActivity.this, SearchActivity.class));
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            bubblenavigation.setCurrentActiveItem(0);
-                        }
-                    }, 1000);
-                }
-
-                else if(position == 5)
+                else if(position == 4)
                 {
                     startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            bubblenavigation.setCurrentActiveItem(0);
-                        }
-                    }, 1000);
                     }
 
             }

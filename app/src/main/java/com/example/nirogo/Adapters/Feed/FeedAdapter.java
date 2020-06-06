@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nirogo.ProfileActivity;
 import com.example.nirogo.R;
+import com.example.nirogo.ScreenSize;
 
 import java.util.List;
 
@@ -32,6 +33,7 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_feed, parent, false);
 
         ViewHolder viewHolder = new ViewHolder(v);
