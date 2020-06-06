@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent">
 
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    <ScrollView
+        android:layout_below="@id/lay_1"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="70dp"
+        android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <RelativeLayout
         android:id="@+id/blueTop"
@@ -290,5 +291,74 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>
-</ScrollView>
+    </ScrollView>
+
+    <com.gauravk.bubblenavigation.BubbleNavigationConstraintView
+        android:id="@+id/bottomNavProf"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        app:bnc_mode="spread"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/White"
+        >
+
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/c_item_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            app:bt_colorActive="@color/blue_bg"
+            app:bt_colorInactive="@color/Black"
+            app:bt_icon="@drawable/home"
+            app:bt_title="Home"
+            />
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/c_item_reminder"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:background="#90EE90"
+            app:bt_colorActive="@color/blue_bg"
+            app:bt_colorInactive="@color/Black"
+            app:bt_title="Ambulance"
+            app:bt_icon="@drawable/ambulance_dark"/>
+        <!--            app:bt_badgeBackgroundColor="#90EE90"-->
+
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/c_item_add"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:background="@color/LightGreen"
+            app:bt_colorActive="@color/blue_bg"
+            app:bt_colorInactive="@color/Black"
+            app:bt_icon="@drawable/list"
+            app:bt_title="Appointment"
+            />
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/c_item_check"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            app:bt_colorActive="@color/blue_bg"
+            app:bt_colorInactive="@color/Black"
+            app:bt_icon="@drawable/cart"
+            app:bt_title="Cart"
+            />
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/c_item_user"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            app:bt_active="true"
+            app:bt_colorActive="@color/blue_bg"
+            app:bt_colorInactive="@color/Black"
+            app:bt_icon="@drawable/user_black"
+            app:bt_title="@string/profile_tab"
+            />
+
+    </com.gauravk.bubblenavigation.BubbleNavigationConstraintView>
+
+</RelativeLayout>
 

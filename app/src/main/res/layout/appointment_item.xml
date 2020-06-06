@@ -34,7 +34,7 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/ic_verified"
-            android:layout_marginTop="11dp"
+            android:layout_marginTop="15dp"
             android:layout_toRightOf="@id/nameDoc"/>
         <TextView
             android:id="@+id/specialityText"

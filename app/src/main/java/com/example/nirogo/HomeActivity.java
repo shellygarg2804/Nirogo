@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -30,6 +31,14 @@ public class HomeActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        ScreenSize screenSize = new ScreenSize();
+        String size = screenSize.screenCheck(HomeActivity.this);
+        if (size.equalsIgnoreCase("Small")) {
+            setContentView(R.layout.activity_home_small);
+            Log.i("Screen Return Value","Small");
+        }
+        else
         setContentView(R.layout.activity_home);
 
         CircleImageView chatbtn = findViewById(R.id.chatBtn);
@@ -50,6 +59,7 @@ public class HomeActivity extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+
             }
         });
 
@@ -110,62 +120,24 @@ public class HomeActivity extends Activity {
             public void onNavigationChanged(View view, int position) {
 
                 if (position == 1) {
-                    Toast.makeText(HomeActivity.this, "Calling Ambulance", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(HomeActivity.this, AmbulanceActivity.class));
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            bubblenavigation.setCurrentActiveItem(0);
-                        }
-                    }, 1000);
+                    Animatoo.animateSwipeLeft(HomeActivity.this);
                 }
 
                 else if (position == 2) {
                     startActivity(new Intent(HomeActivity.this, AppointmentsActivity.class));
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            bubblenavigation.setCurrentActiveItem(0);
-                        }
-                    }, 1000);
+                    Animatoo.animateSwipeLeft(HomeActivity.this);
                 }
 
              else if (position == 3) {
-                    Toast.makeText(HomeActivity.this, "Opening Cart", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(HomeActivity.this, CartActivity.class));
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            bubblenavigation.setCurrentActiveItem(0);
-                        }
-                    }, 1000);
-                }
+                    Animatoo.animateSwipeLeft(HomeActivity.this);
+             }
 
-             else if (position == 4) {
-                    Toast.makeText(HomeActivity.this, "Opening Search", Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(HomeActivity.this, SearchActivity.class));
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            bubblenavigation.setCurrentActiveItem(0);
-                        }
-                    }, 1000);
-                }
-
-                else if(position == 5)
+                else if(position == 4)
                 {
                     startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            bubblenavigation.setCurrentActiveItem(0);
-                        }
-                    }, 1000);
+                    Animatoo.animateSwipeLeft(HomeActivity.this);
                     }
 
             }

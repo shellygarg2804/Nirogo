@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,60 +7,53 @@
     android:orientation="vertical"
     tools:context=".Adapters.Appointments.AppointmentsActivity"
     android:background="@color/WhiteSmoke">
-    <TextView
+    <RelativeLayout
+        android:id="@+id/lay_1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="book Appointments"
-        android:textSize="30sp"
-        android:fontFamily="@font/neue_regular"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textColor="@color/White"
+        android:orientation="horizontal"
         android:background="@color/blue_bg"
-        android:textStyle="bold"
-        >
-    </TextView>
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/backBtn"
+            android:layout_width="30dp"
+            android:layout_centerVertical="true"
+            android:layout_height="30dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/back"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nirogo"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/neue_regular"
+            android:textSize="35sp"
+            android:textColor="@color/White"
+            />
+    </RelativeLayout>
+
     <androidx.cardview.widget.CardView
+        android:id="@+id/card"
+        android:layout_below="@id/lay_1"
         android:layout_margin="15dp"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="@color/Honeydew"
-            >
-
-            <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="CHAT BOX"
-            android:textSize="30sp"
-            android:textAlignment="center"
-            android:textColor="@color/HotPink"
-            android:textStyle="bold"
-            android:layout_marginTop="10dp">
-
-            </TextView>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textAlignment="gravity"
-                android:gravity="center"
-                android:layout_marginTop="10dp"
-                android:text="Coming Soon"
-                android:textSize="30sp">
-
-            </TextView>
-
-        </LinearLayout>
+            <ImageView
+               android:layout_width="200dp"
+               android:layout_height="250dp"
+               android:layout_gravity="center_horizontal"
+               android:background="@drawable/rsz_chatbot"
+               />
 
     </androidx.cardview.widget.CardView>
 
     <TextView
+        android:id="@+id/txt"
+        android:layout_below="@id/card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nearby Doctors"
@@ -70,9 +63,78 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/txt"
         android:layout_width="match_parent"
         android:id="@+id/recAppointment"
         android:background="@color/White"
+        android:layout_marginBottom="70dp"
         android:layout_height="match_parent"/>
 
-</LinearLayout>
+    <com.gauravk.bubblenavigation.BubbleNavigationConstraintView
+        android:id="@+id/bottomNavApp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        app:bnc_mode="spread"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/White"
+        >
+
+    <com.gauravk.bubblenavigation.BubbleToggleView
+        android:id="@+id/c_item_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        app:bt_colorActive="@color/blue_bg"
+        app:bt_colorInactive="@color/Black"
+        app:bt_icon="@drawable/home"
+        app:bt_title="Home"
+        />
+
+
+
+    <com.gauravk.bubblenavigation.BubbleToggleView
+        android:id="@+id/c_item_reminder"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:background="#90EE90"
+        app:bt_colorActive="@color/blue_bg"
+        app:bt_colorInactive="@color/Black"
+        app:bt_title="Ambulance"
+        app:bt_icon="@drawable/ambulance_dark"/>
+    <!--            app:bt_badgeBackgroundColor="#90EE90"-->
+
+
+    <com.gauravk.bubblenavigation.BubbleToggleView
+        android:id="@+id/c_item_add"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        app:bt_active="true"
+        android:background="@color/LightGreen"
+        app:bt_colorActive="@color/blue_bg"
+        app:bt_colorInactive="@color/Black"
+        app:bt_icon="@drawable/list"
+        app:bt_title="Appointment"
+        />
+
+    <com.gauravk.bubblenavigation.BubbleToggleView
+        android:id="@+id/c_item_check"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+
+        app:bt_colorActive="@color/blue_bg"
+        app:bt_colorInactive="@color/Black"
+        app:bt_icon="@drawable/cart"
+        app:bt_title="Cart"
+        />
+
+    <com.gauravk.bubblenavigation.BubbleToggleView
+        android:id="@+id/c_item_user"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        app:bt_colorActive="@color/blue_bg"
+        app:bt_colorInactive="@color/Black"
+        app:bt_icon="@drawable/user_black"
+        app:bt_title="@string/profile_tab"
+        />
+    </com.gauravk.bubblenavigation.BubbleNavigationConstraintView>
+</RelativeLayout>

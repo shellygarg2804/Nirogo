@@ -5,11 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+import com.example.nirogo.Adapters.Appointments.AppointmentsActivity;
+import com.gauravk.bubblenavigation.BubbleNavigationConstraintView;
+import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
 
 public class ProfileActivity extends Activity {
 
@@ -28,6 +35,7 @@ public class ProfileActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
         name=(TextView) findViewById(R.id.nameProfile);
         age=(TextView)findViewById(R.id.AgeProfile);
         speciality=(TextView)findViewById(R.id.spectialityprofile);
@@ -37,6 +45,10 @@ public class ProfileActivity extends Activity {
         email=(TextView)findViewById(R.id.emailprofile);
         phoneno=(TextView)findViewById(R.id.phoneprofile);
 
+        if (getIntent().hasExtra("docname")){
+            String nameUser = getIntent().getStringExtra("docname");
+            name.setText(nameUser);
+        }
 
         Intent intent= this.getIntent();
         if(intent!=null){
@@ -70,13 +82,6 @@ public class ProfileActivity extends Activity {
             }
         }
 
-
-       /* if (getIntent().hasExtra("docname")){
-            String name = getIntent().getStringExtra("docname");
-            TextView nameTxt = findViewById(R.id.textView);
-            nameTxt.setText(name);
-        }*/
-
         update= (ImageView) findViewById(R.id.update);
         update.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,12 +101,38 @@ public class ProfileActivity extends Activity {
             }
         });
 
+        final BubbleNavigationConstraintView bubblenavigation = findViewById(R.id.bottomNavProf);
+        bubblenavigation.setNavigationChangeListener(new BubbleNavigationChangeListener() {
+            @Override
+            public void onNavigationChanged(View view, int position) {
 
-    }
+                if (position == 0) {
+                    bubblenavigation.setCurrentActiveItem(5);
+                    startActivity(new Intent(ProfileActivity.this, HomeActivity.class));
+                    Animatoo.animateSwipeLeft(ProfileActivity.this);
+                    }
+
+                   else if (position == 1) {
+                    startActivity(new Intent(ProfileActivity.this, AmbulanceActivity.class));
+                    Animatoo.animateSwipeLeft(ProfileActivity.this);
+                }
+                   else if (position == 2) {
+                    startActivity(new Intent(ProfileActivity.this, AppointmentsActivity.class));
+                    Animatoo.animateSwipeLeft(ProfileActivity.this);
+                   }
+                   else if (position == 3) {
+                    startActivity(new Intent(ProfileActivity.this, CartActivity.class));
+                    Animatoo.animateSwipeLeft(ProfileActivity.this);
+                   }
+            }});
+
+            }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         startActivity(new Intent(this, HomeActivity.class));
+        Animatoo.animateSlideLeft(ProfileActivity.this);
     }
 }
+

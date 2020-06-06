@@ -27,6 +27,14 @@ public class updateprofile extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_updateprofile);
 
+        Button back = findViewById(R.id.backBtn);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+            }
+        });
+
         Intent intent= this.getIntent();
 
         name= (EditText) findViewById(R.id.nameupdate);

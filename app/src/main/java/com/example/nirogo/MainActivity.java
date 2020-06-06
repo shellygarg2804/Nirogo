@@ -21,7 +21,7 @@ public class MainActivity extends Activity {
 
         if (size.equalsIgnoreCase("Small")) {
             setContentView(R.layout.activity_main_small);
-            Log.i("Screen REturn Value","Small");
+            Log.i("Screen Return Value","Small");
         }
         else
             setContentView(R.layout.activity_main);
