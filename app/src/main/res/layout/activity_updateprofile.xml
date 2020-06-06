@@ -38,197 +38,202 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_below="@id/lay_1"
-        android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-    
-    <ImageView
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="500px"
-        android:src="@drawable/first_screen"
-        >
-    </ImageView>
-        <TextView
-            android:layout_width="wrap_content"
+        android:layout_below="@id/lay_1"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="20sp"
-            android:text="NAME:"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"
-            android:textColor="@color/Black">
+            android:orientation="vertical">
 
-        </TextView>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:id="@+id/nameupdate"
-        android:textColorHint="@color/DarkRed"
-        android:hint="Display name"
-        android:layout_marginHorizontal="15dp"
-        ></EditText>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textSize="20sp"
-            android:text="AGE:"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"
-            android:textColor="@color/Black">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="500px"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/first_screen"></ImageView>
 
-        </TextView>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:id="@+id/ageupdate"
-        android:textColorHint="@color/DarkRed"
-        android:hint="Date of birth"
-        android:layout_marginHorizontal="15dp"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="NAME:"
+                android:textColor="@color/Black"
+                android:textSize="20sp">
 
-        ></EditText>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textSize="20sp"
-            android:text="SPECIALITY:"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"
-            android:textColor="@color/Black">
+            </TextView>
 
-        </TextView>
+            <EditText
+                android:id="@+id/nameupdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:hint="Display name"
+                android:maxLines="1"
+                android:textColorHint="@color/DarkRed"></EditText>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:maxLines="8"
-        android:id="@+id/specialityupdate"
-        android:textColorHint="@color/DarkRed"
-        android:hint="Speciality"
-        android:layout_marginHorizontal="15dp"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="AGE:"
+                android:textColor="@color/Black"
+                android:textSize="20sp">
 
-        ></EditText>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textSize="20sp"
-            android:text="ABOUT:"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"
-            android:textColor="@color/Black">
+            </TextView>
 
-        </TextView>
+            <EditText
+                android:id="@+id/ageupdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:hint="Date of birth"
+                android:maxLines="1"
+                android:textColorHint="@color/DarkRed"
+
+                ></EditText>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="SPECIALITY:"
+                android:textColor="@color/Black"
+                android:textSize="20sp">
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/specialityupdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:hint="Speciality"
+                android:maxLines="8"
+                android:textColorHint="@color/DarkRed"
+
+                ></EditText>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="ABOUT:"
+                android:textColor="@color/Black"
+                android:textSize="20sp">
+
+            </TextView>
 
 
+            <EditText
+                android:id="@+id/aboutupdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:hint="About"
+                android:maxLines="8"
+                android:textColorHint="@color/DarkRed"></EditText>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:maxLines="8"
-        android:id="@+id/aboutupdate"
-        android:textColorHint="@color/DarkRed"
-        android:hint="About"
-        android:layout_marginHorizontal="15dp"
-        ></EditText>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textSize="20sp"
-            android:text="EXPERIENCE SUMMARY:"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"
-            android:textColor="@color/Black">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="EXPERIENCE SUMMARY:"
+                android:textColor="@color/Black"
+                android:textSize="20sp">
 
-        </TextView>
+            </TextView>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:maxLines="6"
-        android:id="@+id/Experienceupdate"
-        android:textColorHint="@color/DarkRed"
-        android:hint="Experience summary"
-        android:layout_marginHorizontal="15dp"
-        ></EditText>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textSize="20sp"
-            android:text="EDUCATION SUMMARY:"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"
-            android:textColor="@color/Black">
+            <EditText
+                android:id="@+id/Experienceupdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:hint="Experience summary"
+                android:maxLines="6"
+                android:textColorHint="@color/DarkRed"></EditText>
 
-        </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="EDUCATION SUMMARY:"
+                android:textColor="@color/Black"
+                android:textSize="20sp">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:maxLines="8"
-        android:id="@+id/educationupdate"
-        android:textColorHint="@color/DarkRed"
-        android:hint="Education Summary"
-        android:layout_marginHorizontal="15dp"
+            </TextView>
 
-        ></EditText>
+            <EditText
+                android:id="@+id/educationupdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:hint="Education Summary"
+                android:maxLines="8"
+                android:textColorHint="@color/DarkRed"
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textSize="20sp"
-            android:text="CONTACT EMAIL:"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"
-            android:textColor="@color/Black">
+                ></EditText>
 
-        </TextView>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/emailupdate"
-        android:textColorHint="@color/DarkRed"
-        android:hint="Contact Email"
-        android:layout_marginHorizontal="15dp"
-        ></EditText>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textSize="20sp"
-            android:text="CONTACT PHONENO."
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"
-            android:textColor="@color/Black">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="CONTACT EMAIL:"
+                android:textColor="@color/Black"
+                android:textSize="20sp">
 
-        </TextView>
+            </TextView>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/phoneupdate"
-        android:textColorHint="@color/DarkRed"
-        android:hint="Phone no."
-        android:layout_marginHorizontal="15dp"
-        ></EditText>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="SUBMIT"
-        android:background="@color/DarkBlue"
-        android:textColor="@color/White"
-        android:paddingHorizontal="10dp"
-        android:textSize="20sp"
-        android:layout_marginTop="20dp"
-        android:textStyle="bold"
-        android:id="@+id/submitupdate"
-        >
-    </Button>
+            <EditText
+                android:id="@+id/emailupdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:hint="Contact Email"
+                android:textColorHint="@color/DarkRed"></EditText>
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="CONTACT PHONENO."
+                android:textColor="@color/Black"
+                android:textSize="20sp">
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/phoneupdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:hint="Phone no."
+                android:textColorHint="@color/DarkRed"></EditText>
+
+            <Button
+                android:id="@+id/submitupdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_button_blue"
+                android:paddingHorizontal="15dp"
+                android:text="SUBMIT"
+                android:textColor="@color/White"
+                android:textSize="20sp"
+                android:textStyle="bold"></Button>
+
+        </LinearLayout>
 
     </ScrollView>
 </RelativeLayout>
