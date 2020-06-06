@@ -15,7 +15,7 @@ public class OptionActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_option);
+        setContentView(R.layout.activity_option_small);
 
         LinearLayout doctor, user, supplier;
 

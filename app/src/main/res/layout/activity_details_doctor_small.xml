@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Doctor.DetailsDoctor"
+    android:orientation="vertical"
+    android:background="@color/blue_bg"
+    >
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/back"
+        android:layout_marginStart="20dp"
+        android:id="@+id/backDetailsDoc"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="0dp">
+
+                <ImageView
+                    android:id="@+id/imageButton"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/ic_camera"
+                    />
+
+                <ImageView
+                    android:id="@+id/imageDisp"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/user_white"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/white_rectangle">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Enter Details"
+                    android:textAlignment="center"
+                    android:textSize="25sp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textStyle="bold"
+                    android:textColor="#000"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="Name"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/Black"
+                        android:textSize="20sp"/>
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginTop="5dp"
+                        android:textColorHint="@color/Black"
+                        android:hint="Enter Name"
+                        android:padding="5dp"
+                        android:textColorHighlight="#000"
+                        android:background="@drawable/rounded_rectangle"
+                        android:id="@+id/nameDoc">
+                    </EditText>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="Age"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/Black"
+                        android:textSize="20sp"/>
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="40dp"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@color/Black"
+                        android:layout_marginRight="20dp"
+                        android:hint="Enter Age"
+                        android:padding="5dp"
+                        android:textColorHighlight="#000"
+                        android:background="@drawable/rounded_rectangle"
+                        android:id="@+id/ageDoc"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="City"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/Black"
+                        android:textSize="20sp"/>
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@color/Black"
+                        android:hint="Enter City"
+                        android:padding="5dp"
+                        android:textColorHighlight="#000"
+                        android:background="@drawable/rounded_rectangle"
+                        android:id="@+id/cityDoc"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Speciality"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/Black"
+                        android:textSize="20sp"/>
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@color/Black"
+                        android:hint="Enter Speciality"
+                        android:padding="5dp"
+                        android:textColorHighlight="#000"
+                        android:background="@drawable/rounded_rectangle"
+                        android:id="@+id/specDoc"/>
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Submit"
+                    android:layout_marginHorizontal="20dp"
+                    android:textAlignment="gravity"
+                    android:gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="40dp"
+                    android:textSize="25sp"
+                    android:background="@drawable/rounded_rectangle"
+                    android:backgroundTint="#1a237e"
+                    android:textColor="#FFF"
+                    android:id="@+id/sumbitDoc"
+                    />
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

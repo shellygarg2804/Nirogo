@@ -4,43 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Supplier.SupplierActivity"
+    tools:context=".User.UserActivity"
     android:background="@color/blue_bg"
     android:orientation="vertical">
 
 
     <Button
         android:layout_marginTop="20dp"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:background="@drawable/back"
         android:layout_marginStart="20dp"
-        android:id="@+id/backSup"
+        android:id="@+id/backUser"
         />
     <LinearLayout
         android:layout_width="wrap_content"
         android:orientation="horizontal"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:layout_height="wrap_content">
+        android:layout_marginTop="30dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/doctor"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
             android:layout_gravity="center"
-            android:src="@drawable/ic_supplier"/>
-    </LinearLayout>
+            android:src="@drawable/ic_user"/>
 
+    </LinearLayout>
 
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="60dp">
+        android:layout_marginTop="40dp">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:background="@drawable/white_rectangle">
 
@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Welcome Supplier"
+                android:text="Welcome User"
                 android:textAlignment="center"
                 android:textSize="30sp"
                 android:fontFamily="@font/roboto_regular"
@@ -61,9 +61,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 android:layout_marginLeft="20dp"
-                android:text="USERNAME OR EMAIL "
+                android:text=" EMAIL "
                 android:textColor="@color/Black"
-                android:textSize="20sp">
+                android:textSize="18sp">
             </TextView>
 
             <EditText
@@ -72,10 +72,10 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="5dp"
                 android:textColorHint="@color/Black"
-                android:hint="  Enter username or email"
+                android:hint="  Enter  email"
                 android:textColorHighlight="#000"
                 android:background="@drawable/rounded_rectangle"
-                android:id="@+id/usernameSup">
+                android:id="@+id/EmailPatient">
 
             </EditText>
 
@@ -86,7 +86,7 @@
                 android:textColor="@color/Black"
                 android:layout_marginLeft="20dp"
                 android:text="PASSWORD "
-                android:textSize="20sp">
+                android:textSize="18sp">
             </TextView>
 
             <EditText
@@ -95,9 +95,10 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="5dp"
                 android:hint="  Enter password"
+                android:inputType="textPassword"
                 android:textColorHint="@color/Black"
                 android:background="@drawable/rounded_rectangle"
-                android:id="@+id/passwordSup">
+                android:id="@+id/passwordPatient">
             </EditText>
 
             <TextView
@@ -125,7 +126,7 @@
                 android:background="@drawable/rounded_rectangle"
                 android:backgroundTint="#1a237e"
                 android:textColor="#FFF"
-                android:id="@+id/signupSupplier"
+                android:id="@+id/signupUser"
                 >
 
             </TextView>
@@ -156,7 +157,7 @@
                     android:layout_marginRight="20dp"
                     android:layout_gravity="start"
                     android:src="@drawable/google"
-                    android:id="@+id/googleSup">
+                    android:id="@+id/googlePat">
 
                 </ImageView>
 
@@ -166,11 +167,15 @@
                     android:layout_marginLeft="20dp"
                     android:layout_gravity="start"
                     android:src="@drawable/facebook"
-                    android:layout_marginBottom="20dp"
-                    android:id="@+id/facebookSup">
+                    android:layout_marginBottom="30dp"
+                    android:id="@+id/facebookPat">
 
                 </ImageView>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
+
 </LinearLayout>
+
+
+

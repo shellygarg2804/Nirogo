@@ -11,6 +11,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.EditText;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nirogo.HomeActivity;
+import com.example.nirogo.MainActivity;
 import com.example.nirogo.R;
 import com.example.nirogo.Supplier.DetailsSupplier;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -63,7 +65,12 @@ public class DetailsDoctor extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_details_doctor);
+        if ((MainActivity.size).equalsIgnoreCase("Small")) {
+            setContentView(R.layout.activity_details_doctor_small);
+            Log.i("Screen Return Value","Small");
+        }
+        else
+            setContentView(R.layout.activity_details_doctor);
 
         storageReference = FirebaseStorage.getInstance().getReference();
 

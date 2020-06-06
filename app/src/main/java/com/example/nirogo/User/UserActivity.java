@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.nirogo.HomeActivity;
+import com.example.nirogo.MainActivity;
 import com.example.nirogo.OptionActivity;
 import com.example.nirogo.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -62,7 +63,12 @@ public class UserActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user);
+        if ((MainActivity.size).equalsIgnoreCase("Small")) {
+            setContentView(R.layout.activity_user_small);
+            Log.i("Screen Return Value","Small");
+        }
+        else
+            setContentView(R.layout.activity_user);
 
         Button back = findViewById(R.id.backUser);
         back.setOnClickListener(new View.OnClickListener() {

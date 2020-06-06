@@ -11,8 +11,8 @@
 
     <Button
         android:layout_marginTop="20dp"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:background="@drawable/back"
         android:layout_marginStart="20dp"
         android:id="@+id/backSup"
@@ -26,8 +26,8 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/doctor"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
             android:layout_gravity="center"
             android:src="@drawable/ic_supplier"/>
     </LinearLayout>
@@ -37,7 +37,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="60dp">
+        android:layout_marginTop="50dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
                 android:layout_marginLeft="20dp"
                 android:text="USERNAME OR EMAIL "
                 android:textColor="@color/Black"
-                android:textSize="20sp">
+                android:textSize="18sp">
             </TextView>
 
             <EditText
@@ -86,7 +86,7 @@
                 android:textColor="@color/Black"
                 android:layout_marginLeft="20dp"
                 android:text="PASSWORD "
-                android:textSize="20sp">
+                android:textSize="18sp">
             </TextView>
 
             <EditText

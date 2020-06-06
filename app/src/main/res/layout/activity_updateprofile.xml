@@ -20,6 +20,16 @@
         android:src="@drawable/first_screen"
         >
     </ImageView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="20sp"
+            android:text="NAME:"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/Black">
+
+        </TextView>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,9 +38,17 @@
         android:textColorHint="@color/DarkRed"
         android:hint="Display name"
         android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="20dp"
         ></EditText>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="20sp"
+            android:text="AGE:"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/Black">
 
+        </TextView>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,8 +57,18 @@
         android:textColorHint="@color/DarkRed"
         android:hint="Date of birth"
         android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="20dp"
+
         ></EditText>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="20sp"
+            android:text="SPECIALITY:"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/Black">
+
+        </TextView>
 
     <EditText
         android:layout_width="match_parent"
@@ -50,8 +78,18 @@
         android:textColorHint="@color/DarkRed"
         android:hint="Speciality"
         android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="20dp"
+
         ></EditText>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="20sp"
+            android:text="ABOUT:"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/Black">
+
+        </TextView>
 
 
 
@@ -63,8 +101,17 @@
         android:textColorHint="@color/DarkRed"
         android:hint="About"
         android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="20dp"
         ></EditText>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="20sp"
+            android:text="EXPERIENCE SUMMARY:"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/Black">
+
+        </TextView>
 
     <EditText
         android:layout_width="match_parent"
@@ -74,8 +121,17 @@
         android:textColorHint="@color/DarkRed"
         android:hint="Experience summary"
         android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="20dp"
         ></EditText>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="20sp"
+            android:text="EDUCATION SUMMARY:"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/Black">
+
+        </TextView>
 
     <EditText
         android:layout_width="match_parent"
@@ -85,8 +141,19 @@
         android:textColorHint="@color/DarkRed"
         android:hint="Education Summary"
         android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="20dp"
+
         ></EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="20sp"
+            android:text="CONTACT EMAIL:"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/Black">
+
+        </TextView>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -94,8 +161,17 @@
         android:textColorHint="@color/DarkRed"
         android:hint="Contact Email"
         android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="20dp"
         ></EditText>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="20sp"
+            android:text="CONTACT PHONENO."
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/Black">
+
+        </TextView>
 
     <EditText
         android:layout_width="match_parent"
@@ -104,7 +180,6 @@
         android:textColorHint="@color/DarkRed"
         android:hint="Phone no."
         android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="20dp"
         ></EditText>
     <Button
         android:layout_width="wrap_content"

@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nirogo.HomeActivity;
+import com.example.nirogo.MainActivity;
 import com.example.nirogo.OptionActivity;
 import com.example.nirogo.R;
 import com.example.nirogo.User.UserActivity;
@@ -45,6 +46,7 @@ public class DoctorActivity extends Activity {
     private TextView signup;
     private EditText email;
     private EditText password;
+    private String size;
 
     @Override
     public void onStart() {
@@ -61,7 +63,12 @@ public class DoctorActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_doctor);
+        if ((MainActivity.size).equalsIgnoreCase("Small")) {
+            setContentView(R.layout.activity_doctor_small);
+            Log.i("Screen Return Value","Small");
+        }
+        else
+            setContentView(R.layout.activity_doctor);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -209,7 +216,7 @@ public class DoctorActivity extends Activity {
                         if (task.isSuccessful()) {
                             Toast.makeText(DoctorActivity.this, "Signup Successful", Toast.LENGTH_SHORT);
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intent = new Intent(DoctorActivity.this, HomeActivity.class);
+                            Intent intent = new Intent(DoctorActivity.this, DetailsDoctor.class);
                             startActivity(intent);
 
                         } else {
