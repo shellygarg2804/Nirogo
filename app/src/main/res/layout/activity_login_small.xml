@@ -58,18 +58,6 @@
             android:background="@drawable/white_rectangle">
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Welcome"
-                android:textAlignment="center"
-                android:textSize="30sp"
-                android:fontFamily="@font/roboto_regular"
-                android:textStyle="bold"
-                android:textColor="#000">
-            </TextView>
-
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"

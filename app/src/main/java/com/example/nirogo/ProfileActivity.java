@@ -30,20 +30,15 @@ public class ProfileActivity extends Activity {
     private TextView email;
     private TextView phoneno;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
         name=(TextView) findViewById(R.id.nameProfile);
-        age=(TextView)findViewById(R.id.AgeProfile);
-        speciality=(TextView)findViewById(R.id.spectialityprofile);
         about=(TextView)findViewById(R.id.aboutprofile);
         experience=(TextView)findViewById(R.id.experienceprofile);
         education=(TextView)findViewById(R.id.educationprofile);
-        email=(TextView)findViewById(R.id.emailprofile);
-        phoneno=(TextView)findViewById(R.id.phoneprofile);
 
         if (getIntent().hasExtra("docname")){
             String nameUser = getIntent().getStringExtra("docname");
@@ -53,7 +48,7 @@ public class ProfileActivity extends Activity {
         Intent intent= this.getIntent();
         if(intent!=null){
             if(intent.hasExtra("Activity")&&intent.getStringExtra("Activity").equals("UpdateProfileActivity")){
-                Log.e("LOG_TAG","REACHEDdddddddddddddddddd hereeeeeeeeeeeeeeee");
+                Log.e("LOG_TAG","REACHED here");
                 if(!(intent.getStringExtra("namestring").equals(""))){
                     name.setText(intent.getStringExtra("namestring"));
                 }
@@ -88,13 +83,9 @@ public class ProfileActivity extends Activity {
             public void onClick(View v) {
                 Intent i= new Intent(ProfileActivity.this,updateprofile.class);
                 i.putExtra("namep",name.getText());
-                i.putExtra("agep",age.getText());
-                i.putExtra("specialityp",speciality.getText());
                 i.putExtra("aboutp",about.getText());
                 i.putExtra("experiencep",experience.getText());
                 i.putExtra("educationp",experience.getText());
-                i.putExtra("emailp",email.getText());
-                i.putExtra("phonep",phoneno.getText());
                 startActivity(i);
 
 
@@ -109,21 +100,21 @@ public class ProfileActivity extends Activity {
                 if (position == 0) {
                     bubblenavigation.setCurrentActiveItem(5);
                     startActivity(new Intent(ProfileActivity.this, HomeActivity.class));
-                    Animatoo.animateSwipeLeft(ProfileActivity.this);
+                    Animatoo.animateFade(ProfileActivity.this);
                     }
 
                    else if (position == 1) {
                     startActivity(new Intent(ProfileActivity.this, AmbulanceActivity.class));
-                    Animatoo.animateSwipeLeft(ProfileActivity.this);
-                }
+                    Animatoo.animateFade(ProfileActivity.this);
+                   }
                    else if (position == 2) {
                     startActivity(new Intent(ProfileActivity.this, AppointmentsActivity.class));
-                    Animatoo.animateSwipeLeft(ProfileActivity.this);
-                   }
+                    Animatoo.animateFade(ProfileActivity.this);
+                }
                    else if (position == 3) {
                     startActivity(new Intent(ProfileActivity.this, CartActivity.class));
-                    Animatoo.animateSwipeLeft(ProfileActivity.this);
-                   }
+                    Animatoo.animateFade(ProfileActivity.this);
+                }
             }});
 
             }
@@ -132,7 +123,7 @@ public class ProfileActivity extends Activity {
     public void onBackPressed() {
         super.onBackPressed();
         startActivity(new Intent(this, HomeActivity.class));
-        Animatoo.animateSlideLeft(ProfileActivity.this);
+        Animatoo.animateFade(ProfileActivity.this);
     }
 }
 

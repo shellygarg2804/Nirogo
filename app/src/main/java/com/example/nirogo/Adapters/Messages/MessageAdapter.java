@@ -59,7 +59,7 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView nameUser, messageText;
-        public ImageView imgUser, imgMessage;
+        public ImageView imgUser, imgMessage, imgCall;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -68,6 +68,7 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             messageText = itemView.findViewById(R.id.messageText);
             imgUser = itemView.findViewById(R.id.imageText);
             imgMessage = itemView.findViewById(R.id.messageIcon);
+            imgCall = itemView.findViewById(R.id.callIcon);
 
             nameUser.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -89,7 +90,13 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(v.getContext(), "Opening Chat", Toast.LENGTH_LONG).show();
+                }
+            });
 
+            imgCall.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(v.getContext(), "Opening Call", Toast.LENGTH_LONG).show();
                 }
             });
         }

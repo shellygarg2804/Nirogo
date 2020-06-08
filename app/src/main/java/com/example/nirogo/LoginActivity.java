@@ -76,7 +76,9 @@ public class LoginActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if ((MainActivity.size).equalsIgnoreCase("Small")) {
+        ScreenSize screenSize = new ScreenSize();
+        String size = screenSize.screenCheck(LoginActivity.this);
+        if (size.equalsIgnoreCase("Small")) {
             setContentView(R.layout.activity_login_small);
             Log.i("Screen Return Value","Small");
         }

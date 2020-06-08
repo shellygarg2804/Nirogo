@@ -13,9 +13,9 @@
 
         <ImageView
             android:id="@+id/imageText"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
             android:layout_marginBottom="10dp"/>
 
@@ -23,11 +23,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/nameDoc"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/Black"
             android:layout_toRightOf="@id/imageText"
-            android:layout_marginTop="11dp"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="15dp"/>
 
         <ImageView
@@ -59,11 +59,12 @@
         <ImageView
             android:background="@drawable/appointment"
             android:id="@+id/appointmentIcon"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
             android:layout_centerVertical="true"
             />
+
     </RelativeLayout>
 </RelativeLayout>
