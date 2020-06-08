@@ -75,14 +75,14 @@
         android:layout_gravity="bottom"
         app:bnc_mode="spread"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:background="@color/blue_bg"
         >
 
         <com.gauravk.bubblenavigation.BubbleToggleView
             android:id="@+id/c_item_menu"
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             app:bt_active="true"
             android:background="@color/blue_bg"
             app:bt_colorActive="@color/Black"
@@ -96,7 +96,7 @@
         <com.gauravk.bubblenavigation.BubbleToggleView
             android:id="@+id/c_item_reminder"
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             app:bt_active="true"
             android:background="@color/blue_bg"
             app:bt_colorActive="@color/Black"
@@ -109,7 +109,7 @@
         <com.gauravk.bubblenavigation.BubbleToggleView
             android:id="@+id/c_item_add"
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             app:bt_active="true"
             android:background="@color/blue_bg"
             app:bt_colorActive="@color/Black"
@@ -121,7 +121,7 @@
         <com.gauravk.bubblenavigation.BubbleToggleView
             android:id="@+id/c_item_check"
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             app:bt_active="true"
             android:background="@color/blue_bg"
             app:bt_colorActive="@color/Black"
@@ -133,7 +133,7 @@
         <com.gauravk.bubblenavigation.BubbleToggleView
             android:id="@+id/c_item_user"
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             app:bt_active="true"
             android:background="@color/blue_bg"
             app:bt_colorActive="@color/Black"

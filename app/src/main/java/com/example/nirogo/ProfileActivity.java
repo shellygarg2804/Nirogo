@@ -39,8 +39,6 @@ public class ProfileActivity extends Activity {
         about=(TextView)findViewById(R.id.aboutprofile);
         experience=(TextView)findViewById(R.id.experienceprofile);
         education=(TextView)findViewById(R.id.educationprofile);
-        email=(TextView)findViewById(R.id.emailprofile);
-        phoneno=(TextView)findViewById(R.id.phoneprofile);
 
         if (getIntent().hasExtra("docname")){
             String nameUser = getIntent().getStringExtra("docname");
@@ -85,13 +83,9 @@ public class ProfileActivity extends Activity {
             public void onClick(View v) {
                 Intent i= new Intent(ProfileActivity.this,updateprofile.class);
                 i.putExtra("namep",name.getText());
-                i.putExtra("agep",age.getText());
-                i.putExtra("specialityp",speciality.getText());
                 i.putExtra("aboutp",about.getText());
                 i.putExtra("experiencep",experience.getText());
                 i.putExtra("educationp",experience.getText());
-                i.putExtra("emailp",email.getText());
-                i.putExtra("phonep",phoneno.getText());
                 startActivity(i);
 
 
