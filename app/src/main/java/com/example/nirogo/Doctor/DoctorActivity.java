@@ -216,6 +216,9 @@ public class DoctorActivity extends Activity {
                         if (task.isSuccessful()) {
                             Toast.makeText(DoctorActivity.this, "Signup Successful", Toast.LENGTH_SHORT);
                             FirebaseUser user = mAuth.getCurrentUser();
+                            startActivity(new Intent(DoctorActivity.this,DetailsDoctor.class));
+
+
 
                         } else {
                             try {
