@@ -37,20 +37,20 @@ public class CartActivity extends Activity {
             public void onNavigationChanged(View view, int position) {
                 if (position == 0) {
                     startActivity(new Intent(CartActivity.this, HomeActivity.class));
-                    Animatoo.animateSwipeLeft(CartActivity.this);
+                    Animatoo.animateFade(CartActivity.this);
 
                 } else if (position == 1) {
                     startActivity(new Intent(CartActivity.this, AmbulanceActivity.class));
-                    Animatoo.animateSwipeLeft(CartActivity.this);
+                    Animatoo.animateFade(CartActivity.this);
 
                 } else if (position == 2) {
                     startActivity(new Intent(CartActivity.this, AppointmentsActivity.class));
-                    Animatoo.animateSwipeLeft(CartActivity.this);
+                    Animatoo.animateFade(CartActivity.this);
                 } else if (position == 3) {
 
                 } else if (position == 4) {
                     startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-                    Animatoo.animateSwipeLeft(CartActivity.this);
+                    Animatoo.animateFade(CartActivity.this);
                 }
             }});
     }

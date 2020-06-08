@@ -1,5 +1,10 @@
 package com.example.nirogo;
 
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +22,7 @@ import com.example.nirogo.Adapters.Feed.ItemAdapter;
 import com.example.nirogo.Adapters.Appointments.AppointmentsActivity;
 import com.gauravk.bubblenavigation.BubbleNavigationConstraintView;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +53,7 @@ public class HomeActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, MessageActivity.class);
                 startActivity(intent);
-                Animatoo.animateSwipeRight(HomeActivity.this);
+                Animatoo.animateFade(HomeActivity.this);
             }
         });
 
@@ -121,24 +127,24 @@ public class HomeActivity extends Activity {
 
                 if (position == 1) {
                     startActivity(new Intent(HomeActivity.this, AmbulanceActivity.class));
-                    Animatoo.animateSwipeLeft(HomeActivity.this);
+                    Animatoo.animateFade(HomeActivity.this);
                 }
 
                 else if (position == 2) {
                     startActivity(new Intent(HomeActivity.this, AppointmentsActivity.class));
-                    Animatoo.animateSwipeLeft(HomeActivity.this);
+                    Animatoo.animateFade(HomeActivity.this);
                 }
 
              else if (position == 3) {
                     startActivity(new Intent(HomeActivity.this, CartActivity.class));
-                    Animatoo.animateSwipeLeft(HomeActivity.this);
+                    Animatoo.animateFade(HomeActivity.this);
              }
 
                 else if(position == 4)
                 {
                     startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-                    Animatoo.animateSwipeLeft(HomeActivity.this);
-                    }
+                    Animatoo.animateFade(HomeActivity.this);
+                }
 
             }
         });

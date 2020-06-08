@@ -200,7 +200,7 @@ public class DoctorActivity extends Activity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DoctorActivity.this, HomeActivity.class);
+                Intent intent = new Intent(DoctorActivity.this, DetailsDoctor.class);
                 startActivity(intent);
             }
         });
@@ -216,8 +216,6 @@ public class DoctorActivity extends Activity {
                         if (task.isSuccessful()) {
                             Toast.makeText(DoctorActivity.this, "Signup Successful", Toast.LENGTH_SHORT);
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intent = new Intent(DoctorActivity.this, DetailsDoctor.class);
-                            startActivity(intent);
 
                         } else {
                             try {

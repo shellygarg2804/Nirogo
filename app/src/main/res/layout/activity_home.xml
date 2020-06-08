@@ -84,9 +84,9 @@
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             app:bt_active="true"
-            app:bt_colorActive="@color/Black"
             app:bt_colorInactive="@color/White"
             app:bt_icon="@drawable/home"
+            app:bt_badgeBackgroundColor="@color/blue_bg"
             app:bt_title="Home"
             />
 
@@ -98,6 +98,7 @@
             android:layout_height="60dp"
             app:bt_active="true"
             app:bt_colorActive="@color/Black"
+            android:background="@color/blue_bg"
             app:bt_colorInactive="@color/White"
             app:bt_title="Ambulance"
             app:bt_icon="@drawable/ambulance_dark"/>
@@ -112,6 +113,7 @@
             app:bt_colorActive="@color/Black"
             app:bt_colorInactive="@color/White"
             app:bt_icon="@drawable/list"
+            app:bt_badgeBackgroundColor="@color/blue_bg"
             app:bt_title="Appointment"
             />
 
@@ -120,6 +122,7 @@
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             app:bt_active="true"
+            app:bt_badgeBackgroundColor="@color/blue_bg"
             app:bt_colorActive="@color/Black"
             app:bt_colorInactive="@color/White"
             app:bt_icon="@drawable/cart"
@@ -131,6 +134,7 @@
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             app:bt_active="true"
+            app:bt_badgeBackgroundColor="@color/blue_bg"
             app:bt_colorActive="@color/Black"
             app:bt_colorInactive="@color/White"
             app:bt_icon="@drawable/user_black"

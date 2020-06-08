@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,6 +26,17 @@ public class MessageActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
+
+        TextView txt = findViewById(R.id.disclamerText);
+        if (getIntent().hasExtra("type")){
+         String type = getIntent().getStringExtra("type");
+
+         if (type.equalsIgnoreCase("Offline"))
+             txt.setText(R.string.offline_display);
+
+         else
+             txt.setText(R.string.online);
+        }
 
         Button back = findViewById(R.id.backBtn);
         back.setOnClickListener(new View.OnClickListener() {

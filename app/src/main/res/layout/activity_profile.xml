@@ -5,7 +5,6 @@
     android:layout_width="match_parent">
 
     <ScrollView
-        android:layout_below="@id/lay_1"
         android:layout_width="match_parent"
         android:layout_marginBottom="70dp"
         android:layout_height="match_parent">
@@ -62,58 +61,8 @@
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/AgeProfile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="(20 yrs)"
-                android:textSize="25sp" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/spectialityprofile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Speciality"
-            android:layout_below="@+id/nameAge"
-            android:textAlignment="center"
-            android:textSize="25sp"
-             />
-
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="30dp"
-            android:layout_below="@id/spectialityprofile"
-            android:id="@+id/connections">
-
-            <TextView
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:text="Connections:"
-                android:textColor="@color/DarkBlue"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                />
-
-            <TextView
-                android:id="@+id/connectionsprofile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="1"
-                android:text="300"
-                android:textColor="@color/DarkBlue"
-                android:textSize="25sp"
-                android:textStyle="bold" />
-        </LinearLayout>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/Aboutlayout"
@@ -121,7 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         app:cardBackgroundColor="@color/LightCyan"
-        android:layout_below="@id/connections"
+        android:layout_below="@id/nameAge"
         >
         <LinearLayout
             android:layout_width="match_parent"
@@ -249,46 +198,7 @@
         app:cardBackgroundColor="@color/LightCyan"
         android:layout_below="@id/experience"
         >
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="Contact Details"
-                android:textAlignment="center"
-                android:textColor="@color/DarkBlue"
-                android:textSize="25sp"
-                android:textStyle="bold" />
-
-           <TextView
-               android:id="@+id/emailprofile"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:text="Email"
-               android:textSize="25sp"
-               android:layout_marginHorizontal="10dp"
-               android:textColor="@color/Black">
-
-           </TextView>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Phone no."
-                android:textSize="25sp"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginBottom="20dp"
-                android:textColor="@color/Black"
-                android:id="@+id/phoneprofile">
-
-            </TextView>
-
-
-        </LinearLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>
     </ScrollView>
