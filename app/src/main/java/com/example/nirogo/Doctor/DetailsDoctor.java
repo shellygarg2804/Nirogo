@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -20,9 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nirogo.HomeActivity;
-import com.example.nirogo.MainActivity;
 import com.example.nirogo.R;
-import com.example.nirogo.Supplier.DetailsSupplier;
+import com.example.nirogo.ScreenSize;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.ChildEventListener;
@@ -30,7 +30,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -65,7 +64,11 @@ public class DetailsDoctor extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if ((MainActivity.size).equalsIgnoreCase("Small")) {
+
+        ScreenSize size_check = new ScreenSize();
+        String size = size_check.screenCheck(DetailsDoctor.this);
+
+        if ((size).equalsIgnoreCase("Small")) {
             setContentView(R.layout.activity_details_doctor_small);
             Log.i("Screen Return Value","Small");
         }
@@ -105,6 +108,32 @@ public class DetailsDoctor extends Activity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                name = nameIn.getText().toString();
+                age = ageIn.getText().toString();
+                speciality = specIn.getText().toString();
+                city = cityIn.getText().toString();
+
+                if (name.isEmpty()){
+                    nameIn.setError("Can't be empty");
+                    return;
+                }
+
+                if (age.isEmpty()){
+                    ageIn.setError("Can't be empty");
+                    return;
+                }
+
+                if (speciality.isEmpty()){
+                    specIn.setError("Can't be empty");
+                    return;
+                }
+
+                if (city.isEmpty()){
+                    cityIn.setError("Can't be empty");
+                    return;
+                }
+
+                else
                 UploadImageFileToFirebaseStorage();
             }
         });
@@ -204,12 +233,6 @@ public class DetailsDoctor extends Activity {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                            storageReference2nd.putFile(FilePathUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                @Override
-                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                }
-                            });
-
 
                             // Getting image name from EditText and store into string variable.
                             name = nameIn.getText().toString();
@@ -220,23 +243,25 @@ public class DetailsDoctor extends Activity {
                             // Hiding the progressDialog after done uploading.
                             progressDialog.dismiss();
 
-                            String path = storageReference2nd.getDownloadUrl().toString();
-                            // Showing toast message after done uploading.
-                            Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
-                            Toast.makeText(DetailsDoctor.this, path,Toast.LENGTH_LONG).show();
-                            String uniqueId = UUID.randomUUID().toString();
-                            @SuppressWarnings("VisibleForTests")
-                            DocUploadInfo docUploadInfo = new DocUploadInfo(uniqueId,"Doctor",name, storageReference2nd.getDownloadUrl().toString(), age, city, speciality);
+                            storageReference2nd.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                String down = uri.toString();
+                                    Toast.makeText(getApplicationContext(), down, Toast.LENGTH_LONG).show();
+                                    String uniqueId = UUID.randomUUID().toString();
 
-                            // Getting image upload ID.
-                            String ImageUploadId = databaseReference.push().getKey();
+                                    DocUploadInfo docUploadInfo = new DocUploadInfo("Dr," + name,speciality, age, city, down);
 
-                            // Adding image upload id s child element into databaseReference.
-                            databaseReference.child(ImageUploadId).setValue(docUploadInfo);
+                                    // Getting image upload ID.
+                                    // Adding image upload id s child element into databaseReference.
+                                    databaseReference.child(uniqueId).setValue(docUploadInfo);
 
-                            Intent intent = new Intent(DetailsDoctor.this, HomeActivity.class);
-                            intent.putExtra("type","Doctor");
-                            startActivity(intent);
+                                    Intent intent = new Intent(DetailsDoctor.this, HomeActivity.class);
+                                    intent.putExtra("url",down);
+                                    startActivity(intent);
+                                }
+                            });
+
                         }
                     })
                     // If something goes wrong .

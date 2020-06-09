@@ -98,21 +98,12 @@ public class ProfileActivity extends Activity {
             public void onNavigationChanged(View view, int position) {
 
                 if (position == 0) {
-                    bubblenavigation.setCurrentActiveItem(5);
                     startActivity(new Intent(ProfileActivity.this, HomeActivity.class));
                     Animatoo.animateFade(ProfileActivity.this);
                     }
 
                    else if (position == 1) {
-                    startActivity(new Intent(ProfileActivity.this, AmbulanceActivity.class));
-                    Animatoo.animateFade(ProfileActivity.this);
-                   }
-                   else if (position == 2) {
                     startActivity(new Intent(ProfileActivity.this, AppointmentsActivity.class));
-                    Animatoo.animateFade(ProfileActivity.this);
-                }
-                   else if (position == 3) {
-                    startActivity(new Intent(ProfileActivity.this, CartActivity.class));
                     Animatoo.animateFade(ProfileActivity.this);
                 }
             }});

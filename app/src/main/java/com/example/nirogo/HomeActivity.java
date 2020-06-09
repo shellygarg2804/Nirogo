@@ -58,7 +58,7 @@ public class HomeActivity extends Activity {
         user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), navdrawer.class));
+                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
 
             }
         });
@@ -72,7 +72,7 @@ public class HomeActivity extends Activity {
 
         ItemAdapter itemAdapter = new ItemAdapter();
         itemAdapter.setImageUser(R.drawable.user_1);
-        itemAdapter.setImagePost(R.drawable.post_image_1);
+        itemAdapter.setImagePost(R.drawable.rsz_post_image_1);
         itemAdapter.setPostDetails("I found about this medicine ");
         itemAdapter.setUserName("Dr. Abhishek Mishra");
         itemAdapter.setUserDetails("B.tech. 2nd Year");
@@ -82,7 +82,7 @@ public class HomeActivity extends Activity {
 
         itemAdapter = new ItemAdapter();
         itemAdapter.setImageUser(R.drawable.user_2);
-        itemAdapter.setImagePost(R.drawable.post_image_2);
+        itemAdapter.setImagePost(R.drawable.rsz_post_image_2);
         itemAdapter.setPostDetails("Check This Out");
         itemAdapter.setUserName("Kautuk Dwivedi");
         itemAdapter.setUserDetails("B.tech. Graduate");
@@ -93,7 +93,7 @@ public class HomeActivity extends Activity {
 
         itemAdapter = new ItemAdapter();
         itemAdapter.setImageUser(R.drawable.user_3);
-        itemAdapter.setImagePost(R.drawable.post_image_3);
+        itemAdapter.setImagePost(R.drawable.rsz_post_image_3);
         itemAdapter.setPostDetails("I completed this Course");
         itemAdapter.setUserName("Anmol Sharma");
         itemAdapter.setUserDetails("B.tech. Graduate");
@@ -104,7 +104,7 @@ public class HomeActivity extends Activity {
 
         itemAdapter = new ItemAdapter();
         itemAdapter.setImageUser(R.drawable.user_4);
-        itemAdapter.setImagePost(R.drawable.post_image_4);
+        itemAdapter.setImagePost(R.drawable.rsz_post_image_4);
         itemAdapter.setPostDetails("I completed this Course which i never started");
         itemAdapter.setUserName("XYZ ABC");
         itemAdapter.setUserDetails("B.tech. Graduate");
@@ -119,22 +119,12 @@ public class HomeActivity extends Activity {
             @Override
             public void onNavigationChanged(View view, int position) {
 
-                if (position == 1) {
-                    startActivity(new Intent(HomeActivity.this, AmbulanceActivity.class));
-                    Animatoo.animateFade(HomeActivity.this);
-                }
-
-                else if (position == 2) {
+                 if (position == 1) {
                     startActivity(new Intent(HomeActivity.this, AppointmentsActivity.class));
                     Animatoo.animateFade(HomeActivity.this);
                 }
 
-             else if (position == 3) {
-                    startActivity(new Intent(HomeActivity.this, CartActivity.class));
-                    Animatoo.animateFade(HomeActivity.this);
-             }
-
-                else if(position == 4)
+                else if(position == 2)
                 {
                     startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                     Animatoo.animateFade(HomeActivity.this);

@@ -32,12 +32,14 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/user_white"
-            android:layout_margin="10dp" />
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
 
         <LinearLayout
             android:layout_width="280dp"
             android:orientation="horizontal"
             android:id="@+id/search"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/rounded_rectangle"
             android:gravity="center_vertical"
@@ -107,9 +109,10 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             app:bt_active="true"
+            app:bt_colorActive="@color/Black"
             app:bt_colorInactive="@color/White"
             app:bt_icon="@drawable/home"
-            app:bt_badgeBackgroundColor="@color/blue_bg"
+            app:bt_shape="@drawable/item_bottombar"
             app:bt_title="Home"
             />
 
@@ -123,6 +126,7 @@
             app:bt_colorActive="@color/Black"
             app:bt_colorInactive="@color/White"
             app:bt_icon="@drawable/list"
+            app:bt_shape="@drawable/item_bottombar"
             app:bt_badgeBackgroundColor="@color/blue_bg"
             app:bt_title="Appointment"
             />
@@ -135,6 +139,7 @@
             app:bt_active="true"
             app:bt_badgeBackgroundColor="@color/blue_bg"
             app:bt_colorActive="@color/Black"
+            app:bt_shape="@drawable/item_bottombar"
             app:bt_colorInactive="@color/White"
             app:bt_icon="@drawable/user_black"
             app:bt_title="@string/profile_tab"
