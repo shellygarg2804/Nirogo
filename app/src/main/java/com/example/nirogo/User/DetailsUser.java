@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.nirogo.Doctor.DetailsDoctor;
+import com.example.nirogo.Doctor.DocUploadInfo;
 import com.example.nirogo.HomeActivity;
 import com.example.nirogo.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -29,6 +31,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
+import java.util.UUID;
 
 public class DetailsUser extends Activity {
 
@@ -88,6 +91,26 @@ public class DetailsUser extends Activity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                name = nameIn.getText().toString();
+                age = ageIn.getText().toString();
+                city = cityIn.getText().toString();
+
+                if (name.isEmpty()){
+                    nameIn.setError("Can't be empty");
+                    return;
+                }
+
+                if (age.isEmpty()){
+                    ageIn.setError("Can't be empty");
+                    return;
+                }
+
+                if (city.isEmpty()){
+                    cityIn.setError("Can't be empty");
+                    return;
+                }
+
+                else
                 UploadImageFileToFirebaseStorage();
             }
         });
@@ -143,12 +166,11 @@ public class DetailsUser extends Activity {
 
             // Creating second StorageReference.
             final StorageReference storageReference2nd = storageReference.child(Storage_Path + System.currentTimeMillis() + "." + GetFileExtension(FilePathUri));
-
-            // Adding addOnSuccessListener to second StorageReference.
             storageReference2nd.putFile(FilePathUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
 
                             // Getting image name from EditText and store into string variable.
                             name = nameIn.getText().toString();
@@ -158,21 +180,24 @@ public class DetailsUser extends Activity {
                             // Hiding the progressDialog after done uploading.
                             progressDialog.dismiss();
 
-                            // Showing toast message after done uploading.
-                            Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
+                            storageReference2nd.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    String down = uri.toString();
+                                    Toast.makeText(getApplicationContext(), down, Toast.LENGTH_LONG).show();
+                                    String uniqueId = UUID.randomUUID().toString();
 
-                            @SuppressWarnings("VisibleForTests")
-                            UserUploadInfo docUploadInfo = new UserUploadInfo("User",name, storageReference2nd.getDownloadUrl().toString(), age, city);
+                                    UserUploadInfo userUploadInfo = new UserUploadInfo(name, age, city, down);
 
-                            // Getting image upload ID.
-                            String id = databaseReference.push().getKey();
+                                    // Getting image upload ID.
+                                    // Adding image upload id s child element into databaseReference.
+                                    databaseReference.child(uniqueId).setValue(userUploadInfo);
 
-                            // Adding image upload id s child element into databaseReference.
-                            databaseReference.child(id).setValue(docUploadInfo);
-
-                            Intent intent = new Intent(DetailsUser.this, HomeActivity.class);
-                            intent.putExtra("type","User");
-                            startActivity(intent);
+                                    Intent intent = new Intent(DetailsUser.this, HomeActivity.class);
+                                    intent.putExtra("url",down);
+                                    startActivity(intent);
+                                }
+                            });
 
                         }
                     })
@@ -184,7 +209,7 @@ public class DetailsUser extends Activity {
                             // Hiding the progressDialog.
                             progressDialog.dismiss();
 
-                            // Showing exception error message.
+                            // Showing exception erro message.
                             Toast.makeText(DetailsUser.this, exception.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     })

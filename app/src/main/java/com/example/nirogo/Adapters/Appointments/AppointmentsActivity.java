@@ -86,14 +86,8 @@ public class AppointmentsActivity extends Activity {
                 if (position == 0) {
                     startActivity(new Intent(AppointmentsActivity.this, HomeActivity.class));
                     Animatoo.animateFade(AppointmentsActivity.this);
-                   } else if (position == 1) {
-                    startActivity(new Intent(AppointmentsActivity.this, AmbulanceActivity.class));
-                    Animatoo.animateFade(AppointmentsActivity.this);
-                    } else if (position == 2) {
-                  } else if (position == 3) {
-                    startActivity(new Intent(AppointmentsActivity.this, CartActivity.class));
-                    Animatoo.animateFade(AppointmentsActivity.this);
-                } else if (position == 4) {
+                   }
+                else if (position == 2) {
                     startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                     Animatoo.animateFade(AppointmentsActivity.this);
                 }

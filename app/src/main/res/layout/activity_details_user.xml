@@ -39,9 +39,9 @@
 
                 <ImageView
                     android:id="@+id/imageDisp"
-                    android:layout_width="160dp"
-                    android:layout_marginTop="25dp"
-                    android:layout_height="160dp"
+                    android:layout_width="130dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_height="130dp"
                     android:src="@drawable/user_white"/>
             </LinearLayout>
 
@@ -49,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="70dp"
+                android:layout_marginTop="50dp"
                 android:background="@drawable/white_rectangle">
 
 

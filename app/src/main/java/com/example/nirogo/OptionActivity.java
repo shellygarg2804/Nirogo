@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.example.nirogo.Doctor.DetailsDoctor;
+import com.example.nirogo.User.DetailsUser;
 import com.example.nirogo.User.UserActivity;
 
 import de.hdodenhof.circleimageview.CircleImageView;

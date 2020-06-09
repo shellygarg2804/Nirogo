@@ -6,6 +6,7 @@ import com.google.android.gms.tasks.Task;
 
 public class DocUploadInfo {
 
+    public String name;
     public String id;
     public String type;
     public String imageName;
@@ -14,14 +15,20 @@ public class DocUploadInfo {
     public String city;
     public String speciality;
 
-    public DocUploadInfo(String id, String type, String name, String url, String age, String city, String speciality) {
-        this.id = id;
-        this.type = type;
-        this.imageName = name;
-        this.imageURL= url;
+    public DocUploadInfo(String name, String speciality ,String age, String city,String url) {
+        this.name = name;
         this.age = age;
         this.city = city;
         this.speciality = speciality;
+        this.imageURL= url;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getId() {
