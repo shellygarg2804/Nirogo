@@ -1,10 +1,5 @@
 package com.example.nirogo;
 
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,7 +17,6 @@ import com.example.nirogo.Adapters.Feed.ItemAdapter;
 import com.example.nirogo.Adapters.Appointments.AppointmentsActivity;
 import com.gauravk.bubblenavigation.BubbleNavigationConstraintView;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
-import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +35,7 @@ public class HomeActivity extends Activity {
         ScreenSize screenSize = new ScreenSize();
         String size = screenSize.screenCheck(HomeActivity.this);
         if (size.equalsIgnoreCase("Small")) {
-            setContentView(R.layout.activity_home_small);
+            setContentView(R.layout.activity_home);
             Log.i("Screen Return Value","Small");
         }
         else
@@ -53,7 +47,7 @@ public class HomeActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, MessageActivity.class);
                 startActivity(intent);
-                Animatoo.animateFade(HomeActivity.this);
+                Animatoo.animateSwipeRight(HomeActivity.this);
             }
         });
 
@@ -64,7 +58,7 @@ public class HomeActivity extends Activity {
         user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                startActivity(new Intent(getApplicationContext(), navdrawer.class));
 
             }
         });
@@ -78,7 +72,7 @@ public class HomeActivity extends Activity {
 
         ItemAdapter itemAdapter = new ItemAdapter();
         itemAdapter.setImageUser(R.drawable.user_1);
-        itemAdapter.setImagePost(R.drawable.rsz_post_image_1);
+        itemAdapter.setImagePost(R.drawable.post_image_1);
         itemAdapter.setPostDetails("I found about this medicine ");
         itemAdapter.setUserName("Dr. Abhishek Mishra");
         itemAdapter.setUserDetails("B.tech. 2nd Year");
@@ -88,7 +82,7 @@ public class HomeActivity extends Activity {
 
         itemAdapter = new ItemAdapter();
         itemAdapter.setImageUser(R.drawable.user_2);
-        itemAdapter.setImagePost(R.drawable.rsz_post_image_2);
+        itemAdapter.setImagePost(R.drawable.post_image_2);
         itemAdapter.setPostDetails("Check This Out");
         itemAdapter.setUserName("Kautuk Dwivedi");
         itemAdapter.setUserDetails("B.tech. Graduate");
@@ -99,7 +93,7 @@ public class HomeActivity extends Activity {
 
         itemAdapter = new ItemAdapter();
         itemAdapter.setImageUser(R.drawable.user_3);
-        itemAdapter.setImagePost(R.drawable.rsz_post_image_3);
+        itemAdapter.setImagePost(R.drawable.post_image_3);
         itemAdapter.setPostDetails("I completed this Course");
         itemAdapter.setUserName("Anmol Sharma");
         itemAdapter.setUserDetails("B.tech. Graduate");
@@ -110,7 +104,7 @@ public class HomeActivity extends Activity {
 
         itemAdapter = new ItemAdapter();
         itemAdapter.setImageUser(R.drawable.user_4);
-        itemAdapter.setImagePost(R.drawable.rsz_post_image_4);
+        itemAdapter.setImagePost(R.drawable.post_image_4);
         itemAdapter.setPostDetails("I completed this Course which i never started");
         itemAdapter.setUserName("XYZ ABC");
         itemAdapter.setUserDetails("B.tech. Graduate");
@@ -144,7 +138,7 @@ public class HomeActivity extends Activity {
                 {
                     startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                     Animatoo.animateFade(HomeActivity.this);
-                }
+                    }
 
             }
         });
