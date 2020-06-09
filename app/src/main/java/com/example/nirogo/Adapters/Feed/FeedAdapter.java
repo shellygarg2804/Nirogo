@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.nirogo.AppointmentOption;
 import com.example.nirogo.ProfileActivity;
 import com.example.nirogo.R;
 import com.example.nirogo.ScreenSize;
@@ -64,7 +65,7 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     class ViewHolder extends RecyclerView.ViewHolder {
         public TextView nameUser, descUser, descPost, timePost;
         public ImageView imgUser, imgPost;
-        LinearLayout likelay, share, comment;
+        LinearLayout likelay, appointment;
         ImageView btnLike;
         TextView txtLike, numLikes;
 
@@ -83,6 +84,16 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             btnLike = itemView.findViewById(R.id.btnLike);
             txtLike = itemView.findViewById(R.id.likeTxt);
             numLikes = itemView.findViewById(R.id.noLikes);
+
+            appointment = itemView.findViewById(R.id.appointLayout);
+            appointment.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), AppointmentOption.class);
+                intent.putExtra("docname", nameUser.getText());
+                v.getContext().startActivity(intent);
+                }
+            });
 
             final Context context = itemView.getContext();
             likelay.setOnClickListener(new View.OnClickListener() {
