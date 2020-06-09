@@ -13,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nirogo.AppointmentOption;
-import com.example.nirogo.OptionActivity;
 import com.example.nirogo.ProfileActivity;
 import com.example.nirogo.R;
 
@@ -84,10 +83,8 @@ public class AppointmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             appointmentIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), OptionActivity.class);
-                    intent.putExtra("docname", docName.getText());
-                    v.getContext().startActivity(intent);
-                        }
+                    v.getContext().startActivity(new Intent(v.getContext(), AppointmentOption.class));
+                }
             });
         }
     }

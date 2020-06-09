@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class AppointmentOption extends AppCompatActivity {
 
@@ -17,12 +15,6 @@ public class AppointmentOption extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appointment_option);
-
-        if (getIntent().hasExtra("docname"));
-            String doc = getIntent().getStringExtra("docname");
-
-        TextView doctxt = findViewById(R.id.docName);
-        doctxt.setText(doc);
 
         offline = findViewById(R.id.offline);
         online = findViewById(R.id.online);
