@@ -35,7 +35,7 @@ public class HomeActivity extends Activity {
         ScreenSize screenSize = new ScreenSize();
         String size = screenSize.screenCheck(HomeActivity.this);
         if (size.equalsIgnoreCase("Small")) {
-            setContentView(R.layout.activity_home);
+            setContentView(R.layout.activity_home_small);
             Log.i("Screen Return Value","Small");
         }
         else
@@ -119,22 +119,12 @@ public class HomeActivity extends Activity {
             @Override
             public void onNavigationChanged(View view, int position) {
 
-                if (position == 1) {
-                    startActivity(new Intent(HomeActivity.this, AmbulanceActivity.class));
-                    Animatoo.animateFade(HomeActivity.this);
-                }
-
-                else if (position == 2) {
+                 if (position == 1) {
                     startActivity(new Intent(HomeActivity.this, AppointmentsActivity.class));
                     Animatoo.animateFade(HomeActivity.this);
                 }
 
-             else if (position == 3) {
-                    startActivity(new Intent(HomeActivity.this, CartActivity.class));
-                    Animatoo.animateFade(HomeActivity.this);
-             }
-
-                else if(position == 4)
+                else if(position == 2)
                 {
                     startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                     Animatoo.animateFade(HomeActivity.this);
