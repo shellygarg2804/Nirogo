@@ -50,7 +50,7 @@
         android:layout_width="300dp"
         android:src="@drawable/postimage_sample"
         android:layout_gravity="center_horizontal"
-        android:layout_height="300dp"/>
+        android:layout_height="200dp"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -58,6 +58,7 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:layout_marginTop="40dp"
     android:background="@drawable/white_rectangle"
     android:layout_height="match_parent">
 

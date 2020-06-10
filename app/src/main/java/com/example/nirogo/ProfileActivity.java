@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.nirogo.Adapters.Appointments.AppointmentsActivity;
+import com.example.nirogo.Post.PostUploadActivity;
 import com.gauravk.bubblenavigation.BubbleNavigationConstraintView;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
 
@@ -28,7 +29,7 @@ public class ProfileActivity extends Activity {
     private TextView experience;
     private TextView education;
     private TextView email;
-    private TextView phoneno;
+    private TextView phoneno, post;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +40,14 @@ public class ProfileActivity extends Activity {
         about=(TextView)findViewById(R.id.aboutprofile);
         experience=(TextView)findViewById(R.id.experienceprofile);
         education=(TextView)findViewById(R.id.educationprofile);
+        post = findViewById(R.id.postText);
 
         if (getIntent().hasExtra("docname")){
             String nameUser = getIntent().getStringExtra("docname");
             name.setText(nameUser);
         }
+
+
 
         Intent intent= this.getIntent();
         if(intent!=null){
@@ -91,6 +95,17 @@ public class ProfileActivity extends Activity {
 
             }
         });
+
+
+        post.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, PostUploadActivity.class);
+                intent.putExtra("name", getIntent().getStringExtra("docname"));
+                startActivity(intent);
+            }
+        });
+
 
         final BubbleNavigationConstraintView bubblenavigation = findViewById(R.id.bottomNavProf);
         bubblenavigation.setNavigationChangeListener(new BubbleNavigationChangeListener() {

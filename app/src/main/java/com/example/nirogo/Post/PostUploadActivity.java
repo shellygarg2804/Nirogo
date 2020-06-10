@@ -36,13 +36,16 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import java.util.UUID;
 
 public class PostUploadActivity extends Activity {
     ImageView postphoto, camera;
     EditText postDetails;
     TextView submit;
-    private int CAMERA_REQUEST = 1;
+    int Image_Request_Code = 7;
 
     // Folder path for Firebase Storage.
     String Storage_Path = "";
@@ -55,6 +58,7 @@ public class PostUploadActivity extends Activity {
     ProgressDialog progressDialog ;
     Uri FilePathUri;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +67,8 @@ public class PostUploadActivity extends Activity {
         storageReference = FirebaseStorage.getInstance().getReference();
         // Assign FirebaseDatabase instance with root database name.
         databaseReference = FirebaseDatabase.getInstance().getReference(Database_Path);
+
+        progressDialog  = new ProgressDialog(this);
 
         postDetails = findViewById(R.id.enterText);
         postphoto = findViewById(R.id.imagePost);
@@ -73,16 +79,28 @@ public class PostUploadActivity extends Activity {
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "Please Select Image"), Image_Request_Code);
 
-                if (intent.resolveActivity(getPackageManager()) != null)
-                    startActivityForResult(intent, CAMERA_REQUEST);
             }
         });
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            checkUser();
+            if((postDetails.getText().toString()).isEmpty())
+            {
+                postDetails.setError("Can't be empty");
+                return;
+            }
+            else{
+                checkUser();
+
+                String name = getIntent().getStringExtra("name");
+                UploadImageFileToFirebaseStorage(name, "Ortho");
+            }
+
             }
         });
     }
@@ -92,11 +110,6 @@ public class PostUploadActivity extends Activity {
         databaseReference2.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//                if (id.equals(UUID.randomUUID().toString()))
-//                    Toast.makeText(DetailsDoctor.this, "Same User", Toast.LENGTH_LONG).show();
-//
-//                else  Toast.makeText(DetailsDoctor.this, "New User", Toast.LENGTH_LONG).show();
-
             }
 
             @Override
@@ -128,7 +141,7 @@ public class PostUploadActivity extends Activity {
 
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+        if (requestCode == Image_Request_Code && resultCode == RESULT_OK && data != null && data.getData() != null) {
 
             FilePathUri = data.getData();
 
@@ -160,7 +173,7 @@ public class PostUploadActivity extends Activity {
     }
 
     //uploading Image
-    public void UploadImageFileToFirebaseStorage() {
+    public void UploadImageFileToFirebaseStorage(final String name, final String spec) {
 
         // Checking whether FilePathUri Is empty or not.
         if (FilePathUri != null) {
@@ -174,43 +187,38 @@ public class PostUploadActivity extends Activity {
             // Creating second StorageReference.
             final StorageReference storageReference2nd = storageReference.child(Storage_Path + System.currentTimeMillis() + "." + GetFileExtension(FilePathUri));
 
-            // Adding addOnSuccessListener to second StorageReference.
-            storageReference2nd.putFile(FilePathUri)
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            // Adding addOnSuccess
+            storageReference2nd.putFile(FilePathUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                    // Getting image name from EditText and store into string variable.
+                    String det = postDetails.getText().toString();
+
+                    // Hiding the progressDialog after done uploading.
+                    progressDialog.dismiss();
+
+                    storageReference2nd.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                            storageReference2nd.putFile(FilePathUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                @Override
-                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                                }
-                            });
-
-                            String desc = postDetails.getText().toString();
-                            // Hiding the progressDialog after done uploading.
-                            progressDialog.dismiss();
-
-                            String input = postDetails.getText().toString();
-
-                            // Showing toast message after done uploading.
-                            Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
-                            Toast.makeText(PostUploadActivity.this, FilePathUri.toString(),Toast.LENGTH_LONG).show();
+                        public void onSuccess(Uri uri) {
+                            String down = uri.toString();
+                            Toast.makeText(getApplicationContext(), down, Toast.LENGTH_LONG).show();
                             String uniqueId = UUID.randomUUID().toString();
-                            @SuppressWarnings("VisibleForTests")
-                            PostUploadInfo docUploadInfo = new PostUploadInfo(uniqueId, storageReference2nd.getDownloadUrl().toString(), input);
+
+                            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.getDefault());
+                            String currentDateandTime = sdf.format(new Date());
+
+                            PostUploadInfo docUploadInfo = new PostUploadInfo(name, spec, currentDateandTime, down);
 
                             // Getting image upload ID.
-                            String ImageUploadId = databaseReference.push().getKey();
-
                             // Adding image upload id s child element into databaseReference.
-                            databaseReference.child(ImageUploadId).setValue(docUploadInfo);
+                            databaseReference.child(uniqueId).setValue(docUploadInfo);
 
-                            Intent intent = new Intent(PostUploadActivity.this, HomeActivity.class);
-                            intent.putExtra("type","Doctor");
-                            startActivity(intent);
                         }
-                    })
+                    });
+
+                }
+            })
                     // If something goes wrong .
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -220,7 +228,7 @@ public class PostUploadActivity extends Activity {
                             progressDialog.dismiss();
 
                             // Showing exception erro message.
-                            Toast.makeText(PostUploadActivity.this, exception.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), exception.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     })
 
@@ -234,12 +242,10 @@ public class PostUploadActivity extends Activity {
 
                         }
                     });
+        } else {
+
+            Toast.makeText(getApplicationContext(), "Please Select Image or Add Image Name", Toast.LENGTH_LONG).show();
+
         }
-        else {
 
-            Toast.makeText(PostUploadActivity.this, "Please Select Image or Add Image Name", Toast.LENGTH_LONG).show();
-
-        }
-    }
-
-}
+    }}
