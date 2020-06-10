@@ -30,24 +30,7 @@ public class AmbulanceActivity extends Activity {
             }
         });
 
-        final BubbleNavigationConstraintView bubblenavigation = findViewById(R.id.bottomNavAmb);
-        bubblenavigation.setNavigationChangeListener(new BubbleNavigationChangeListener() {
-            @Override
-            public void onNavigationChanged(View view, int position) {
-                if (position == 0) {
-                    startActivity(new Intent(AmbulanceActivity.this, HomeActivity.class));
-                    Animatoo.animateFade(AmbulanceActivity.this);
-                } else if (position == 2) {
-                    startActivity(new Intent(AmbulanceActivity.this, AppointmentsActivity.class));
-                    Animatoo.animateFade(AmbulanceActivity.this);
-                } else if (position == 3) {
-                    startActivity(new Intent(AmbulanceActivity.this, CartActivity.class));
-                    Animatoo.animateFade(AmbulanceActivity.this);
-                } else if (position == 4) {
-                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-                    Animatoo.animateFade(AmbulanceActivity.this);
-                }
-            }});
+
     }
 
     @Override

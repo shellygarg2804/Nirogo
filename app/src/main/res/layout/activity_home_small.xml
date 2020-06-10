@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     tools:context=".HomeActivity">
@@ -27,12 +28,14 @@
                 android:background="@color/blue_bg"
                 android:layout_height="wrap_content">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/userIcon"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/user_white"
-                    android:layout_margin="10dp" />
+                <ImageView
+                    android:id="@+id/menu"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/menu"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="15dp"
+                    />
 
                 <LinearLayout
                     android:layout_width="250dp"
@@ -142,7 +145,6 @@
                     app:bt_icon="@drawable/user_black"
                     app:bt_title="@string/profile_tab"
                     />
-
             </com.gauravk.bubblenavigation.BubbleNavigationConstraintView>
         </RelativeLayout>
 
@@ -154,11 +156,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start|left"
         app:headerLayout="@layout/activity_nav_drawer_header"
-        app:menu="@menu/nav_menu" >
-
+        app:menu="@menu/nav_menu">
     </com.google.android.material.navigation.NavigationView>
-
-
-
 
 </androidx.drawerlayout.widget.DrawerLayout>
