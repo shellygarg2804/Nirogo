@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,9 +24,17 @@ import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.nirogo.Adapters.Feed.FeedAdapter;
 import com.example.nirogo.Adapters.Feed.ItemAdapter;
 import com.example.nirogo.Adapters.Appointments.AppointmentsActivity;
+import com.example.nirogo.Post.PostUploadInfo;
 import com.gauravk.bubblenavigation.BubbleNavigationConstraintView;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,11 +43,19 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    List<ItemAdapter> list = new ArrayList<>();
+
+    List<PostUploadInfo> list = new ArrayList<>();
     FeedAdapter postAdapter;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+    RecyclerView recyclerview;
+    //db
+    DatabaseReference databaseReference;
+    StorageReference storageReference;
+    ProgressDialog progressDialog ;
+
+    String Database_Path = "Post/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +69,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
         else
         setContentView(R.layout.activity_home);
+
+        storageReference = FirebaseStorage.getInstance().getReference();
 
         //setting up navigation drawer
         drawerLayout= (DrawerLayout)findViewById(R.id.drawerLayout);
@@ -89,55 +108,35 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        RecyclerView recyclerview = findViewById(R.id.recyclerView);
+        recyclerview = findViewById(R.id.recyclerView);
 
-        postAdapter = new FeedAdapter(list, this);
-        recyclerview.setAdapter(postAdapter);
         recyclerview.setLayoutManager(new LinearLayoutManager(this));
-        postAdapter.notifyDataSetChanged();
 
-        ItemAdapter itemAdapter = new ItemAdapter();
-        itemAdapter.setImageUser(R.drawable.user_1);
-        itemAdapter.setImagePost(R.drawable.rsz_post_image_1);
-        itemAdapter.setPostDetails("I found about this medicine ");
-        itemAdapter.setUserName("Dr. Abhishek Mishra");
-        itemAdapter.setUserDetails("B.tech. 2nd Year");
-        itemAdapter.setTimeAgo("1 hr");
-        itemAdapter.setNoLikes("50");
-        list.add(itemAdapter);
+        progressDialog  = new ProgressDialog(this);
+        progressDialog.setTitle("Loading Posts");
+        progressDialog.show();
 
-        itemAdapter = new ItemAdapter();
-        itemAdapter.setImageUser(R.drawable.user_2);
-        itemAdapter.setImagePost(R.drawable.rsz_post_image_2);
-        itemAdapter.setPostDetails("Check This Out");
-        itemAdapter.setUserName("Kautuk Dwivedi");
-        itemAdapter.setUserDetails("B.tech. Graduate");
-        itemAdapter.setTimeAgo("2 hr");
-        itemAdapter.setNoLikes("100");
-        list.add(itemAdapter);
+        databaseReference = FirebaseDatabase.getInstance().getReference(Database_Path);
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()){
+                    PostUploadInfo itemAdapter = postSnapshot.getValue(PostUploadInfo.class);
+                    list.add(itemAdapter);
+                }
 
+                postAdapter = new FeedAdapter(list, getApplicationContext());
+                recyclerview.setAdapter(postAdapter);
 
-        itemAdapter = new ItemAdapter();
-        itemAdapter.setImageUser(R.drawable.user_3);
-        itemAdapter.setImagePost(R.drawable.rsz_post_image_3);
-        itemAdapter.setPostDetails("I completed this Course");
-        itemAdapter.setUserName("Anmol Sharma");
-        itemAdapter.setUserDetails("B.tech. Graduate");
-        itemAdapter.setTimeAgo("4 hr");
-        itemAdapter.setNoLikes("80");
-        list.add(itemAdapter);
+                progressDialog.dismiss();
+            }
 
-
-        itemAdapter = new ItemAdapter();
-        itemAdapter.setImageUser(R.drawable.user_4);
-        itemAdapter.setImagePost(R.drawable.rsz_post_image_4);
-        itemAdapter.setPostDetails("I completed this Course which i never started");
-        itemAdapter.setUserName("XYZ ABC");
-        itemAdapter.setUserDetails("B.tech. Graduate");
-        itemAdapter.setTimeAgo("5 hr");
-        itemAdapter.setNoLikes("10");
-        list.add(itemAdapter);
-
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+            }
+        });
 
         final BubbleNavigationConstraintView bubblenavigation = findViewById(R.id.bottomNav);
         bubblenavigation.setCurrentActiveItem(0);

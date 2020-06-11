@@ -96,9 +96,8 @@ public class PostUploadActivity extends Activity {
             }
             else{
                 checkUser();
-
                 String name = getIntent().getStringExtra("name");
-                UploadImageFileToFirebaseStorage(name, "Ortho");
+                UploadImageFileToFirebaseStorage("dr abc", "Ortho");
             }
 
             }
@@ -193,7 +192,7 @@ public class PostUploadActivity extends Activity {
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
                     // Getting image name from EditText and store into string variable.
-                    String det = postDetails.getText().toString();
+                    final String det = postDetails.getText().toString();
 
                     // Hiding the progressDialog after done uploading.
                     progressDialog.dismiss();
@@ -208,13 +207,15 @@ public class PostUploadActivity extends Activity {
                             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.getDefault());
                             String currentDateandTime = sdf.format(new Date());
 
-                            PostUploadInfo docUploadInfo = new PostUploadInfo(name, spec, currentDateandTime, down);
+                            PostUploadInfo docUploadInfo = new PostUploadInfo("https://www.hiclipart.com/free-transparent-background-png-clipart-hpiwa",name, spec, det, "abc", currentDateandTime, down);
 
                             // Getting image upload ID.
                             // Adding image upload id s child element into databaseReference.
                             databaseReference.child(uniqueId).setValue(docUploadInfo);
 
-                        }
+                            Intent intent = new Intent(PostUploadActivity.this, HomeActivity.class);
+                            startActivity(intent);
+                                }
                     });
 
                 }
