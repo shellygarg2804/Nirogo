@@ -14,18 +14,19 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.nirogo.Post.PostUploadInfo;
 import com.example.nirogo.ProfileActivity;
 import com.example.nirogo.R;
-import com.example.nirogo.ScreenSize;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<ItemAdapter> list;
+    private List<PostUploadInfo> list;
     Context context;
 
-    public FeedAdapter(List<ItemAdapter> list, Context context) {
+    public FeedAdapter(List<PostUploadInfo> list, Context context) {
         this.list = list;
         this.context = context;
     }
@@ -44,15 +45,15 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
-        ItemAdapter itemAdapter = list.get(position);
+        PostUploadInfo itemAdapter = list.get(position);
 
-        ((ViewHolder) holder).nameUser.setText(itemAdapter.getUserName());
-        ((ViewHolder) holder).descUser.setText(itemAdapter.getUserDetails());
-        ((ViewHolder) holder).descPost.setText(itemAdapter.getPostDetails());
-        ((ViewHolder) holder).timePost.setText(itemAdapter.getTimeAgo());
-        ((ViewHolder) holder).imgUser.setImageResource(itemAdapter.getImageUser());
-        ((ViewHolder) holder).imgPost.setImageResource(itemAdapter.getImagePost());
-        ((ViewHolder) holder).numLikes.setText(itemAdapter.getNoLikes());
+        ((ViewHolder) holder).nameUser.setText(itemAdapter.getDocName());
+        ((ViewHolder) holder).descUser.setText(itemAdapter.getDocSpec());
+        ((ViewHolder) holder).descPost.setText(itemAdapter.getDesc());
+        ((ViewHolder) holder).timePost.setText(itemAdapter.getTime());
+        Picasso.get().load(itemAdapter.getUrl()).into(((ViewHolder) holder).imgPost);
+        Picasso.get().load(itemAdapter.getUrl()).into(((ViewHolder) holder).docImage);
+        ((ViewHolder) holder).numLikes.setText(itemAdapter.getLikes());
 
     }
 
@@ -62,8 +63,8 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView nameUser, descUser, descPost, timePost;
-        public ImageView imgUser, imgPost;
+        TextView nameUser, descUser, descPost, timePost;
+        ImageView docImage, imgPost;
         LinearLayout likelay, share, comment;
         ImageView btnLike;
         TextView txtLike, numLikes;
@@ -76,7 +77,7 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             descUser = itemView.findViewById(R.id.positionUser);
             descPost = itemView.findViewById(R.id.descPost);
             timePost = itemView.findViewById(R.id.timePost);
-            imgUser = itemView.findViewById(R.id.imageUser);
+            docImage = itemView.findViewById(R.id.imageUser);
             imgPost = itemView.findViewById(R.id.imagePost);
 
             likelay = itemView.findViewById(R.id.likeLayout);
@@ -105,7 +106,6 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     numLikes.setText(Integer.toString(like));
                 }
             });
-
 
             nameUser.setOnClickListener(new View.OnClickListener() {
                 @Override

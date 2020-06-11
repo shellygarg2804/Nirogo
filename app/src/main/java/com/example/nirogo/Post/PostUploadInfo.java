@@ -2,14 +2,35 @@ package com.example.nirogo.Post;
 
 public class PostUploadInfo {
 
-    String docName, speciality, time;
-    String desc;
+String docImage, docName, docSpec, time, desc, url, likes;
 
-    public PostUploadInfo(String docName, String speciality, String time, String desc) {
+    public PostUploadInfo() {
+    }
+
+    public PostUploadInfo( String docImage, String docName, String docSpec, String time, String desc, String url, String likes) {
+        this.docImage = docImage;
         this.docName = docName;
-        this.speciality = speciality;
+        this.docSpec = docSpec;
         this.time = time;
         this.desc = desc;
+        this.url = url;
+        this.likes = likes;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public String getDocImage() {
+        return docImage;
+    }
+
+    public void setDocImage(String docImage) {
+        this.docImage = docImage;
     }
 
     public String getDocName() {
@@ -20,12 +41,12 @@ public class PostUploadInfo {
         this.docName = docName;
     }
 
-    public String getSpeciality() {
-        return speciality;
+    public String getDocSpec() {
+        return docSpec;
     }
 
-    public void setSpeciality(String speciality) {
-        this.speciality = speciality;
+    public void setDocSpec(String docSpec) {
+        this.docSpec = docSpec;
     }
 
     public String getTime() {
@@ -36,11 +57,19 @@ public class PostUploadInfo {
         this.time = time;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getUrl() {
+        return url;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getLikes() {
+        return likes;
+    }
+
+    public void setLikes(String likes) {
+        this.likes = likes;
     }
 }

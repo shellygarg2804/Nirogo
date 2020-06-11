@@ -6,9 +6,18 @@ public class ItemAdapter {
     private String userDetails;
     private String postDetails;
     private String timeAgo;
+    private String imageUrl;
 
     public String getNoLikes() {
         return noLikes;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public void setNoLikes(String noLikes) {
