@@ -53,7 +53,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     //db
     DatabaseReference databaseReference;
     StorageReference storageReference;
-    ProgressDialog progressDialog ;
 
     String Database_Path = "Post/";
 
@@ -78,6 +77,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         toolbar=(Toolbar)findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
+
 
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
@@ -112,11 +112,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         recyclerview.setLayoutManager(new LinearLayoutManager(this));
 
-        progressDialog  = new ProgressDialog(this);
-        progressDialog.setTitle("Loading Posts");
-        progressDialog.show();
-
         databaseReference = FirebaseDatabase.getInstance().getReference(Database_Path);
+
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -124,17 +121,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     PostUploadInfo itemAdapter = postSnapshot.getValue(PostUploadInfo.class);
                     list.add(itemAdapter);
                 }
-
                 postAdapter = new FeedAdapter(list, getApplicationContext());
                 recyclerview.setAdapter(postAdapter);
-
-                progressDialog.dismiss();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
-                progressDialog.dismiss();
             }
         });
 

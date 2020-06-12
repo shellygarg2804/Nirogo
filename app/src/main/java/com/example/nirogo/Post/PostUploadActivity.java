@@ -9,6 +9,7 @@ import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -19,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nirogo.Adapters.Feed.FeedAdapter;
 import com.example.nirogo.Doctor.DetailsDoctor;
 import com.example.nirogo.Doctor.DocUploadInfo;
 import com.example.nirogo.HomeActivity;
@@ -30,6 +32,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -53,11 +56,13 @@ public class PostUploadActivity extends Activity {
     // Root Database Name for Firebase Database.
     String Database_Path = "Post/";
 
+    DatabaseReference databaseReference_fetch;
     StorageReference storageReference ;
     DatabaseReference databaseReference;
     ProgressDialog progressDialog ;
     Uri FilePathUri;
 
+    String docname, docspec, doccity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,9 +88,9 @@ public class PostUploadActivity extends Activity {
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(Intent.createChooser(intent, "Please Select Image"), Image_Request_Code);
-
             }
         });
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,9 +101,30 @@ public class PostUploadActivity extends Activity {
             }
             else{
                 checkUser();
-                String name = getIntent().getStringExtra("name");
-                UploadImageFileToFirebaseStorage("dr abc", "Ortho");
+
+                final String Database_Path_Fetch = "Doctor/" ;
+
+                databaseReference_fetch = FirebaseDatabase.getInstance().getReference(Database_Path_Fetch);
+                databaseReference_fetch.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                            DocUploadInfo docUploadInfo = postSnapshot.getValue(DocUploadInfo.class);
+
+                           final String name = docUploadInfo.getName();
+                           final String spec = docUploadInfo.getSpeciality();
+
+                            UploadImageFileToFirebaseStorage(name, spec);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
+
 
             }
         });
@@ -149,8 +175,9 @@ public class PostUploadActivity extends Activity {
                 // Getting selected image into Bitmap.
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), FilePathUri);
 
+                Bitmap newBm = getResizedBitmap(bitmap, 300, 300);
                 // Setting up bitmap selected image into ImageView.
-                postphoto.setImageBitmap(bitmap);
+                postphoto.setImageBitmap(newBm);
 
             }
             catch (IOException e) {
@@ -158,6 +185,25 @@ public class PostUploadActivity extends Activity {
                 e.printStackTrace();
             }
         }
+    }
+
+
+    public Bitmap getResizedBitmap(Bitmap bm, int newHeight, int newWidth) {
+        int width = bm.getWidth();
+        int height = bm.getHeight();
+        float scaleWidth = ((float) newWidth) / width;
+        float scaleHeight = ((float) newHeight) / height;
+
+        // create a matrix for the manipulation
+        Matrix matrix = new Matrix();
+
+        // resize the bit map
+        matrix.postScale(scaleWidth, scaleHeight);
+
+        // recreate the new Bitmap
+        Bitmap resizedBitmap = Bitmap.createBitmap(bm, 0, 0, width, height, matrix, false);
+
+        return resizedBitmap;
     }
 
     public String GetFileExtension(Uri uri) {
@@ -186,6 +232,7 @@ public class PostUploadActivity extends Activity {
             // Creating second StorageReference.
             final StorageReference storageReference2nd = storageReference.child(Storage_Path + System.currentTimeMillis() + "." + GetFileExtension(FilePathUri));
 
+
             // Adding addOnSuccess
             storageReference2nd.putFile(FilePathUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
@@ -197,6 +244,8 @@ public class PostUploadActivity extends Activity {
                     // Hiding the progressDialog after done uploading.
                     progressDialog.dismiss();
 
+
+
                     storageReference2nd.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
@@ -207,7 +256,7 @@ public class PostUploadActivity extends Activity {
                             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.getDefault());
                             String currentDateandTime = sdf.format(new Date());
 
-                            PostUploadInfo docUploadInfo = new PostUploadInfo("https://www.hiclipart.com/free-transparent-background-png-clipart-hpiwa",name, spec, det, "abc", currentDateandTime, down);
+                            PostUploadInfo docUploadInfo = new PostUploadInfo(name, spec, currentDateandTime, det, down, 4);
 
                             // Getting image upload ID.
                             // Adding image upload id s child element into databaseReference.

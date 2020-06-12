@@ -4,6 +4,7 @@ import android.net.Uri;
 
 import com.google.android.gms.tasks.Task;
 
+
 public class DocUploadInfo {
 
     public String name;
@@ -15,7 +16,10 @@ public class DocUploadInfo {
     public String city;
     public String speciality;
 
-    public DocUploadInfo(String name, String speciality ,String age, String city,String url) {
+    public DocUploadInfo() {
+    }
+
+    public DocUploadInfo(String name, String speciality , String age, String city, String url) {
         this.name = name;
         this.age = age;
         this.city = city;
