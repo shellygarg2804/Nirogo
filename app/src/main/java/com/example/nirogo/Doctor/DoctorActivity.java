@@ -3,6 +3,7 @@ package com.example.nirogo.Doctor;
 import androidx.annotation.NonNull;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -47,6 +48,8 @@ public class DoctorActivity extends Activity {
     private EditText email;
     private EditText password;
     private String size;
+    private  String uid;
+    private ProgressDialog progressDialog;
 
     @Override
     public void onStart() {
@@ -56,6 +59,8 @@ public class DoctorActivity extends Activity {
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         if (user != null) {
             Intent intent = new Intent(DoctorActivity.this, HomeActivity.class);
+            uid=user.getUid();
+            intent.putExtra("USER UID",uid);
             startActivity(intent);
         }
     }
@@ -120,6 +125,8 @@ public class DoctorActivity extends Activity {
                     return;
                 }
                 createrequestusingEmailPassword(emailtext, passwordtext);
+                progressDialog.setTitle("Signing Up");
+                progressDialog.show();
             }
         });
 
@@ -161,6 +168,9 @@ public class DoctorActivity extends Activity {
                 Log.d(LOG_TAG, "firebaseAuthWithGoogle:" + account.getId());
 
                 firebaseAuthWithGoogle(account.getIdToken());
+                FirebaseUser user = mAuth.getCurrentUser();
+                uid= user.getUid();
+                Log.i("USER UID",uid);
 
             } catch (ApiException e) {
 
@@ -183,8 +193,11 @@ public class DoctorActivity extends Activity {
 
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            uid= user.getUid();
+                            Log.i("USER UID",uid);
                             Toast.makeText(DoctorActivity.this,"SignIn Successful",Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(DoctorActivity.this, HomeActivity.class);
+                            Intent intent = new Intent(DoctorActivity.this, DetailsDoctor.class);
+                            intent.putExtra("USER UID",uid);
                             startActivity(intent);
                         } else {
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
@@ -201,6 +214,7 @@ public class DoctorActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DoctorActivity.this, DetailsDoctor.class);
+                intent.putExtra("USER UID",uid);
                 startActivity(intent);
             }
         });
@@ -214,10 +228,14 @@ public class DoctorActivity extends Activity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            progressDialog.dismiss();
                             Toast.makeText(DoctorActivity.this, "Signup Successful", Toast.LENGTH_SHORT);
                             FirebaseUser user = mAuth.getCurrentUser();
-                            startActivity(new Intent(DoctorActivity.this,DetailsDoctor.class));
-
+                            uid= user.getUid();
+                            Log.i("USER UID",uid);
+                            Intent intent=new Intent(DoctorActivity.this,DetailsDoctor.class);
+                            intent.putExtra("USER UID",uid);
+                            startActivity(intent);
 
 
                         } else {
@@ -227,17 +245,21 @@ public class DoctorActivity extends Activity {
                             // if user enters wrong email.
 
                             catch (FirebaseAuthInvalidCredentialsException malformedEmail) {
+                                progressDialog.dismiss();
                                 Log.d(TAG, "onComplete: malformed_email");
                                 Toast.makeText(DoctorActivity.this, "Enter Correct Email", Toast.LENGTH_SHORT).show();
                                 return;
 
                             } catch (FirebaseAuthUserCollisionException existEmail) {
+                                progressDialog.dismiss();
                                 Log.d(TAG, "onComplete: exist_email");
                                 Toast.makeText(DoctorActivity.this, "Email already Exist", Toast.LENGTH_SHORT).show();
                                 return;
 
 
                             } catch (Exception e) {
+                                progressDialog.dismiss();
+                                Toast.makeText(DoctorActivity.this,"Some error in signing up",Toast.LENGTH_LONG).show();
                                 Log.d(TAG, "onComplete: " + e.getMessage());
                             }
                         }

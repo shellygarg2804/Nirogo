@@ -8,23 +8,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
-
-import android.app.ActionBar;
-import android.app.Activity;
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.nirogo.Adapters.Feed.FeedAdapter;
-import com.example.nirogo.Adapters.Feed.ItemAdapter;
 import com.example.nirogo.Adapters.Appointments.AppointmentsActivity;
 import com.example.nirogo.Post.PostUploadInfo;
 import com.gauravk.bubblenavigation.BubbleNavigationConstraintView;
@@ -37,7 +29,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,6 +48,30 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     StorageReference storageReference;
 
     String Database_Path = "Post/";
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        databaseReference = FirebaseDatabase.getInstance().getReference(Database_Path);
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()){
+                    PostUploadInfo itemAdapter = postSnapshot.getValue(PostUploadInfo.class);
+                    list.add(itemAdapter);
+                }
+                postAdapter = new FeedAdapter(list, getApplicationContext());
+                recyclerview.setAdapter(postAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,12 +94,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         toolbar=(Toolbar)findViewById(R.id.toolbar);
 
          setSupportActionBar(toolbar);
-         ActionBar actionBar= getActionBar();
 
 
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
-       // actionBar.setDisplayHomeAsUpEnabled(true);
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
@@ -115,25 +128,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         recyclerview = findViewById(R.id.recyclerView);
 
         recyclerview.setLayoutManager(new LinearLayoutManager(this));
-
-        databaseReference = FirebaseDatabase.getInstance().getReference(Database_Path);
-
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()){
-                    PostUploadInfo itemAdapter = postSnapshot.getValue(PostUploadInfo.class);
-                    list.add(itemAdapter);
-                }
-                postAdapter = new FeedAdapter(list, getApplicationContext());
-                recyclerview.setAdapter(postAdapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
-            }
-        });
 
         final BubbleNavigationConstraintView bubblenavigation = findViewById(R.id.bottomNav);
         bubblenavigation.setCurrentActiveItem(0);
