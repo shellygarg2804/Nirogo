@@ -60,6 +60,8 @@ public class DetailsDoctor extends Activity {
 
     EditText nameIn, ageIn, specIn, cityIn;
     ImageView cameraBut, cameraDisp;
+    String uniqueId = UUID.randomUUID().toString();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -248,9 +250,8 @@ public class DetailsDoctor extends Activity {
                                 public void onSuccess(Uri uri) {
                                 String down = uri.toString();
                                     Toast.makeText(getApplicationContext(), down, Toast.LENGTH_LONG).show();
-                                    String uniqueId = UUID.randomUUID().toString();
 
-                                    DocUploadInfo docUploadInfo = new DocUploadInfo("Dr," + name,speciality, age, city, down);
+                                    DocUploadInfo docUploadInfo = new DocUploadInfo(name,speciality, age, city, down);
 
                                     // Getting image upload ID.
                                     // Adding image upload id s child element into databaseReference.
