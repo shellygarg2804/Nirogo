@@ -52,9 +52,7 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         ((ViewHolder) holder).descPost.setText(itemAdapter.getDesc());
         ((ViewHolder) holder).timePost.setText(itemAdapter.getTime());
         Picasso.get().load(itemAdapter.getUrl()).into(((ViewHolder) holder).imgPost);
-        Picasso.get().load(itemAdapter.getUrl()).into(((ViewHolder) holder).docImage);
-        ((ViewHolder) holder).numLikes.setText(itemAdapter.getLikes());
-
+       // ((ViewHolder) holder).txtLike.setText(itemAdapter.getLikes());
     }
 
     @Override
@@ -65,7 +63,7 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView nameUser, descUser, descPost, timePost;
         ImageView docImage, imgPost;
-        LinearLayout likelay, share, comment;
+        LinearLayout likelay;
         ImageView btnLike;
         TextView txtLike, numLikes;
 
