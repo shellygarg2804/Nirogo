@@ -1,7 +1,6 @@
 package com.example.nirogo;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -10,13 +9,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -77,10 +79,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         navigationView= (NavigationView)findViewById(R.id.navigation);
         toolbar=(Toolbar)findViewById(R.id.toolbar);
 
-        setSupportActionBar(toolbar);
+         setSupportActionBar(toolbar);
+         ActionBar actionBar= getActionBar();
 
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
+       // actionBar.setDisplayHomeAsUpEnabled(true);
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
