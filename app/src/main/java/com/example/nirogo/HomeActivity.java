@@ -22,6 +22,7 @@ import com.example.nirogo.Post.PostUploadInfo;
 import com.gauravk.bubblenavigation.BubbleNavigationConstraintView;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -46,8 +47,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     //db
     DatabaseReference databaseReference;
     StorageReference storageReference;
-
-    String Database_Path = "Post/";
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onStart() {
@@ -76,6 +76,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        String id = firebaseAuth.getCurrentUser().toString();
+        String Database_Path = "Post/" + id + "/";
 
         ScreenSize screenSize = new ScreenSize();
         String size = screenSize.screenCheck(HomeActivity.this);

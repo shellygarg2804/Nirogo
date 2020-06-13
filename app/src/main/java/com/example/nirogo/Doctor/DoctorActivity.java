@@ -19,6 +19,7 @@ import com.example.nirogo.HomeActivity;
 import com.example.nirogo.MainActivity;
 import com.example.nirogo.OptionActivity;
 import com.example.nirogo.R;
+import com.example.nirogo.ScreenSize;
 import com.example.nirogo.User.UserActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -68,7 +69,12 @@ public class DoctorActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if ((MainActivity.size).equalsIgnoreCase("Small")) {
+
+
+        ScreenSize screenSize = new ScreenSize();
+        String size = screenSize.screenCheck(DoctorActivity.this);
+
+        if (size.equalsIgnoreCase("Small")) {
             setContentView(R.layout.activity_doctor_small);
             Log.i("Screen Return Value","Small");
         }
