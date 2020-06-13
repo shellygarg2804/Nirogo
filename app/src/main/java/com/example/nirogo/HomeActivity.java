@@ -32,6 +32,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -48,37 +49,44 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     DatabaseReference databaseReference;
     StorageReference storageReference;
     FirebaseAuth firebaseAuth;
+    String Database_Path;
 
     @Override
     protected void onStart() {
         super.onStart();
-        databaseReference = FirebaseDatabase.getInstance().getReference(Database_Path);
+        final String id = firebaseAuth.getCurrentUser().getUid();
+        Log.i("USER ID HOME ACTIVITY",id);
+        String Database_Path = "Post/" + id + "/";
+            databaseReference = FirebaseDatabase.getInstance().getReference(Database_Path);
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()){
-                    PostUploadInfo itemAdapter = postSnapshot.getValue(PostUploadInfo.class);
-                    list.add(itemAdapter);
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                        Map<String,Object> item= (Map<String, Object>) postSnapshot.getValue();
+                        Log.i("MAP ITEM NAME",item.get("likes").toString());
+                    }
+                    postAdapter = new FeedAdapter(list, getApplicationContext());
+                    recyclerview.setAdapter(postAdapter);
                 }
-                postAdapter = new FeedAdapter(list, getApplicationContext());
-                recyclerview.setAdapter(postAdapter);
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
-            }
-        });
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
+                }
+            });
 
-    }
+        }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        firebaseAuth = FirebaseAuth.getInstance();
 
-        String id = firebaseAuth.getCurrentUser().toString();
-        String Database_Path = "Post/" + id + "/";
+        String id = firebaseAuth.getCurrentUser().getUid();
+        Log.i("USER ID HOME ACTIVITY",id);
+         Database_Path = "Post/" + id + "/";
 
         ScreenSize screenSize = new ScreenSize();
         String size = screenSize.screenCheck(HomeActivity.this);

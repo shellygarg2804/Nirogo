@@ -35,7 +35,6 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-
 import static android.content.ContentValues.TAG;
 
 public class DoctorActivity extends Activity {
@@ -131,8 +130,7 @@ public class DoctorActivity extends Activity {
                     return;
                 }
                 createrequestusingEmailPassword(emailtext, passwordtext);
-                progressDialog.setTitle("Signing Up");
-                progressDialog.show();
+
             }
         });
 
@@ -234,7 +232,6 @@ public class DoctorActivity extends Activity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            progressDialog.dismiss();
                             Toast.makeText(DoctorActivity.this, "Signup Successful", Toast.LENGTH_SHORT);
                             FirebaseUser user = mAuth.getCurrentUser();
                             uid= user.getUid();
@@ -268,8 +265,7 @@ public class DoctorActivity extends Activity {
                                 Toast.makeText(DoctorActivity.this,"Some error in signing up",Toast.LENGTH_LONG).show();
                                 Log.d(TAG, "onComplete: " + e.getMessage());
                             }
-                        }
-                    }
+                        } }
                 });
     }
 }
