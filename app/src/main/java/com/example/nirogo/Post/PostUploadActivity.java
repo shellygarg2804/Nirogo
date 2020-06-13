@@ -27,6 +27,7 @@ import com.example.nirogo.HomeActivity;
 import com.example.nirogo.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -61,6 +62,7 @@ public class PostUploadActivity extends Activity {
     DatabaseReference databaseReference;
     ProgressDialog progressDialog ;
     Uri FilePathUri;
+    FirebaseAuth firebaseAuth;
 
     String docname, docspec, doccity;
 
@@ -113,8 +115,8 @@ public class PostUploadActivity extends Activity {
 
                            final String name = docUploadInfo.getName();
                            final String spec = docUploadInfo.getSpeciality();
-
-                            UploadImageFileToFirebaseStorage(name, spec);
+                           String docimage = docUploadInfo.imageURL;;
+                            UploadImageFileToFirebaseStorage(name, spec, docimage);
                         }
                     }
 
@@ -218,7 +220,7 @@ public class PostUploadActivity extends Activity {
     }
 
     //uploading Image
-    public void UploadImageFileToFirebaseStorage(final String name, final String spec) {
+    public void UploadImageFileToFirebaseStorage(final String name, final String spec, final String profile) {
 
         // Checking whether FilePathUri Is empty or not.
         if (FilePathUri != null) {
@@ -251,16 +253,16 @@ public class PostUploadActivity extends Activity {
                         public void onSuccess(Uri uri) {
                             String down = uri.toString();
                             Toast.makeText(getApplicationContext(), down, Toast.LENGTH_LONG).show();
-                            String uniqueId = UUID.randomUUID().toString();
 
                             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.getDefault());
                             String currentDateandTime = sdf.format(new Date());
 
-                            PostUploadInfo docUploadInfo = new PostUploadInfo(name, spec, currentDateandTime, det, down, 4);
+                            String id = firebaseAuth.getCurrentUser().toString();
+                            PostUploadInfo docUploadInfo = new PostUploadInfo(profile, name, spec, currentDateandTime, det, down, 4);
 
                             // Getting image upload ID.
                             // Adding image upload id s child element into databaseReference.
-                            databaseReference.child(uniqueId).setValue(docUploadInfo);
+                            databaseReference.child(id).setValue(docUploadInfo);
 
                             Intent intent = new Intent(PostUploadActivity.this, HomeActivity.class);
                             startActivity(intent);
