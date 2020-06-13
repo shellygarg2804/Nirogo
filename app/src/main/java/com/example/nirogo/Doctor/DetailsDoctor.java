@@ -25,6 +25,7 @@ import com.example.nirogo.R;
 import com.example.nirogo.ScreenSize;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,7 +42,7 @@ import java.util.UUID;
 public class DetailsDoctor extends Activity {
 
     // Folder path for Firebase Storage.
-    String Storage_Path = "";
+    String Storage_Path = "Doctor/";
 
     // Root Database Name for Firebase Database.
     String Database_Path = "Doctor/";
@@ -60,8 +61,8 @@ public class DetailsDoctor extends Activity {
 
     EditText nameIn, ageIn, specIn, cityIn;
     ImageView cameraBut, cameraDisp;
-    String uniqueId = UUID.randomUUID().toString();
 
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -255,7 +256,9 @@ public class DetailsDoctor extends Activity {
 
                                     // Getting image upload ID.
                                     // Adding image upload id s child element into databaseReference.
-                                    databaseReference.child(uniqueId).setValue(docUploadInfo);
+
+                                    String id = firebaseAuth.getCurrentUser().toString();
+                                    databaseReference.child(id).setValue(docUploadInfo);
 
                                     Intent intent = new Intent(DetailsDoctor.this, HomeActivity.class);
                                     intent.putExtra("url",down);

@@ -8,7 +8,8 @@ int likes;
     public PostUploadInfo() {
     }
 
-    public PostUploadInfo(String docName, String docSpec, String time, String desc, String url, int likes) {
+    public PostUploadInfo(String docimage, String docName, String docSpec, String time, String desc, String url, int likes) {
+        this.docImage = docimage;
         this.docName = docName;
         this.docSpec = docSpec;
         this.time = time;
