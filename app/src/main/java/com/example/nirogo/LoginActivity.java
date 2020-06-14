@@ -76,7 +76,6 @@ public class LoginActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         ScreenSize screenSize = new ScreenSize();
         String size = screenSize.screenCheck(LoginActivity.this);
         if (size.equalsIgnoreCase("Small")) {
@@ -87,7 +86,6 @@ public class LoginActivity extends Activity {
             setContentView(R.layout.activity_login);
 
         Button skip = findViewById(R.id.skipBtn);
-        skip.setVisibility(View.GONE);
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

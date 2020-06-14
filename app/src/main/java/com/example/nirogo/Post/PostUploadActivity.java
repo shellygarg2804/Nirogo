@@ -2,6 +2,7 @@ package com.example.nirogo.Post;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -12,7 +13,6 @@ import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.EditText;
@@ -20,6 +20,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nirogo.Adapters.Feed.FeedAdapter;
+import com.example.nirogo.Doctor.DetailsDoctor;
 import com.example.nirogo.Doctor.DocUploadInfo;
 import com.example.nirogo.HomeActivity;
 import com.example.nirogo.R;
@@ -48,26 +50,27 @@ public class PostUploadActivity extends Activity {
     EditText postDetails;
     TextView submit;
     int Image_Request_Code = 7;
+
     // Folder path for Firebase Storage.
     String Storage_Path = "";
+
     // Root Database Name for Firebase Database.
     String Database_Path = "Post/";
-    final String Database_Path_Fetch = "Doctor/" ;
+
     DatabaseReference databaseReference_fetch;
     StorageReference storageReference ;
     DatabaseReference databaseReference;
     ProgressDialog progressDialog ;
     Uri FilePathUri;
-    private FirebaseAuth mauth;
-    String user_uid;
+    FirebaseAuth firebaseAuth;
+
+    String docname, docspec, doccity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_upload);
-        mauth= FirebaseAuth.getInstance();
-        user_uid= mauth.getCurrentUser().getUid();
-
+        firebaseAuth= FirebaseAuth.getInstance();
 
         storageReference = FirebaseStorage.getInstance().getReference();
         // Assign FirebaseDatabase instance with root database name.
@@ -78,7 +81,8 @@ public class PostUploadActivity extends Activity {
         postDetails = findViewById(R.id.enterText);
         postphoto = findViewById(R.id.imagePost);
         camera = findViewById(R.id.camera);
-        submit = findViewById(R.id.btnSubmitPost);
+        submit = findViewById(R.id.submitPost);
+
 
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +105,8 @@ public class PostUploadActivity extends Activity {
             else{
                 checkUser();
 
+                final String Database_Path_Fetch = "Doctor/" ;
+
                 databaseReference_fetch = FirebaseDatabase.getInstance().getReference(Database_Path_Fetch);
                 databaseReference_fetch.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -110,9 +116,8 @@ public class PostUploadActivity extends Activity {
 
                            final String name = docUploadInfo.getName();
                            final String spec = docUploadInfo.getSpeciality();
-                           final String img = docUploadInfo.getImageURL();
-                            Log.i("DOCTOR PROPIC",img);
-                           UploadImageFileToFirebaseStorage(img, name, spec);
+                           String docimage = docUploadInfo.imageURL;;
+                            UploadImageFileToFirebaseStorage(name, spec, docimage);
                         }
                     }
 
@@ -216,7 +221,7 @@ public class PostUploadActivity extends Activity {
     }
 
     //uploading Image
-    public void UploadImageFileToFirebaseStorage( final String img, final String name, final String spec) {
+    public void UploadImageFileToFirebaseStorage(final String name, final String spec, final String profile) {
 
         // Checking whether FilePathUri Is empty or not.
         if (FilePathUri != null) {
@@ -230,6 +235,7 @@ public class PostUploadActivity extends Activity {
             // Creating second StorageReference.
             final StorageReference storageReference2nd = storageReference.child(Storage_Path + System.currentTimeMillis() + "." + GetFileExtension(FilePathUri));
 
+
             // Adding addOnSuccess
             storageReference2nd.putFile(FilePathUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
@@ -241,20 +247,23 @@ public class PostUploadActivity extends Activity {
                     // Hiding the progressDialog after done uploading.
                     progressDialog.dismiss();
 
+
+
                     storageReference2nd.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
                             String down = uri.toString();
+                            Toast.makeText(getApplicationContext(), down, Toast.LENGTH_LONG).show();
 
                             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.getDefault());
                             String currentDateandTime = sdf.format(new Date());
 
-                            PostUploadInfo docUploadInfo = new PostUploadInfo(img, name, spec, currentDateandTime, det, down ,user_uid);
+                            String id = firebaseAuth.getCurrentUser().getUid();
+                            PostUploadInfo docUploadInfo = new PostUploadInfo(profile, name, spec, currentDateandTime, det, down, 4);
 
                             // Getting image upload ID.
                             // Adding image upload id s child element into databaseReference.
-
-                            databaseReference.child(UUID.randomUUID().toString()).setValue(docUploadInfo);
+                            databaseReference.child(id).setValue(docUploadInfo);
 
                             Intent intent = new Intent(PostUploadActivity.this, HomeActivity.class);
                             startActivity(intent);

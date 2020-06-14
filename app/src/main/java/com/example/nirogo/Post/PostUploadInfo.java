@@ -2,19 +2,20 @@ package com.example.nirogo.Post;
 
 public class PostUploadInfo {
 
-String docImage, docName, docSpec, time, desc, url,useruid;
+String docImageurl, docName, docSpec, time, desc, posturl;
+int likes;
 
     public PostUploadInfo() {
     }
 
-    public PostUploadInfo(String docImage, String docName, String docSpec, String time, String desc, String url,String useruid) {
-        this.docImage = docImage;
+    public PostUploadInfo(String docimage, String docName, String docSpec, String time, String desc, String url, int likes) {
+        this.docImageurl = docimage;
         this.docName = docName;
         this.docSpec = docSpec;
         this.time = time;
         this.desc = desc;
-        this.url = url;
-        this.useruid= useruid;
+        this.posturl = url;
+        this.likes = likes;
     }
 
     public String getDesc() {
@@ -23,6 +24,14 @@ String docImage, docName, docSpec, time, desc, url,useruid;
 
     public void setDesc(String desc) {
         this.desc = desc;
+    }
+
+    public String getDocImage() {
+        return docImageurl;
+    }
+
+    public void setDocImage(String docImage) {
+        this.docImageurl = docImage;
     }
 
     public String getDocName() {
@@ -50,25 +59,18 @@ String docImage, docName, docSpec, time, desc, url,useruid;
     }
 
     public String getUrl() {
-        return url;
+        return posturl;
     }
 
     public void setUrl(String url) {
-        this.url = url;
-    }
-    public void setUseruid(String useruid){
-        this.useruid= useruid;
+        this.posturl = url;
     }
 
-    public String getUseruid() {
-        return useruid;
+    public int getLikes() {
+        return likes;
     }
 
-    public String getDocImage() {
-        return docImage;
-    }
-
-    public void setDocImage(String docImage) {
-        this.docImage = docImage;
+    public void setLikes(int likes) {
+        this.likes = likes;
     }
 }
