@@ -12,6 +12,7 @@ import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.EditText;
@@ -24,6 +25,7 @@ import com.example.nirogo.HomeActivity;
 import com.example.nirogo.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -46,25 +48,26 @@ public class PostUploadActivity extends Activity {
     EditText postDetails;
     TextView submit;
     int Image_Request_Code = 7;
-
     // Folder path for Firebase Storage.
     String Storage_Path = "";
-
     // Root Database Name for Firebase Database.
     String Database_Path = "Post/";
-
     final String Database_Path_Fetch = "Doctor/" ;
-
     DatabaseReference databaseReference_fetch;
     StorageReference storageReference ;
     DatabaseReference databaseReference;
     ProgressDialog progressDialog ;
     Uri FilePathUri;
+    private FirebaseAuth mauth;
+    String user_uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_upload);
+        mauth= FirebaseAuth.getInstance();
+        user_uid= mauth.getCurrentUser().getUid();
+
 
         storageReference = FirebaseStorage.getInstance().getReference();
         // Assign FirebaseDatabase instance with root database name.
@@ -108,6 +111,7 @@ public class PostUploadActivity extends Activity {
                            final String name = docUploadInfo.getName();
                            final String spec = docUploadInfo.getSpeciality();
                            final String img = docUploadInfo.getImageURL();
+                            Log.i("DOCTOR PROPIC",img);
                            UploadImageFileToFirebaseStorage(img, name, spec);
                         }
                     }
@@ -245,7 +249,7 @@ public class PostUploadActivity extends Activity {
                             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.getDefault());
                             String currentDateandTime = sdf.format(new Date());
 
-                            PostUploadInfo docUploadInfo = new PostUploadInfo(img, name, spec, currentDateandTime, det, down);
+                            PostUploadInfo docUploadInfo = new PostUploadInfo(img, name, spec, currentDateandTime, det, down ,user_uid);
 
                             // Getting image upload ID.
                             // Adding image upload id s child element into databaseReference.

@@ -51,6 +51,65 @@
         android:textColor="@color/Black"
         android:fontFamily="@font/neue_regular"/>
 
+    <com.gauravk.bubblenavigation.BubbleNavigationConstraintView
+        android:id="@+id/bottomNavAmbu"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        app:bnc_mode="spread"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/blue_bg"
+        >
+
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/c_item_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            app:bt_shape="@drawable/item_bottombar"
+            app:bt_colorActive="@color/Black"
+            app:bt_colorInactive="@color/White"
+            app:bt_icon="@drawable/home"
+            app:bt_title="Home"
+            />
+
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/c_item_add"
+            android:layout_width="wrap_content"
+            app:bt_shape="@drawable/item_bottombar"
+            android:layout_height="50dp"
+            app:bt_colorActive="@color/Black"
+            app:bt_colorInactive="@color/White"
+            app:bt_icon="@drawable/list"
+            app:bt_title="Appointment"
+            />
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/c_item_ambulance"
+            android:layout_width="wrap_content"
+            app:bt_shape="@drawable/item_bottombar"
+            android:layout_height="50dp"
+            app:bt_colorActive="@color/Black"
+            app:bt_active="true"
+            app:bt_colorInactive="@color/White"
+            app:bt_icon="@drawable/ambulance_dark"
+            app:bt_title="Ambulance"
+            />
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/c_item_user"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            app:bt_shape="@drawable/item_bottombar"
+            app:bt_colorActive="@color/Black"
+            app:bt_colorInactive="@color/White"
+            app:bt_icon="@drawable/user_black"
+            app:bt_title="@string/profile_tab"
+            />
+
+    </com.gauravk.bubblenavigation.BubbleNavigationConstraintView>
+
     
 
 </RelativeLayout>

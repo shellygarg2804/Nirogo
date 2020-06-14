@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:theme="@style/AppTheme"
@@ -13,15 +14,17 @@
         android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:background="@drawable/user_3"
+            android:src="@drawable/user_5"
+            android:scaleType="centerCrop"
             app:civ_border_width="2dp"
             android:layout_marginTop="5dp"
-            android:layout_marginLeft="7dp"
+            android:layout_marginLeft="10dp"
             app:civ_border_color="@color/DodgerBlue"
             android:id="@+id/imageUser"
             />
@@ -33,15 +36,15 @@
             android:textSize="17dp"
             android:textColor="@color/blue_bg"
             android:textStyle="bold"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="10dp"
             android:id="@+id/nameUser"
             />
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
             android:id="@+id/positionUser"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="10dp"
             android:layout_below="@id/nameUser"
             android:layout_toRightOf="@id/imageUser" />
 
@@ -50,14 +53,15 @@
             android:layout_width="100dp"
             android:layout_below="@id/positionUser"
             android:layout_toRightOf="@id/imageUser"
-            android:layout_marginLeft="5dp"
-            android:layout_height="15dp"/>
+            android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content"/>
     </RelativeLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="15sp"
+        android:maxLines="50"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:textColor="@color/Black"
@@ -67,9 +71,8 @@
 
     <ImageView
         android:id="@+id/imagePost"
-        android:layout_marginTop="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_width="990px"
+        android:layout_height="990px"
         android:layout_gravity="center_horizontal"/>
 
         <LinearLayout
@@ -181,7 +184,7 @@
                 android:layout_height="wrap_content"
                 android:text="Share"
                 android:textColor="@color/Black"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:layout_marginLeft="5dp"
                 android:layout_gravity="center_vertical"
                 />
