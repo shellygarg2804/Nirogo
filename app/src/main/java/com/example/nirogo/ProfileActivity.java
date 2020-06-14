@@ -120,6 +120,11 @@ public class ProfileActivity extends Activity {
                     startActivity(new Intent(ProfileActivity.this, AppointmentsActivity.class));
                     Animatoo.animateFade(ProfileActivity.this);
                 }
+
+                else if (position == 2) {
+                    startActivity(new Intent(ProfileActivity.this, AmbulanceActivity.class));
+                    Animatoo.animateFade(ProfileActivity.this);
+                }
             }});
 
             }

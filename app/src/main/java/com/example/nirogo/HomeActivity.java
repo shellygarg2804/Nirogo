@@ -142,11 +142,17 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     Animatoo.animateFade(HomeActivity.this);
                 }
 
-                else if(position == 2)
-                {
-                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-                    Animatoo.animateFade(HomeActivity.this);
-                    }
+                 else if(position == 2)
+                 {
+                     startActivity(new Intent(getApplicationContext(), AmbulanceActivity.class));
+                     Animatoo.animateFade(HomeActivity.this);
+                 }
+
+                 else if(position == 3)
+                 {
+                     startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                     Animatoo.animateFade(HomeActivity.this);
+                 }
 
             }
         });

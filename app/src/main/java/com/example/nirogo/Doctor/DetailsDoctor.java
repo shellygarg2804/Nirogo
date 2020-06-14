@@ -54,11 +54,14 @@ public class DetailsDoctor extends Activity {
     String name, age, speciality, city;
     EditText nameIn, ageIn, specIn, cityIn;
     ImageView cameraBut, cameraDisp;
+    private FirebaseAuth mauth;
+    private String useruid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        mauth=FirebaseAuth.getInstance();
+        useruid= mauth.getCurrentUser().getUid();
         ScreenSize size_check = new ScreenSize();
         String size = size_check.screenCheck(DetailsDoctor.this);
 
@@ -208,7 +211,7 @@ public class DetailsDoctor extends Activity {
                                     DocUploadInfo docUploadInfo = new DocUploadInfo(name, down, age, city, speciality);
                                     // Getting image upload ID.
                                     // Adding image upload id s child element into databaseReference.
-                                    databaseReference.child(UUID.randomUUID().toString()).setValue(docUploadInfo);
+                                    databaseReference.child(useruid).setValue(docUploadInfo);
 
                                     Intent intent = new Intent(DetailsDoctor.this, HomeActivity.class);
                                     intent.putExtra("url",down);
