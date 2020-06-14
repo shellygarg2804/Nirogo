@@ -42,7 +42,7 @@
         android:layout_below="@id/lay_1"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="80dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,8 +51,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="500px"
-                android:layout_marginTop="60dp"
+                android:layout_height="150dp"
                 android:src="@drawable/first_screen"></ImageView>
 
             <TextView
