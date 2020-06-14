@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.nirogo.AppointmentOption;
 import com.example.nirogo.Post.PostUploadInfo;
 import com.example.nirogo.ProfileActivity;
 import com.example.nirogo.R;
@@ -47,7 +48,7 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         PostUploadInfo itemAdapter = list.get(position);
 
-        Picasso.get().load(itemAdapter.getUrl()).into(((ViewHolder) holder).docImage);
+        Picasso.get().load(itemAdapter.getUrl()).into(((ViewHolder) holder).imgPost);
         ((ViewHolder) holder).nameUser.setText(itemAdapter.getDocName());
         ((ViewHolder) holder).descUser.setText(itemAdapter.getDocSpec());
         ((ViewHolder) holder).descPost.setText(itemAdapter.getDesc());
@@ -65,8 +66,7 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView nameUser, descUser, descPost, timePost;
         ImageView docImage, imgPost;
-
-        LinearLayout likelay;
+        LinearLayout likelay, appointmentLay;
         ImageView btnLike;
         TextView txtLike, numLikes;
 
@@ -85,27 +85,35 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             btnLike = itemView.findViewById(R.id.btnLike);
             txtLike = itemView.findViewById(R.id.likeTxt);
             numLikes = itemView.findViewById(R.id.noLikes);
+            appointmentLay = itemView.findViewById(R.id.appointmentlay);
+
+            appointmentLay.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Toast.makeText(v.getContext(), "Opening Appointment", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(v.getContext(), AppointmentOption.class);
+                    intent.putExtra("docname", nameUser.getText());
+                    v.getContext().startActivity(intent);
+                }
+            });
 
             final Context context = itemView.getContext();
             likelay.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int like = Integer.parseInt((String) numLikes.getText());
 
                     if (txtLike.getCurrentTextColor() == context.getResources().getColor(R.color.Black))
                     {
                         txtLike.setTextColor(context.getResources().getColor(R.color.blue_like));
                         btnLike.setImageResource(R.drawable.like_blue);
-                        like++;
                     }
 
                     else{
                         txtLike.setTextColor(context.getResources().getColor(R.color.Black));
                         btnLike.setImageResource(R.drawable.like_thumb);
-                        like--;
                     }
-                    numLikes.setText(Integer.toString(like));
-                }
+                  }
             });
 
             nameUser.setOnClickListener(new View.OnClickListener() {
