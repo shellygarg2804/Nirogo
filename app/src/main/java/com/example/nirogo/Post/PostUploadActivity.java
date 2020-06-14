@@ -70,6 +70,7 @@ public class PostUploadActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_upload);
+        firebaseAuth= FirebaseAuth.getInstance();
 
         storageReference = FirebaseStorage.getInstance().getReference();
         // Assign FirebaseDatabase instance with root database name.
@@ -80,7 +81,7 @@ public class PostUploadActivity extends Activity {
         postDetails = findViewById(R.id.enterText);
         postphoto = findViewById(R.id.imagePost);
         camera = findViewById(R.id.camera);
-        submit = findViewById(R.id.sumbitPost);
+        submit = findViewById(R.id.submitPost);
 
 
         camera.setOnClickListener(new View.OnClickListener() {
@@ -257,7 +258,7 @@ public class PostUploadActivity extends Activity {
                             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.getDefault());
                             String currentDateandTime = sdf.format(new Date());
 
-                            String id = firebaseAuth.getCurrentUser().toString();
+                            String id = firebaseAuth.getCurrentUser().getUid();
                             PostUploadInfo docUploadInfo = new PostUploadInfo(profile, name, spec, currentDateandTime, det, down, 4);
 
                             // Getting image upload ID.

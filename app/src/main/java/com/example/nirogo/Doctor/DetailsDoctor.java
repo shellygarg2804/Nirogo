@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -25,7 +26,6 @@ import com.example.nirogo.R;
 import com.example.nirogo.ScreenSize;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,29 +40,24 @@ import java.io.IOException;
 import java.util.UUID;
 
 public class DetailsDoctor extends Activity {
-
+    Intent i;
+    String user_uid;
     // Folder path for Firebase Storage.
-    String Storage_Path = "Doctor/";
-
+    String Storage_Path = "";
     // Root Database Name for Firebase Database.
     String Database_Path = "Doctor/";
-
     Uri FilePathUri;
-
     StorageReference storageReference ;
     DatabaseReference databaseReference;
-
     int Image_Request_Code = 7;
     ProgressDialog progressDialog ;
-
     private static final int CAMERA_REQUEST = 1888;
-
     String name, age, speciality, city;
-
     EditText nameIn, ageIn, specIn, cityIn;
     ImageView cameraBut, cameraDisp;
+    String uniqueId = UUID.randomUUID().toString();
 
-    FirebaseAuth firebaseAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +72,14 @@ public class DetailsDoctor extends Activity {
         }
         else
             setContentView(R.layout.activity_details_doctor);
+
+         i= getIntent();
+         if(i.hasExtra("USER UID")){
+             user_uid=i.getStringExtra("USER UID");
+             Log.i("DETAILS USER UID",user_uid);
+         }
+
+
 
         storageReference = FirebaseStorage.getInstance().getReference();
 
@@ -136,8 +139,13 @@ public class DetailsDoctor extends Activity {
                     return;
                 }
 
-                else
-                UploadImageFileToFirebaseStorage();
+                else {
+
+
+
+                    UploadImageFileToFirebaseStorage();
+
+                }
             }
         });
     }
@@ -256,9 +264,7 @@ public class DetailsDoctor extends Activity {
 
                                     // Getting image upload ID.
                                     // Adding image upload id s child element into databaseReference.
-
-                                    String id = firebaseAuth.getCurrentUser().toString();
-                                    databaseReference.child(id).setValue(docUploadInfo);
+                                    databaseReference.child(user_uid).setValue(docUploadInfo);
 
                                     Intent intent = new Intent(DetailsDoctor.this, HomeActivity.class);
                                     intent.putExtra("url",down);

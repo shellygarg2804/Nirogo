@@ -177,8 +177,11 @@ public class LoginActivity extends Activity {
                             // Sign in success, update UI with the signed-in user's information
 
                             FirebaseUser user = mAuth.getCurrentUser();
+                            String uid= user.getUid();
+                            Log.i("LOGIN USER UID",uid);
                             Toast.makeText(LoginActivity.this,"Signin Successful",Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                            intent.putExtra("USER UID",uid);
                             startActivity(intent);
 
                         } else {

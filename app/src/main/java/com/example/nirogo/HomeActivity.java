@@ -1,7 +1,6 @@
 package com.example.nirogo;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -9,9 +8,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
-
-import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,10 +15,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.nirogo.Adapters.Feed.FeedAdapter;
-import com.example.nirogo.Adapters.Feed.ItemAdapter;
 import com.example.nirogo.Adapters.Appointments.AppointmentsActivity;
 import com.example.nirogo.Post.PostUploadInfo;
 import com.gauravk.bubblenavigation.BubbleNavigationConstraintView;
@@ -36,9 +30,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -55,13 +49,44 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     DatabaseReference databaseReference;
     StorageReference storageReference;
     FirebaseAuth firebaseAuth;
+    String Database_Path;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        final String id = firebaseAuth.getCurrentUser().getUid();
+        Log.i("USER ID HOME ACTIVITY",id);
+        String Database_Path = "Post/" + id + "/";
+            databaseReference = FirebaseDatabase.getInstance().getReference(Database_Path);
+
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                        Map<String,Object> item= (Map<String, Object>) postSnapshot.getValue();
+                        Log.i("MAP ITEM NAME",item.get("likes").toString());
+                    }
+                    postAdapter = new FeedAdapter(list, getApplicationContext());
+                    recyclerview.setAdapter(postAdapter);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        firebaseAuth = FirebaseAuth.getInstance();
 
-        String id = firebaseAuth.getCurrentUser().toString();
-        String Database_Path = "Post/" + id + "/";
+        String id = firebaseAuth.getCurrentUser().getUid();
+        Log.i("USER ID HOME ACTIVITY",id);
+         Database_Path = "Post/" + id + "/";
 
         ScreenSize screenSize = new ScreenSize();
         String size = screenSize.screenCheck(HomeActivity.this);
@@ -79,7 +104,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         navigationView= (NavigationView)findViewById(R.id.navigation);
         toolbar=(Toolbar)findViewById(R.id.toolbar);
 
-        setSupportActionBar(toolbar);
+         setSupportActionBar(toolbar);
 
 
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
@@ -114,25 +139,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         recyclerview = findViewById(R.id.recyclerView);
 
         recyclerview.setLayoutManager(new LinearLayoutManager(this));
-
-        databaseReference = FirebaseDatabase.getInstance().getReference(Database_Path);
-
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()){
-                    PostUploadInfo itemAdapter = postSnapshot.getValue(PostUploadInfo.class);
-                    list.add(itemAdapter);
-                }
-                postAdapter = new FeedAdapter(list, getApplicationContext());
-                recyclerview.setAdapter(postAdapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
-            }
-        });
 
         final BubbleNavigationConstraintView bubblenavigation = findViewById(R.id.bottomNav);
         bubblenavigation.setCurrentActiveItem(0);

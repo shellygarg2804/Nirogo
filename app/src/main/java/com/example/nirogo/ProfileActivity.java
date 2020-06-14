@@ -101,7 +101,6 @@ public class ProfileActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ProfileActivity.this, PostUploadActivity.class);
-                intent.putExtra("name", getIntent().getStringExtra("docname"));
                 startActivity(intent);
             }
         });
