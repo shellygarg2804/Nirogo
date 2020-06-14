@@ -13,7 +13,7 @@
         android:id="@+id/cat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select Your Category"
+        android:text="Select Mode"
         android:layout_marginTop="30dp"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"

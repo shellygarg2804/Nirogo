@@ -29,6 +29,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:layout_weight="1"
                     android:id="@+id/menu"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
@@ -38,6 +39,7 @@
                     />
 
                 <LinearLayout
+                    android:layout_weight="5"
                     android:layout_width="250dp"
                     android:orientation="horizontal"
                     android:id="@+id/search"
@@ -65,6 +67,7 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/chatBtn"
+                    android:layout_weight="1"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginStart="10dp"
@@ -129,6 +132,19 @@
                     app:bt_shape="@drawable/item_bottombar"
                     app:bt_badgeBackgroundColor="@color/blue_bg"
                     app:bt_title="Appointment"
+                    />
+
+                <com.gauravk.bubblenavigation.BubbleToggleView
+                    android:id="@+id/c_item_ambulance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    app:bt_active="true"
+                    app:bt_badgeBackgroundColor="@color/blue_bg"
+                    app:bt_colorActive="@color/Black"
+                    app:bt_shape="@drawable/item_bottombar"
+                    app:bt_colorInactive="@color/White"
+                    app:bt_icon="@drawable/ambulance_dark"
+                    app:bt_title="Ambulance"
                     />
 
 

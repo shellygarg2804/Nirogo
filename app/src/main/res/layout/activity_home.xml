@@ -32,6 +32,7 @@
 
         <ImageView
             android:id="@+id/menu"
+            android:layout_weight="1"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/menu"
@@ -39,6 +40,7 @@
             android:layout_marginRight="10dp"/>
 
         <LinearLayout
+            android:layout_weight="6"
             android:layout_width="280dp"
             android:orientation="horizontal"
             android:id="@+id/search"
@@ -67,6 +69,7 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/chatBtn"
+            android:layout_weight="1"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="10dp"
@@ -94,8 +97,6 @@
         android:layout_marginTop="10dp"
         />
     </ScrollView>
-
-
 
     <com.gauravk.bubblenavigation.BubbleNavigationConstraintView
         android:id="@+id/bottomNav"

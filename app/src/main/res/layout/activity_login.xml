@@ -31,27 +31,16 @@
 
     </RelativeLayout>
 
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center_horizontal"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
+        android:layout_height="wrap_content">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/image"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"/>
     </LinearLayout>
 
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="45dp">
         <LinearLayout
+            android:layout_marginTop="70sp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -60,7 +49,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp"
                 android:text=" EMAIL "
                 android:textColor="@color/Black"
@@ -119,10 +108,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Sign In"
-                android:layout_marginHorizontal="30dp"
+                android:layout_marginHorizontal="40dp"
                 android:textAlignment="gravity"
                 android:gravity="center"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="40dp"
                 android:textSize="30sp"
                 android:background="@drawable/rounded_rectangle"
                 android:backgroundTint="#1a237e"
@@ -184,8 +173,9 @@
                 android:textColor="@color/blue_bg"
                 android:layout_marginTop="20dp"
                 android:id="@+id/signupfromlogin"
-                ></TextView>
+                >
+
+            </TextView>
         </LinearLayout>
-    </ScrollView>
 
 </LinearLayout>

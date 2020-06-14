@@ -1,18 +1,13 @@
 package com.example.nirogo;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.nirogo.Adapters.Appointments.AppointmentsActivity;
@@ -20,7 +15,7 @@ import com.example.nirogo.Post.PostUploadActivity;
 import com.gauravk.bubblenavigation.BubbleNavigationConstraintView;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
 
-public class ProfileActivity extends Activity {
+public class UserProfile extends Activity {
 
     private ImageView update;
     private TextView name;
@@ -35,22 +30,19 @@ public class ProfileActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
-
-        LinearLayout addPost = findViewById(R.id.postAdd);
-
+        setContentView(R.layout.user_profile);
 
         name=(TextView) findViewById(R.id.nameProfile);
         about=(TextView)findViewById(R.id.aboutprofile);
         experience=(TextView)findViewById(R.id.experienceprofile);
         education=(TextView)findViewById(R.id.educationprofile);
 
+        LinearLayout addPost = findViewById(R.id.postAdd);
+
         if (getIntent().hasExtra("docname")){
             String nameUser = getIntent().getStringExtra("docname");
             name.setText(nameUser);
         }
-
-
 
         Intent intent= this.getIntent();
         if(intent!=null){
@@ -88,14 +80,12 @@ public class ProfileActivity extends Activity {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i= new Intent(ProfileActivity.this,updateprofile.class);
+                Intent i= new Intent(UserProfile.this,updateprofile.class);
                 i.putExtra("namep",name.getText());
                 i.putExtra("aboutp",about.getText());
                 i.putExtra("experiencep",experience.getText());
                 i.putExtra("educationp",experience.getText());
                 startActivity(i);
-
-
             }
         });
 
@@ -103,7 +93,7 @@ public class ProfileActivity extends Activity {
         addPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ProfileActivity.this, PostUploadActivity.class);
+                Intent intent = new Intent(UserProfile.this, PostUploadActivity.class);
                 startActivity(intent);
             }
         });
@@ -115,13 +105,18 @@ public class ProfileActivity extends Activity {
             public void onNavigationChanged(View view, int position) {
 
                 if (position == 0) {
-                    startActivity(new Intent(ProfileActivity.this, HomeActivity.class));
-                    Animatoo.animateFade(ProfileActivity.this);
+                    startActivity(new Intent(UserProfile.this, HomeActivity.class));
+                    Animatoo.animateFade(UserProfile.this);
                     }
 
                    else if (position == 1) {
-                    startActivity(new Intent(ProfileActivity.this, AppointmentsActivity.class));
-                    Animatoo.animateFade(ProfileActivity.this);
+                    startActivity(new Intent(UserProfile.this, AppointmentsActivity.class));
+                    Animatoo.animateFade(UserProfile.this);
+                }
+
+                else if (position == 2) {
+                    startActivity(new Intent(UserProfile.this, AmbulanceActivity.class));
+                    Animatoo.animateFade(UserProfile.this);
                 }
             }});
 
@@ -131,7 +126,7 @@ public class ProfileActivity extends Activity {
     public void onBackPressed() {
         super.onBackPressed();
         startActivity(new Intent(this, HomeActivity.class));
-        Animatoo.animateFade(ProfileActivity.this);
+        Animatoo.animateFade(UserProfile.this);
     }
 }
 

@@ -53,18 +53,6 @@ public class LoginActivity extends Activity {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser user= mAuth.getCurrentUser();
 
-        ImageView imageView = findViewById(R.id.image);
-
-        String type = getIntent().getStringExtra("type");
-        if (type.equalsIgnoreCase("User"))
-            imageView.setImageResource(R.drawable.ic_user);
-
-        if (type.equalsIgnoreCase("Doctor"))
-            imageView.setImageResource(R.drawable.ic_doctor);
-
-        if (type.equalsIgnoreCase("Supplier"))
-            imageView.setImageResource(R.drawable.ic_supplier);
-
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         if(user!=null){
             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);

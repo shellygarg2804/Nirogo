@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.nirogo.OptionActivity;
 import com.example.nirogo.Post.PostUploadInfo;
 import com.example.nirogo.ProfileActivity;
 import com.example.nirogo.R;
@@ -66,7 +67,7 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         TextView nameUser, descUser, descPost, timePost;
         ImageView docImage, imgPost;
 
-        LinearLayout likelay;
+        LinearLayout likelay, appoint;
         ImageView btnLike;
         TextView txtLike, numLikes;
 
@@ -86,25 +87,33 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             txtLike = itemView.findViewById(R.id.likeTxt);
             numLikes = itemView.findViewById(R.id.noLikes);
 
+            appoint.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), OptionActivity.class);
+                    v.getContext().startActivity(intent);
+                }
+            });
+
             final Context context = itemView.getContext();
             likelay.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int like = Integer.parseInt((String) numLikes.getText());
+//                    int like = Integer.parseInt((String) numLikes.getText());
 
                     if (txtLike.getCurrentTextColor() == context.getResources().getColor(R.color.Black))
                     {
                         txtLike.setTextColor(context.getResources().getColor(R.color.blue_like));
                         btnLike.setImageResource(R.drawable.like_blue);
-                        like++;
+//                        like++;
                     }
 
                     else{
                         txtLike.setTextColor(context.getResources().getColor(R.color.Black));
                         btnLike.setImageResource(R.drawable.like_thumb);
-                        like--;
+  //                      like--;
                     }
-                    numLikes.setText(Integer.toString(like));
+    //                numLikes.setText(Integer.toString(like));
                 }
             });
 

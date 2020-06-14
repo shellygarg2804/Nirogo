@@ -62,17 +62,32 @@
                 android:textColor="#000"
                 android:textSize="25sp"
                 android:textStyle="bold" />
+        </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/postAdd"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/nameAge"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                >
+
+            <Button
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/add"/>
             <TextView
-                android:id="@+id/postText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Add Post"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="15dp"
                 android:textColor="@color/Black"
-                android:textSize="20sp"/>
-        </LinearLayout>
+                android:textSize="25sp"/>
+            </LinearLayout>
 
 
     <androidx.cardview.widget.CardView
@@ -81,7 +96,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         app:cardBackgroundColor="@color/LightCyan"
-        android:layout_below="@id/nameAge"
+        android:layout_below="@id/postAdd"
         >
         <LinearLayout
             android:layout_width="match_parent"

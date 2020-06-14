@@ -9,7 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:background="#E91E63"
+        android:background="@color/blue_bg"
         android:id="@+id/pink"
         android:requiresFadingEdge="vertical">
     </RelativeLayout>
@@ -30,7 +30,7 @@
         android:layout_height="180dp"
         android:src="@drawable/user_6"
         app:civ_border_width="10dp"
-        app:civ_border_color="#E91E63"
+        app:civ_border_color="@color/blue_bg"
         android:layout_marginTop="90dp"
         android:layout_centerHorizontal="true">
 
@@ -89,14 +89,16 @@
                 android:layout_height="50dp"
                 android:src="@drawable/appointment">
             </ImageView>
+
             <TextView
+                android:textColor="@color/Black"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:text="PAST APPOINTMENTS"
                 android:textSize="25dp"
                 android:layout_marginLeft="10dp"
                 android:gravity="center"
-                ></TextView>
+                />
 
 
         </LinearLayout>
@@ -113,9 +115,10 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/report"
+                android:src="@drawable/reports"
                 android:layout_gravity="center">
             </ImageView>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
@@ -123,7 +126,9 @@
                 android:textSize="25dp"
                 android:layout_marginLeft="10dp"
                 android:gravity="center"
-                ></TextView>
+                android:textColor="@color/Black"
+                />
+
             </LinearLayout>
 
         <LinearLayout
@@ -143,13 +148,14 @@
                 android:layout_gravity="center">
             </ImageView>
             <TextView
+                android:textColor="@color/Black"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:text="NOTIFICATIONS"
                 android:textSize="25dp"
                 android:layout_marginLeft="10dp"
                 android:gravity="center"
-                ></TextView>
+                />
 
         </LinearLayout>
 

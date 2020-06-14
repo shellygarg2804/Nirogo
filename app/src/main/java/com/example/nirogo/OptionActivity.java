@@ -41,16 +41,6 @@ public class OptionActivity extends Activity {
             }
         });
 
-        supplier = findViewById(R.id.supplier);
-        supplier.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(OptionActivity.this, LoginActivity.class);
-                String Type= "Supplier";
-                intent.putExtra("type",Type);
-                startActivity(intent);
-            }
-        });
     }
 
 
