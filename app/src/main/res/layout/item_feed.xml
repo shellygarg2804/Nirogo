@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/imageUser"
-            android:textSize="17dp"
+            android:textSize="20dp"
             android:textColor="@color/blue_bg"
             android:textStyle="bold"
             android:layout_marginLeft="5dp"
@@ -47,10 +47,10 @@
         <TextView
             android:id="@+id/timePost"
             android:layout_width="100dp"
+            android:layout_height="20dp"
             android:layout_below="@id/positionUser"
-            android:layout_toRightOf="@id/imageUser"
             android:layout_marginLeft="5dp"
-            android:layout_height="15dp"/>
+            android:layout_toRightOf="@id/imageUser" />
     </RelativeLayout>
 
     <TextView
@@ -61,14 +61,14 @@
         android:layout_marginRight="15dp"
         android:textColor="@color/Black"
         android:id="@+id/descPost"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="7dp"
         />
 
     <ImageView
         android:id="@+id/imagePost"
         android:layout_marginTop="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_width="880px"
+        android:layout_height="880px"
         android:layout_gravity="center_horizontal"/>
 
         <LinearLayout

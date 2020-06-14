@@ -57,6 +57,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     String Database_Path = "Post/";
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(HomeActivity.this, OptionActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -150,20 +157,19 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
                  else if(position == 3)
                  {
-                     if(type_user.equalsIgnoreCase("doctor")){
+//                     if(type_user.equalsIgnoreCase("doctor")){
                          startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                          Animatoo.animateFade(HomeActivity.this);
                      }
-                     else if (type_user.equalsIgnoreCase("user")){
-                         startActivity(new Intent(getApplicationContext(), UserProfile.class));
-                         Animatoo.animateFade(HomeActivity.this);
+//                     else if (type_user.equalsIgnoreCase("user")){
+//                         startActivity(new Intent(getApplicationContext(), UserProfile.class));
+//                         Animatoo.animateFade(HomeActivity.this);
                      }
-                      }
 
-            }
-        });
 
-    }
+            });
+        };
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

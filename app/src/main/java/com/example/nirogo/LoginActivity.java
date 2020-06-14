@@ -138,11 +138,13 @@ public class LoginActivity extends Activity {
             public void onClick(View v) {
                 if(Type.equals("Doctor")){
                     Intent i= new Intent(LoginActivity.this, DoctorActivity.class);
+                    i.putExtra("type", "Doctor");
                     startActivity(i);
                     return;
                 }
                  if(Type.equals("User")){
                     Intent i= new Intent(LoginActivity.this, UserActivity.class);
+                     i.putExtra("type", "User");
                      startActivity(i);
                     return;
                 }

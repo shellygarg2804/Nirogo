@@ -14,10 +14,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.nirogo.AppointmentOption;
+import com.example.nirogo.HomeActivity;
 import com.example.nirogo.OptionActivity;
 import com.example.nirogo.Post.PostUploadInfo;
 import com.example.nirogo.ProfileActivity;
 import com.example.nirogo.R;
+import com.example.nirogo.ScreenSize;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -86,11 +89,12 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             btnLike = itemView.findViewById(R.id.btnLike);
             txtLike = itemView.findViewById(R.id.likeTxt);
             numLikes = itemView.findViewById(R.id.noLikes);
+            appoint = itemView.findViewById(R.id.shareAppointment);
 
             appoint.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), OptionActivity.class);
+                    Intent intent = new Intent(v.getContext(), AppointmentOption.class);
                     v.getContext().startActivity(intent);
                 }
             });
