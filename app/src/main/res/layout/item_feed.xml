@@ -18,6 +18,7 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:background="@drawable/user_3"
             app:civ_border_width="2dp"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="7dp"
@@ -127,6 +128,32 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Like"
+                android:textColor="@color/Black"
+                android:textSize="15sp"
+                android:layout_marginLeft="5dp"
+                android:layout_gravity="center_vertical"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="20dp"
+            android:id="@+id/appointmentlay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/call_icon"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Appointment"
                 android:textColor="@color/Black"
                 android:textSize="15sp"
                 android:layout_marginLeft="5dp"

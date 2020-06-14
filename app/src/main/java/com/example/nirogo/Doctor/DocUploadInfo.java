@@ -1,16 +1,12 @@
 package com.example.nirogo.Doctor;
 
-import android.net.Uri;
-
-import com.google.android.gms.tasks.Task;
-
 
 public class DocUploadInfo {
 
     public String name;
     public String id;
     public String type;
-    public String imageName;
+    public String docImage;
     public String imageURL;
     public String age;
     public String city;
@@ -19,12 +15,12 @@ public class DocUploadInfo {
     public DocUploadInfo() {
     }
 
-    public DocUploadInfo(String name, String speciality , String age, String city, String url) {
+    public DocUploadInfo(String name, String docUrl, String age, String city, String speciality) {
         this.name = name;
+        this.imageURL = docUrl;
         this.age = age;
         this.city = city;
         this.speciality = speciality;
-        this.imageURL= url;
     }
 
     public String getName() {
@@ -52,8 +48,8 @@ public class DocUploadInfo {
         return speciality;
     }
 
-    public String getImageName() {
-        return imageName;
+    public String getDocImage() {
+        return docImage;
     }
 
     public String getImageURL() {
