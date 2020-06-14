@@ -34,10 +34,8 @@ public class MessageActivity extends Activity {
          if (type.equalsIgnoreCase("Offline"))
              txt.setText(R.string.offline_display);
 
-         else if ((type.equalsIgnoreCase("Online")))
+         else
              txt.setText(R.string.online);
-
-
         }
 
         Button back = findViewById(R.id.backBtn);
