@@ -129,6 +129,8 @@ public class DoctorActivity extends Activity {
                     Toast.makeText(getApplicationContext(), "PAssword too short", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
+                Toast.makeText(getApplicationContext(), "Please wait", Toast.LENGTH_SHORT).show();
                 createrequestusingEmailPassword(emailtext, passwordtext);
 
             }
@@ -198,10 +200,11 @@ public class DoctorActivity extends Activity {
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             uid= user.getUid();
+
                             Log.i("USER UID",uid);
                             Toast.makeText(DoctorActivity.this,"SignIn Successful",Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(DoctorActivity.this, DetailsDoctor.class);
-                            intent.putExtra("USER UID",uid);
+                            intent.putExtra("type",getIntent().getStringExtra("type"));
                             startActivity(intent);
                         } else {
                             Log.w(TAG, "signInWithCredential:failure", task.getException());

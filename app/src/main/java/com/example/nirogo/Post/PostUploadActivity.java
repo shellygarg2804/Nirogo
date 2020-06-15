@@ -70,8 +70,8 @@ public class PostUploadActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_upload);
-        firebaseAuth= FirebaseAuth.getInstance();
 
+        firebaseAuth= FirebaseAuth.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference();
         // Assign FirebaseDatabase instance with root database name.
         databaseReference = FirebaseDatabase.getInstance().getReference(Database_Path);
@@ -105,7 +105,12 @@ public class PostUploadActivity extends Activity {
             else{
                 checkUser();
 
-                final String Database_Path_Fetch = "Doctor/" ;
+                String id = firebaseAuth.getCurrentUser().getUid();
+
+                if (id.isEmpty())
+                    Toast.makeText(getApplicationContext(), "Empty Id", Toast.LENGTH_LONG).show();
+                final String Database_Path_Fetch = "Doctor/";
+
 
                 databaseReference_fetch = FirebaseDatabase.getInstance().getReference(Database_Path_Fetch);
                 databaseReference_fetch.addValueEventListener(new ValueEventListener() {
@@ -114,9 +119,9 @@ public class PostUploadActivity extends Activity {
                         for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                             DocUploadInfo docUploadInfo = postSnapshot.getValue(DocUploadInfo.class);
 
-                           final String name = docUploadInfo.getName();
-                           final String spec = docUploadInfo.getSpeciality();
-                           String docimage = docUploadInfo.imageURL;;
+                            String name = docUploadInfo.getName();
+                           String spec = docUploadInfo.getSpeciality();
+                           String docimage = docUploadInfo.imageURL;
                             UploadImageFileToFirebaseStorage(name, spec, docimage);
                         }
                     }
@@ -263,7 +268,7 @@ public class PostUploadActivity extends Activity {
 
                             // Getting image upload ID.
                             // Adding image upload id s child element into databaseReference.
-                            databaseReference.child(id).setValue(docUploadInfo);
+                            databaseReference.child(UUID.randomUUID().toString()).setValue(docUploadInfo);
 
                             Intent intent = new Intent(PostUploadActivity.this, HomeActivity.class);
                             startActivity(intent);

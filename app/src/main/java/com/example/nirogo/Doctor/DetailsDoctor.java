@@ -26,6 +26,7 @@ import com.example.nirogo.R;
 import com.example.nirogo.ScreenSize;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -55,8 +56,8 @@ public class DetailsDoctor extends Activity {
     String name, age, speciality, city;
     EditText nameIn, ageIn, specIn, cityIn;
     ImageView cameraBut, cameraDisp;
-    String uniqueId = UUID.randomUUID().toString();
 
+    FirebaseAuth mAuth;
 
 
     @Override
@@ -65,6 +66,8 @@ public class DetailsDoctor extends Activity {
 
         ScreenSize size_check = new ScreenSize();
         String size = size_check.screenCheck(DetailsDoctor.this);
+
+        mAuth= FirebaseAuth.getInstance();
 
         if ((size).equalsIgnoreCase("Small")) {
             setContentView(R.layout.activity_details_doctor_small);
@@ -254,6 +257,8 @@ public class DetailsDoctor extends Activity {
                             // Hiding the progressDialog after done uploading.
                             progressDialog.dismiss();
 
+                            final String id = mAuth.getCurrentUser().getUid();
+
                             storageReference2nd.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
@@ -264,10 +269,10 @@ public class DetailsDoctor extends Activity {
 
                                     // Getting image upload ID.
                                     // Adding image upload id s child element into databaseReference.
-                                    databaseReference.child(user_uid).setValue(docUploadInfo);
+                                    databaseReference.child(id).setValue(docUploadInfo);
 
                                     Intent intent = new Intent(DetailsDoctor.this, HomeActivity.class);
-                                    intent.putExtra("url",down);
+                                    intent.putExtra("type",getIntent().getStringExtra("type"));
                                     startActivity(intent);
                                 }
                             });

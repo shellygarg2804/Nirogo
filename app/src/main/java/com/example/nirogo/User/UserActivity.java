@@ -184,6 +184,7 @@ public class UserActivity extends Activity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(UserActivity.this,"SignIn Successful",Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(UserActivity.this, HomeActivity.class);
+                            intent.putExtra("type", getIntent().getStringExtra("type"));
                             startActivity(intent);
                         }
 
@@ -212,6 +213,7 @@ public class UserActivity extends Activity {
                 Toast.makeText(UserActivity.this,"Signup Successful",Toast.LENGTH_SHORT);
                 FirebaseUser user = mAuth.getCurrentUser();
                 Intent intent = new Intent(UserActivity.this, HomeActivity.class);
+                intent.putExtra("type", getIntent().getStringExtra("type"));
                 startActivity(intent);
 
                }

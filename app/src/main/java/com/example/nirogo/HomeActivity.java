@@ -39,6 +39,7 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -72,21 +73,20 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         String size = screenSize.screenCheck(HomeActivity.this);
         if (size.equalsIgnoreCase("Small")) {
             setContentView(R.layout.activity_home_small);
-            Log.i("Screen Return Value","Small");
-        }
-        else
-        setContentView(R.layout.activity_home);
+            Log.i("Screen Return Value", "Small");
+        } else
+            setContentView(R.layout.activity_home);
 
         storageReference = FirebaseStorage.getInstance().getReference();
 
         //setting up navigation drawer
-        drawerLayout= (DrawerLayout)findViewById(R.id.drawerLayout);
-        navigationView= (NavigationView)findViewById(R.id.navigation);
-        toolbar=(Toolbar)findViewById(R.id.toolbar);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+        navigationView = (NavigationView) findViewById(R.id.navigation);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
 
-        ActionBarDrawerToggle toggle= new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.setDrawerIndicatorEnabled(false);
         toggle.syncState();
@@ -110,7 +110,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                drawerLayout.openDrawer(GravityCompat.START,true);
+                drawerLayout.openDrawer(GravityCompat.START, true);
 
             }
         });
@@ -124,7 +124,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()){
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
 
                     PostUploadInfo postUploadInfo = postSnapshot.getValue(PostUploadInfo.class);
                     list.add(postUploadInfo);
@@ -141,36 +141,24 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         final BubbleNavigationConstraintView bubblenavigation = findViewById(R.id.bottomNav);
         bubblenavigation.setCurrentActiveItem(0);
-        final String type_user = getIntent().getStringExtra("type");
         bubblenavigation.setNavigationChangeListener(new BubbleNavigationChangeListener() {
             @Override
             public void onNavigationChanged(View view, int position) {
 
-                 if (position == 1) {
+                if (position == 1) {
                     startActivity(new Intent(HomeActivity.this, AppointmentsActivity.class));
                     Animatoo.animateFade(HomeActivity.this);
+                } else if (position == 2) {
+                    startActivity(new Intent(getApplicationContext(), AmbulanceActivity.class));
+                    Animatoo.animateFade(HomeActivity.this);
+                } else if (position == 3) {
+                        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                        Animatoo.animateFade(HomeActivity.this);
+                    }
+
                 }
-
-                 else if(position == 2)
-                 {
-                     startActivity(new Intent(getApplicationContext(), AmbulanceActivity.class));
-                     Animatoo.animateFade(HomeActivity.this);
-                 }
-
-                 else if(position == 3)
-                 {
-//                     if(type_user.equalsIgnoreCase("doctor")){
-                         startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-                         Animatoo.animateFade(HomeActivity.this);
-                     }
-//                     else if (type_user.equalsIgnoreCase("user")){
-//                         startActivity(new Intent(getApplicationContext(), UserProfile.class));
-//                         Animatoo.animateFade(HomeActivity.this);
-                     }
-
-
-            });
-        };
+        });
+    }
 
 
     @Override
