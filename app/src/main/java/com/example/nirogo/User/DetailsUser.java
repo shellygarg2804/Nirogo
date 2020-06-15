@@ -194,6 +194,7 @@ public class DetailsUser extends Activity {
                                     databaseReference.child(uniqueId).setValue(userUploadInfo);
 
                                     Intent intent = new Intent(DetailsUser.this, HomeActivity.class);
+                                    intent.putExtra("type",getIntent().getStringExtra("type"));
                                     intent.putExtra("url",down);
                                     startActivity(intent);
                                 }

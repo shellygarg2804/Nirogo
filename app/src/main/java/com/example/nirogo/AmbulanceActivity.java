@@ -26,7 +26,10 @@ public class AmbulanceActivity extends Activity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                Intent intent= new Intent(AmbulanceActivity.this, HomeActivity.class);
+                intent.putExtra("type",getIntent().getStringExtra("type"));
+                startActivity(intent);
+                Animatoo.animateFade(AmbulanceActivity.this);
             }
         });
 
@@ -35,16 +38,26 @@ public class AmbulanceActivity extends Activity {
             @Override
             public void onNavigationChanged(View view, int position) {
                 if (position == 0) {
-                    startActivity(new Intent(AmbulanceActivity.this, HomeActivity.class));
+                    Intent intent= new Intent(AmbulanceActivity.this, HomeActivity.class);
+                    intent.putExtra("type",getIntent().getStringExtra("type"));
+                    startActivity(intent);
                     Animatoo.animateFade(AmbulanceActivity.this);
                 }
                 else if (position == 1) {
-                    startActivity(new Intent(getApplicationContext(), AppointmentsActivity.class));
+                    Intent intent= new Intent(AmbulanceActivity.this, AppointmentsActivity.class);
+                    intent.putExtra("type",getIntent().getStringExtra("type"));
+                    startActivity(intent);
                     Animatoo.animateFade(AmbulanceActivity.this);
                 }
                 else if (position == 3) {
-                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-                    Animatoo.animateFade(AmbulanceActivity.this);
+                    if(getIntent().getStringExtra("type").equals("Doctor")) {
+                        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                        Animatoo.animateFade(AmbulanceActivity.this);
+                    }
+                    else{
+                        startActivity(new Intent(getApplicationContext(), UserProfile.class));
+                        Animatoo.animateFade(AmbulanceActivity.this);
+                    }
                 }
 
             }});
@@ -55,7 +68,9 @@ public class AmbulanceActivity extends Activity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(this, HomeActivity.class));
+        Intent intent= new Intent(AmbulanceActivity.this, HomeActivity.class);
+        intent.putExtra("type",getIntent().getStringExtra("type"));
+        startActivity(intent);
         Animatoo.animateFade(AmbulanceActivity.this);
     }
 }

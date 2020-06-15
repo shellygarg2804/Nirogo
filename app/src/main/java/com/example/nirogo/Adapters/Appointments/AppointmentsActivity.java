@@ -20,6 +20,7 @@ import com.example.nirogo.HomeActivity;
 import com.example.nirogo.ProfileActivity;
 import com.example.nirogo.R;
 import com.example.nirogo.SearchActivity;
+import com.example.nirogo.UserProfile;
 import com.gauravk.bubblenavigation.BubbleNavigationConstraintView;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
 
@@ -75,7 +76,10 @@ public class AppointmentsActivity extends Activity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                Intent intent= new Intent(AppointmentsActivity.this, HomeActivity.class);
+                intent.putExtra("type",getIntent().getStringExtra("type"));
+                startActivity(intent);
+                Animatoo.animateFade(AppointmentsActivity.this);
             }
         });
 
@@ -84,16 +88,27 @@ public class AppointmentsActivity extends Activity {
             @Override
             public void onNavigationChanged(View view, int position) {
                 if (position == 0) {
-                    startActivity(new Intent(AppointmentsActivity.this, HomeActivity.class));
+                    Intent intent= new Intent(AppointmentsActivity.this, HomeActivity.class);
+                    intent.putExtra("type",getIntent().getStringExtra("type"));
+                    startActivity(intent);
                     Animatoo.animateFade(AppointmentsActivity.this);
                    }
                 else if (position == 2) {
-                    startActivity(new Intent(getApplicationContext(), AmbulanceActivity.class));
+                    Intent intent= new Intent(AppointmentsActivity.this, AmbulanceActivity.class);
+                    intent.putExtra("type",getIntent().getStringExtra("type"));
+                    startActivity(intent);
                     Animatoo.animateFade(AppointmentsActivity.this);
                 }
                 else if (position == 3) {
-                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-                    Animatoo.animateFade(AppointmentsActivity.this);
+                    if(getIntent().getStringExtra("type").equals("Doctor")) {
+                        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                        Animatoo.animateFade(AppointmentsActivity.this);
+                    }
+                    else{
+                        startActivity(new Intent(getApplicationContext(), UserProfile.class));
+                        Animatoo.animateFade(AppointmentsActivity.this);
+                    }
+
                 }
 
             }});
@@ -102,8 +117,10 @@ public class AppointmentsActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        startActivity(new Intent(this, HomeActivity.class));
-        Animatoo.animateSwipeLeft(AppointmentsActivity.this);
+        Intent intent= new Intent(AppointmentsActivity.this, HomeActivity.class);
+
+        intent.putExtra("type",getIntent().getStringExtra("type"));
+        startActivity(intent);
+        Animatoo.animateFade(AppointmentsActivity.this);
     }
 }

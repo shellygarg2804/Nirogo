@@ -67,7 +67,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Log.i("USER TYPE",getIntent().getStringExtra("type"));
 
         ScreenSize screenSize = new ScreenSize();
         String size = screenSize.screenCheck(HomeActivity.this);
@@ -146,15 +146,26 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             public void onNavigationChanged(View view, int position) {
 
                 if (position == 1) {
-                    startActivity(new Intent(HomeActivity.this, AppointmentsActivity.class));
+                    Intent intent= new Intent(HomeActivity.this, AppointmentsActivity.class);
+                    intent.putExtra("type",getIntent().getStringExtra("type"));
+                    startActivity(intent);
                     Animatoo.animateFade(HomeActivity.this);
                 } else if (position == 2) {
-                    startActivity(new Intent(getApplicationContext(), AmbulanceActivity.class));
+                    Intent intent= new Intent(HomeActivity.this, AmbulanceActivity.class);
+                    intent.putExtra("type",getIntent().getStringExtra("type"));
+                    startActivity(intent);
                     Animatoo.animateFade(HomeActivity.this);
                 } else if (position == 3) {
+                    if(getIntent().getStringExtra("type").equals("Doctor")) {
                         startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                         Animatoo.animateFade(HomeActivity.this);
                     }
+                    else{
+                        startActivity(new Intent(getApplicationContext(), UserProfile.class));
+                        Animatoo.animateFade(HomeActivity.this);
+
+                    }
+                }
 
                 }
         });
