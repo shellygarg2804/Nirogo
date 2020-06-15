@@ -136,6 +136,18 @@
             app:bt_title="Appointment"
             />
 
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/c_item_amb"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            app:bt_active="true"
+            app:bt_badgeBackgroundColor="@color/blue_bg"
+            app:bt_colorActive="@color/Black"
+            app:bt_shape="@drawable/item_bottombar"
+            app:bt_colorInactive="@color/White"
+            app:bt_icon="@drawable/ambulance_dark"
+            app:bt_title="Ambulance"
+            />
 
         <com.gauravk.bubblenavigation.BubbleToggleView
             android:id="@+id/c_item_user"
