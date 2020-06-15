@@ -60,6 +60,7 @@
                 android:layout_width="260dp"
                 android:layout_height="40dp"
                 android:hint="Search"
+                android:textSize="17sp"
                 android:textColorHint="@color/Black"
                 android:id="@+id/searchItem"/>
 
@@ -67,10 +68,10 @@
 
 
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <ImageView
             android:id="@+id/chatBtn"
             android:layout_weight="1"
-            android:layout_width="40dp"
+            android:layout_width="30dp"
             android:layout_height="40dp"
             android:layout_marginStart="10dp"
             android:background="@drawable/chat_white"

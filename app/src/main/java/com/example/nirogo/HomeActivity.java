@@ -88,11 +88,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         ActionBarDrawerToggle toggle= new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
+        toggle.setDrawerIndicatorEnabled(false);
         toggle.syncState();
+
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        CircleImageView chatbtn = findViewById(R.id.chatBtn);
+        ImageView chatbtn = findViewById(R.id.chatBtn);
         chatbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
