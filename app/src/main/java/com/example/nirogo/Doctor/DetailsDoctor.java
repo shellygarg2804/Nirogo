@@ -272,7 +272,7 @@ public class DetailsDoctor extends Activity {
                                     databaseReference.child(id).setValue(docUploadInfo);
 
                                     Intent intent = new Intent(DetailsDoctor.this, HomeActivity.class);
-                                    intent.putExtra("url",down);
+                                    intent.putExtra("type",getIntent().getStringExtra("type"));
                                     startActivity(intent);
                                 }
                             });

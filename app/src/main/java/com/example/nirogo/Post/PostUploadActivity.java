@@ -268,7 +268,7 @@ public class PostUploadActivity extends Activity {
 
                             // Getting image upload ID.
                             // Adding image upload id s child element into databaseReference.
-                            databaseReference.child(id).setValue(docUploadInfo);
+                            databaseReference.child(UUID.randomUUID().toString()).setValue(docUploadInfo);
 
                             Intent intent = new Intent(PostUploadActivity.this, HomeActivity.class);
                             startActivity(intent);
