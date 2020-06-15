@@ -51,7 +51,7 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         PostUploadInfo itemAdapter = list.get(position);
 
-        Picasso.get().load(itemAdapter.getUrl()).into(((ViewHolder) holder).docImage);
+        Picasso.get().load(itemAdapter.getDocImage()).into(((ViewHolder) holder).docImage);
         ((ViewHolder) holder).nameUser.setText(itemAdapter.getDocName());
         ((ViewHolder) holder).descUser.setText(itemAdapter.getDocSpec());
         ((ViewHolder) holder).descPost.setText(itemAdapter.getDesc());
