@@ -1,4 +1,4 @@
-package com.example.nirogo;
+package com.example.nirogo.Profile;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,8 +10,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+import com.example.nirogo.Activities.AmbulanceActivity;
 import com.example.nirogo.Adapters.Appointments.AppointmentsActivity;
+import com.example.nirogo.HomeScreen.HomeActivity;
 import com.example.nirogo.Post.PostUploadActivity;
+import com.example.nirogo.R;
 import com.gauravk.bubblenavigation.BubbleNavigationConstraintView;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
 
@@ -83,7 +86,7 @@ public class DoctorProfile extends Activity {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i= new Intent(DoctorProfile.this,updateprofile.class);
+                Intent i= new Intent(DoctorProfile.this, updateprofile.class);
                 i.putExtra("namep",name.getText());
                 i.putExtra("aboutp",about.getText());
                 i.putExtra("experiencep",experience.getText());

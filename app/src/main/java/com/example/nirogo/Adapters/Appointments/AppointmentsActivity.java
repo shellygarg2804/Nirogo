@@ -10,11 +10,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
-import com.example.nirogo.AmbulanceActivity;
-import com.example.nirogo.HomeActivity;
-import com.example.nirogo.DoctorProfile;
+import com.example.nirogo.Activities.AmbulanceActivity;
+import com.example.nirogo.HomeScreen.HomeActivity;
+import com.example.nirogo.Profile.DoctorProfile;
 import com.example.nirogo.R;
-import com.example.nirogo.UserProfile;
+import com.example.nirogo.Profile.UserProfile;
 import com.gauravk.bubblenavigation.BubbleNavigationConstraintView;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
 

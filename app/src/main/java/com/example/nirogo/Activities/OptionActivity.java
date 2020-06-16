@@ -1,4 +1,4 @@
-package com.example.nirogo;
+package com.example.nirogo.Activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,11 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.example.nirogo.Doctor.DetailsDoctor;
-import com.example.nirogo.User.DetailsUser;
-import com.example.nirogo.User.UserActivity;
-
-import de.hdodenhof.circleimageview.CircleImageView;
+import com.example.nirogo.R;
 
 public class OptionActivity extends Activity {
 

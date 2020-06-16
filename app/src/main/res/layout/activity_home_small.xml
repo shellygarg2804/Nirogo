@@ -6,7 +6,7 @@
     android:id="@+id/drawerLayout"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    tools:context=".HomeActivity">
+    tools:context=".HomeScreen.HomeActivity">
 
 
     <LinearLayout
@@ -81,18 +81,25 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/grey_300"
-            tools:context=".HomeActivity">
+            android:background="@color/White"
+            tools:context=".HomeScreen.HomeActivity">
 
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:progress="25"
+                style="@style/AppTheme"
+                android:layout_height="25dp"
+                android:layout_centerHorizontal="true"/>
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_marginBottom="70dp"
+                android:layout_below="@id/progressBar"
                 android:layout_height="wrap_content">
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     />
             </ScrollView>
 

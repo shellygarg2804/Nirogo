@@ -1,10 +1,12 @@
-package com.example.nirogo;
+package com.example.nirogo.HomeScreen;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class navdrawer extends AppCompatActivity {
+import com.example.nirogo.R;
+
+public class Navdrawer extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

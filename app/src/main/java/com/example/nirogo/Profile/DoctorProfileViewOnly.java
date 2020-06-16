@@ -1,4 +1,4 @@
-package com.example;
+package com.example.nirogo.Profile;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,11 +11,10 @@ import android.widget.TextView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.nirogo.Adapters.Appointments.AppointmentsActivity;
-import com.example.nirogo.AmbulanceActivity;
-import com.example.nirogo.HomeActivity;
+import com.example.nirogo.Activities.AmbulanceActivity;
+import com.example.nirogo.HomeScreen.HomeActivity;
 import com.example.nirogo.Post.PostUploadActivity;
 import com.example.nirogo.R;
-import com.example.nirogo.updateprofile;
 import com.gauravk.bubblenavigation.BubbleNavigationConstraintView;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
 

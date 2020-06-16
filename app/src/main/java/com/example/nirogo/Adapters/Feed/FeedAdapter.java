@@ -14,10 +14,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.DoctorProfileViewOnly;
-import com.example.nirogo.AppointmentOption;
+import com.example.nirogo.Profile.DoctorProfileViewOnly;
+import com.example.nirogo.Activities.AppointmentOption;
 import com.example.nirogo.Post.PostUploadInfo;
-import com.example.nirogo.DoctorProfile;
 import com.example.nirogo.R;
 import com.squareup.picasso.Picasso;
 

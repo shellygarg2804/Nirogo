@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MessageActivity">
+    tools:context=".HomeScreen.MessagePreview">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -39,16 +39,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginLeft="15dp"
         android:textColor="@color/Black"
-        android:text="Chat will be avaliable once payment is made"
-        android:textSize="25sp"/>
-
-    <TextView
-        android:id="@+id/disclamerText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="15dp"
-        android:textColor="@color/Black"
+        android:text="Contact Your Doctor Below"
         android:textSize="25sp"/>
 
     <TextView

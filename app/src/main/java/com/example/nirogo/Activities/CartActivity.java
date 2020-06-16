@@ -1,19 +1,14 @@
-package com.example.nirogo;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.nirogo.Activities;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
-import com.example.nirogo.Adapters.Appointments.AppointmentsActivity;
-import com.gauravk.bubblenavigation.BubbleNavigationConstraintView;
-import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
+import com.example.nirogo.HomeScreen.HomeActivity;
+import com.example.nirogo.R;
 
 public class CartActivity extends Activity {
 

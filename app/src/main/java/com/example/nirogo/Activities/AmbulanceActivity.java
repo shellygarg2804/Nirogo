@@ -1,4 +1,4 @@
-package com.example.nirogo;
+package com.example.nirogo.Activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,6 +8,10 @@ import android.widget.Button;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.nirogo.Adapters.Appointments.AppointmentsActivity;
+import com.example.nirogo.Profile.DoctorProfile;
+import com.example.nirogo.HomeScreen.HomeActivity;
+import com.example.nirogo.R;
+import com.example.nirogo.Profile.UserProfile;
 import com.gauravk.bubblenavigation.BubbleNavigationConstraintView;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
 

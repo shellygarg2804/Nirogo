@@ -1,4 +1,4 @@
-package com.example.nirogo;
+package com.example.nirogo.HomeScreen;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -15,12 +15,20 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.nirogo.Adapters.Feed.FeedAdapter;
 import com.example.nirogo.Adapters.Appointments.AppointmentsActivity;
+import com.example.nirogo.Activities.AmbulanceActivity;
+import com.example.nirogo.Activities.CartActivity;
+import com.example.nirogo.Profile.DoctorProfile;
+import com.example.nirogo.Activities.OptionActivity;
 import com.example.nirogo.Post.PostUploadInfo;
+import com.example.nirogo.R;
+import com.example.nirogo.ScreenSize;
+import com.example.nirogo.Profile.UserProfile;
 import com.gauravk.bubblenavigation.BubbleNavigationConstraintView;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
 import com.google.android.material.navigation.NavigationView;
@@ -43,6 +51,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+    ProgressBar progressBar;
     RecyclerView recyclerview;
     //db
     DatabaseReference databaseReference;
@@ -69,6 +78,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         } else
             setContentView(R.layout.activity_home);
 
+        progressBar = findViewById(R.id.progressBar);
+
         storageReference = FirebaseStorage.getInstance().getReference();
 
         //setting up navigation drawer
@@ -90,7 +101,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         chatbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, MessageActivity.class);
+                Intent intent = new Intent(HomeActivity.this, MessagePreview.class);
                 startActivity(intent);
                 Animatoo.animateSwipeRight(HomeActivity.this);
             }
@@ -117,7 +128,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-
+                    progressBar.setVisibility(View.INVISIBLE);
                     PostUploadInfo postUploadInfo = postSnapshot.getValue(PostUploadInfo.class);
                     list.add(postUploadInfo);
                 }
@@ -169,7 +180,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId()) {
             case R.id.nav_item_one:  drawerLayout.closeDrawer(GravityCompat.START,true);
                                         return true;
-            case R.id.nav_item_two : startActivity(new Intent(HomeActivity.this,CartActivity.class));
+            case R.id.nav_item_two : startActivity(new Intent(HomeActivity.this, CartActivity.class));
                                         return true;
             case R.id.nav_item_three : startActivity(new Intent(HomeActivity.this,AmbulanceActivity.class));
                                         return true;

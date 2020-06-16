@@ -1,4 +1,4 @@
-package com.example.nirogo;
+package com.example.nirogo.Profile;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.example.nirogo.R;
 
 public class updateprofile extends Activity {
     private EditText name;

@@ -1,11 +1,10 @@
-package com.example.nirogo;
+package com.example.nirogo.HomeScreen;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.nirogo.Adapters.Messages.ItemMessages;
 import com.example.nirogo.Adapters.Messages.MessageAdapter;
+import com.example.nirogo.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,16 +27,6 @@ public class MessageActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
 
-        TextView txt = findViewById(R.id.disclamerText);
-        if (getIntent().hasExtra("type")){
-         String type = getIntent().getStringExtra("type");
-
-         if (type.equalsIgnoreCase("Offline"))
-             txt.setText(R.string.offline_display);
-
-         else
-             txt.setText(R.string.online);
-        }
 
         Button back = findViewById(R.id.backBtn);
         back.setOnClickListener(new View.OnClickListener() {
@@ -48,6 +38,10 @@ public class MessageActivity extends Activity {
             }
         });
 
+        String name = null;
+        if (getIntent().hasExtra("docname"))
+            name = getIntent().getStringExtra("docname");
+
 
         RecyclerView recyclerview = findViewById(R.id.recyclerviewMessages);
 
@@ -58,38 +52,9 @@ public class MessageActivity extends Activity {
 
         ItemMessages itemMessages = new ItemMessages();
         itemMessages.setImageUser(R.drawable.user_1);
-        itemMessages.setNameUser("Dr. Sood");
+        itemMessages.setNameUser(name);
         itemMessages.setTextUser("Text XYZ");
         messagesList.add(itemMessages);
 
-        itemMessages = new ItemMessages();
-        itemMessages.setImageUser(R.drawable.user_2);
-        itemMessages.setNameUser("Dr. Sheetal");
-        itemMessages.setTextUser("Text XYZ");
-        messagesList.add(itemMessages);
-
-        itemMessages = new ItemMessages();
-        itemMessages.setImageUser(R.drawable.user_3);
-        itemMessages.setNameUser("Dr. Garg");
-        itemMessages.setTextUser("Text XYZ");
-        messagesList.add(itemMessages);
-
-        itemMessages = new ItemMessages();
-        itemMessages.setImageUser(R.drawable.user_4);
-        itemMessages.setNameUser("Dr. Aggarwal");
-        itemMessages.setTextUser("Text XYZ");
-        messagesList.add(itemMessages);
-
-        itemMessages = new ItemMessages();
-        itemMessages.setImageUser(R.drawable.user_5);
-        itemMessages.setNameUser("Dr. Mishra");
-        itemMessages.setTextUser("Text XYZ");
-        messagesList.add(itemMessages);
-
-        itemMessages = new ItemMessages();
-        itemMessages.setImageUser(R.drawable.user_6);
-        itemMessages.setNameUser("Dr. Sheetal");
-        itemMessages.setTextUser("Text XYZ");
-        messagesList.add(itemMessages);
     }
 }

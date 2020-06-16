@@ -14,9 +14,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.nirogo.HomeActivity;
-import com.example.nirogo.MainActivity;
-import com.example.nirogo.OptionActivity;
+import com.example.nirogo.HomeScreen.HomeActivity;
+import com.example.nirogo.Activities.MainActivity;
+import com.example.nirogo.Activities.OptionActivity;
 import com.example.nirogo.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;

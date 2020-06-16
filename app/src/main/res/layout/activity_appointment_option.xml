@@ -6,7 +6,7 @@
     android:background="@color/blue_bg"
     android:theme="@style/AppTheme.NoActionBar"
     android:layout_height="match_parent"
-    tools:context=".OptionActivity">
+    tools:context=".Activities.OptionActivity">
 
     <TextView
         android:id="@+id/cat"

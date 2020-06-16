@@ -1,4 +1,4 @@
-package com.example.nirogo;
+package com.example.nirogo.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +13,10 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.nirogo.HomeScreen.MessageActivity;
+import com.example.nirogo.HomeScreen.MessagePreview;
+import com.example.nirogo.R;
 
 import java.util.ArrayList;
 
@@ -38,7 +42,7 @@ public class AppointmentOption extends AppCompatActivity {
         offline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                payUsingUpi("Nirogo", "9931959949@paytm", "Appoinment for " + docName, "10");
+                payUsingUpi("Nirogo", "9931959949@paytm", "Appoinment for " + docName, "1");
                 mode = "offline";
             }
         });
@@ -46,7 +50,7 @@ public class AppointmentOption extends AppCompatActivity {
         online.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                payUsingUpi("Nirogo", "9931959949@paytm", "Appoinment for " + docName, "10");
+                payUsingUpi("Nirogo", "9931959949@paytm", "Appoinment for " + docName, "1");
                 mode = "online";
             }
         });

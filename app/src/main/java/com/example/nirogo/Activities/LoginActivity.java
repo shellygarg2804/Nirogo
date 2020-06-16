@@ -1,4 +1,4 @@
-package com.example.nirogo;
+package com.example.nirogo.Activities;
 
 import androidx.annotation.NonNull;
 
@@ -15,6 +15,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nirogo.Doctor.DoctorActivity;
+import com.example.nirogo.HomeScreen.HomeActivity;
+import com.example.nirogo.R;
+import com.example.nirogo.ScreenSize;
 import com.example.nirogo.Supplier.SupplierActivity;
 import com.example.nirogo.User.UserActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;

@@ -17,9 +17,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.example.nirogo.Doctor.DetailsDoctor;
-import com.example.nirogo.Doctor.DocUploadInfo;
-import com.example.nirogo.HomeActivity;
+import com.example.nirogo.HomeScreen.HomeActivity;
 import com.example.nirogo.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;

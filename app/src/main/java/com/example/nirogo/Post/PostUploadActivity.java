@@ -2,7 +2,6 @@ package com.example.nirogo.Post;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -20,10 +19,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.nirogo.Adapters.Feed.FeedAdapter;
-import com.example.nirogo.Doctor.DetailsDoctor;
 import com.example.nirogo.Doctor.DocUploadInfo;
-import com.example.nirogo.HomeActivity;
+import com.example.nirogo.HomeScreen.HomeActivity;
 import com.example.nirogo.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
