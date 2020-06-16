@@ -21,6 +21,8 @@ public class AppointmentOption extends AppCompatActivity {
     LinearLayout offline, online;
     final int UPI_PAYMENT = 0;
     String mode ;
+    String docName ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +32,7 @@ public class AppointmentOption extends AppCompatActivity {
         online = findViewById(R.id.online);
 
         TextView name = findViewById(R.id.drname);
-        final String docName = getIntent().getStringExtra("docname");
+         docName = getIntent().getStringExtra("docname");
         name.setText(docName);
 
         offline.setOnClickListener(new View.OnClickListener() {
@@ -147,8 +149,14 @@ public class AppointmentOption extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Transaction successful.", Toast.LENGTH_SHORT).show();
                 if (mode.equals("offline")){
                     Toast.makeText(getApplicationContext(), "You have chosen offline mode, visit the Dr. ", Toast.LENGTH_SHORT).show();
-
                 }
+                else {
+                   // add another type of messages activity
+                    Intent intent = new Intent(getApplicationContext(), MessageActivity.class);
+                    intent.putExtra("docname", docName);
+                    startActivity(intent);
+                }
+
                 Log.e("UPI", "payment successfull: "+approvalRefNo);
             }
             else if("Payment cancelled by user.".equals(paymentCancel)) {
