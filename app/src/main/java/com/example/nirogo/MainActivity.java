@@ -17,13 +17,13 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ScreenSize size_check = new ScreenSize();
-        size = size_check.screenCheck(MainActivity.this);
-
-        if (size.equalsIgnoreCase("Small")) {
-            setContentView(R.layout.activity_main_small);
-            Log.i("Screen Return Value","Small");
-        }
-        else
+//        size = size_check.screenCheck(MainActivity.this);
+//
+//        if (size.equalsIgnoreCase("Small")) {
+//            setContentView(R.layout.activity_main_small);
+//            Log.i("Screen Return Value","Small");
+//        }
+//        else
             setContentView(R.layout.activity_main);
 
     txt = findViewById(R.id.txtStart);

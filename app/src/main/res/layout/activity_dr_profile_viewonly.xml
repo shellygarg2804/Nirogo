@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_marginBottom="70dp"
+        android:layout_height="match_parent"
+        tools:ignore="NotSibling">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/blueTop"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/profile_about_rectangle"/>
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ProfilePic"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="90dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/first_screen"
+        app:civ_border_width="8dp"
+        app:civ_border_color="@color/DarkBlue"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:layout_below="@id/ProfilePic"
+            android:layout_marginTop="10dp"
+            android:id="@+id/nameAge"
+            >
+
+            <TextView
+                android:id="@+id/nameProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="XYZ ABC"
+                android:textColor="#000"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/postAdd"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/nameAge"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                >
+
+            <Button
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/add"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Post"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/Black"
+                android:textSize="25sp"/>
+            </LinearLayout>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/Aboutlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:cardBackgroundColor="@color/LightCyan"
+        android:layout_below="@id/postAdd"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="About"
+            android:textColor="@color/DarkBlue"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:maxLines="8"
+            android:text="xzcbzhjfchshfhsdhfghs sdfvhsahfgas sghfdghasgfas dhfggagfhasg dhgawsfghdah asdfvgashfA"
+            android:textSize="18dp"
+            android:id="@+id/aboutprofile"
+            />
+
+
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/Aboutlayout"
+        android:id="@+id/experience"
+        >
+        <androidx.cardview.widget.CardView
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
+            app:cardBackgroundColor="@color/blue_bg"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Experience"
+                android:textColor="@color/White"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/White"
+                android:text="xzcbzhjfchshfhsdhfghs sdfvhsahfgas sghfdghasgfas dhfggagfhasg dhgawsfghdah asdfvgashfA"
+                android:textSize="18dp"
+                android:id="@+id/experienceprofile"
+                />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="20dp"
+            app:cardBackgroundColor="@color/blue_bg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Education"
+                android:textColor="@color/White"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/educationprofile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/White"
+                android:text="xzcbzhjfchshfhsdhfghs sdfvhsahfgas sghfdghasgfas dhfggagfhasg dhgawsfghdah asdfvgashfA"
+                android:textSize="18dp"
+                />
+        </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/Contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="30dp"
+        app:cardBackgroundColor="@color/LightCyan"
+        android:layout_below="@id/experience"
+        >
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>
+

@@ -1,14 +1,10 @@
 package com.example.nirogo;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.nirogo.Adapters.Appointments.AppointmentsActivity;
 import com.gauravk.bubblenavigation.BubbleNavigationConstraintView;
@@ -44,7 +40,7 @@ public class SearchActivity extends Activity {
                     startActivity(new Intent(getApplicationContext(), CartActivity.class));
                    } else if (position == 4) {
                     } else if (position == 5) {
-                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                    startActivity(new Intent(getApplicationContext(), DoctorProfile.class));
                 }
             }});
     }

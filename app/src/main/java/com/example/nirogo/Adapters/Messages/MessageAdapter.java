@@ -6,20 +6,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.nirogo.Adapters.Feed.ItemAdapter;
-import com.example.nirogo.ProfileActivity;
+import com.example.nirogo.DoctorProfile;
 import com.example.nirogo.R;
 
 import java.util.List;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -73,7 +69,7 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             nameUser.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), ProfileActivity.class);
+                    Intent intent = new Intent(v.getContext(), DoctorProfile.class);
                     intent.putExtra("docname", nameUser.getText());
                     v.getContext().startActivity(intent);
                 }

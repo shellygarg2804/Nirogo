@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#5473ff</color>
-    <color name="colorPrimaryDark">#5473ff</color>
-    <color name="colorAccent">#5473ff</color>
-    <color name="blue_bg">#5473ff</color>
+    <color name="colorPrimary">#5271FF</color>
+    <color name="colorPrimaryDark">#5271FF</color>
+    <color name="colorAccent">#5271FF</color>
+    <color name="blue_bg">#5271FF</color>
     <color name="blue_like">#1273EB</color>
     <color name="grey_300">#E0E0E0</color>
     <color name="grey_500">#9E9E9E</color>

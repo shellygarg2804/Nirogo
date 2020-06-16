@@ -3,23 +3,17 @@ package com.example.nirogo.Adapters.Appointments;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
-import com.example.nirogo.Adapters.Feed.FeedAdapter;
 import com.example.nirogo.AmbulanceActivity;
-import com.example.nirogo.CartActivity;
 import com.example.nirogo.HomeActivity;
-import com.example.nirogo.ProfileActivity;
+import com.example.nirogo.DoctorProfile;
 import com.example.nirogo.R;
-import com.example.nirogo.SearchActivity;
 import com.example.nirogo.UserProfile;
 import com.gauravk.bubblenavigation.BubbleNavigationConstraintView;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
@@ -101,7 +95,7 @@ public class AppointmentsActivity extends Activity {
                 }
                 else if (position == 3) {
                     if(getIntent().getStringExtra("type").equals("Doctor")) {
-                        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                        startActivity(new Intent(getApplicationContext(), DoctorProfile.class));
                         Animatoo.animateFade(AppointmentsActivity.this);
                     }
                     else{

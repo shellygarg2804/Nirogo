@@ -1,26 +1,25 @@
-package com.example.nirogo;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.nirogo.Adapters.Appointments.AppointmentsActivity;
+import com.example.nirogo.AmbulanceActivity;
+import com.example.nirogo.HomeActivity;
 import com.example.nirogo.Post.PostUploadActivity;
+import com.example.nirogo.R;
+import com.example.nirogo.updateprofile;
 import com.gauravk.bubblenavigation.BubbleNavigationConstraintView;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
 
-public class ProfileActivity extends Activity {
+public class DoctorProfileViewOnly extends Activity {
 
     private ImageView update;
     private TextView name;
@@ -35,7 +34,7 @@ public class ProfileActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_dr_profile_viewonly);
 
         LinearLayout addPost = findViewById(R.id.postAdd);
 
@@ -84,26 +83,10 @@ public class ProfileActivity extends Activity {
             }
         }
 
-        update= (ImageView) findViewById(R.id.update);
-        update.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i= new Intent(ProfileActivity.this,updateprofile.class);
-                i.putExtra("namep",name.getText());
-                i.putExtra("aboutp",about.getText());
-                i.putExtra("experiencep",experience.getText());
-                i.putExtra("educationp",experience.getText());
-                startActivity(i);
-
-
-            }
-        });
-
-
         addPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ProfileActivity.this, PostUploadActivity.class);
+                Intent intent = new Intent(DoctorProfileViewOnly.this, PostUploadActivity.class);
                 startActivity(intent);
             }
         });
@@ -115,23 +98,23 @@ public class ProfileActivity extends Activity {
             public void onNavigationChanged(View view, int position) {
 
                 if (position == 0) {
-                    Intent intent= new Intent(ProfileActivity.this, HomeActivity.class);
+                    Intent intent= new Intent(DoctorProfileViewOnly.this, HomeActivity.class);
                     intent.putExtra("type","Doctor");
                     startActivity(intent);
-                    Animatoo.animateFade(ProfileActivity.this);
+                    Animatoo.animateFade(DoctorProfileViewOnly.this);
                     }
 
                    else if (position == 1) {
-                    Intent intent= new Intent(ProfileActivity.this, AppointmentsActivity.class);
+                    Intent intent= new Intent(DoctorProfileViewOnly.this, AppointmentsActivity.class);
                     intent.putExtra("type","Doctor");
                     startActivity(intent);
-                    Animatoo.animateFade(ProfileActivity.this);
+                    Animatoo.animateFade(DoctorProfileViewOnly.this);
                 }
                 else if (position == 2) {
-                    Intent intent= new Intent(ProfileActivity.this, AmbulanceActivity.class);
+                    Intent intent= new Intent(DoctorProfileViewOnly.this, AmbulanceActivity.class);
                     intent.putExtra("type","Doctor");
                     startActivity(intent);
-                    Animatoo.animateFade(ProfileActivity.this);
+                    Animatoo.animateFade(DoctorProfileViewOnly.this);
                 }
             }});
 
@@ -140,10 +123,10 @@ public class ProfileActivity extends Activity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent= new Intent(ProfileActivity.this, HomeActivity.class);
+        Intent intent= new Intent(DoctorProfileViewOnly.this, HomeActivity.class);
         intent.putExtra("type","Doctor");
         startActivity(intent);
-        Animatoo.animateFade(ProfileActivity.this);
+        Animatoo.animateFade(DoctorProfileViewOnly.this);
     }
 }
 

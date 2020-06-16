@@ -1,7 +1,5 @@
 package com.example.nirogo;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 
 public class updateprofile extends Activity {
     private EditText name;
@@ -31,7 +28,7 @@ public class updateprofile extends Activity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                startActivity(new Intent(getApplicationContext(), DoctorProfile.class));
             }
         });
 
@@ -71,7 +68,7 @@ public class updateprofile extends Activity {
                 String phonestring= phone.getText().toString();
                 Log.i("Phone no.",phonestring);
 
-                Intent i= new Intent(updateprofile.this, ProfileActivity.class);
+                Intent i= new Intent(updateprofile.this, DoctorProfile.class);
 
                 i.putExtra("Activity","UpdateProfileActivity");
                 i.putExtra("namestring",namestring);

@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nirogo.AppointmentOption;
-import com.example.nirogo.ProfileActivity;
+import com.example.nirogo.DoctorProfile;
 import com.example.nirogo.R;
 
 import java.util.List;
@@ -74,7 +74,7 @@ public class AppointmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(v.getContext(), "Opening Doc Profile", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(v.getContext(), ProfileActivity.class);
+                    Intent intent = new Intent(v.getContext(), DoctorProfile.class);
                     intent.putExtra("docname", docName.getText());
                     v.getContext().startActivity(intent);
                 }
