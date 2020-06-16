@@ -33,6 +33,7 @@
         <activity android:name=".User.UserActivity" />
         <activity android:name=".Doctor.DoctorActivity" />
         <activity android:name=".OptionActivity" />
+        <activity android:name=".UserProfile"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

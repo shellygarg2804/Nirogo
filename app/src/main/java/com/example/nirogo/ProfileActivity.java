@@ -115,16 +115,22 @@ public class ProfileActivity extends Activity {
             public void onNavigationChanged(View view, int position) {
 
                 if (position == 0) {
-                    startActivity(new Intent(ProfileActivity.this, HomeActivity.class));
+                    Intent intent= new Intent(ProfileActivity.this, HomeActivity.class);
+                    intent.putExtra("type","Doctor");
+                    startActivity(intent);
                     Animatoo.animateFade(ProfileActivity.this);
                     }
 
                    else if (position == 1) {
-                    startActivity(new Intent(ProfileActivity.this, AppointmentsActivity.class));
+                    Intent intent= new Intent(ProfileActivity.this, AppointmentsActivity.class);
+                    intent.putExtra("type","Doctor");
+                    startActivity(intent);
                     Animatoo.animateFade(ProfileActivity.this);
                 }
                 else if (position == 2) {
-                    startActivity(new Intent(ProfileActivity.this, AmbulanceActivity.class));
+                    Intent intent= new Intent(ProfileActivity.this, AmbulanceActivity.class);
+                    intent.putExtra("type","Doctor");
+                    startActivity(intent);
                     Animatoo.animateFade(ProfileActivity.this);
                 }
             }});
@@ -134,7 +140,9 @@ public class ProfileActivity extends Activity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(this, HomeActivity.class));
+        Intent intent= new Intent(ProfileActivity.this, HomeActivity.class);
+        intent.putExtra("type","Doctor");
+        startActivity(intent);
         Animatoo.animateFade(ProfileActivity.this);
     }
 }

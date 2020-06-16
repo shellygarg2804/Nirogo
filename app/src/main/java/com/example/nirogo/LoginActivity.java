@@ -56,6 +56,7 @@ public class LoginActivity extends Activity {
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         if(user!=null){
             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+            intent.putExtra("type",getIntent().getStringExtra("type"));
             startActivity(intent);
         }
     }
@@ -78,6 +79,7 @@ public class LoginActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                intent.putExtra("type",getIntent().getStringExtra("type"));
                 startActivity(intent);
             }
         });
@@ -171,6 +173,7 @@ public class LoginActivity extends Activity {
                             Log.i("LOGIN USER UID",uid);
                             Toast.makeText(LoginActivity.this,"Signin Successful",Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                            intent.putExtra("type",getIntent().getStringExtra("type"));
                             intent.putExtra("USER UID",uid);
                             startActivity(intent);
 
@@ -247,6 +250,7 @@ public class LoginActivity extends Activity {
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                            intent.putExtra("type",getIntent().getStringExtra("type"));
                             startActivity(intent);
                         }
 
