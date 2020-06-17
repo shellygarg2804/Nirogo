@@ -68,6 +68,8 @@ public class AppointmentsActivity extends Activity {
             @Override
             public void onClick(View v) {
 
+                list.clear();
+
                 final String city = cityEnter.getText().toString();
 
                 databaseReference.addValueEventListener(new ValueEventListener() {
@@ -78,8 +80,9 @@ public class AppointmentsActivity extends Activity {
 
                             String userCity = docNearby.getCity();
 
-                            if (userCity.equalsIgnoreCase(city))
+                            if (userCity.equalsIgnoreCase(city)){
                                 list.add(docNearby);
+                            }
 
                         }
                         postAdapter = new AppointmentAdapter(list, getApplicationContext());
