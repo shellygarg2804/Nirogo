@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.nirogo.Activities.AppointmentsActivity;
+import com.example.nirogo.Activities.LoginActivity;
 import com.example.nirogo.Activities.ProfileActivity;
 import com.example.nirogo.Adapters.Feed.FeedAdapter;
 import com.example.nirogo.Activities.AmbulanceActivity;
@@ -30,9 +31,16 @@ import com.example.nirogo.Post.PostUploadInfo;
 import com.example.nirogo.R;
 import com.example.nirogo.ScreenSize;
 import com.example.nirogo.Profile.UserProfile;
+import com.facebook.login.Login;
 import com.gauravk.bubblenavigation.BubbleNavigationConstraintView;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -40,6 +48,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +66,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     //db
     DatabaseReference databaseReference;
     StorageReference storageReference;
+    FirebaseAuth mAuth;
     String Database_Path = "Post/";
+
 
     @Override
     public void onBackPressed() {
@@ -77,6 +88,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             Log.i("Screen Return Value", "Small");
         } else
             setContentView(R.layout.activity_home);
+        mAuth= FirebaseAuth.getInstance();
 
         progressBar = findViewById(R.id.progressBar);
 
@@ -189,32 +201,41 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_item_one:  drawerLayout.closeDrawer(GravityCompat.START,true);
-                return true;
+                                        return true;
             case R.id.nav_item_two :  Intent intent= new Intent(HomeActivity.this, CartActivity.class);
-                intent.putExtra("type",getIntent().getStringExtra("type"));
-                startActivity(intent);
-                return true;
+                                        intent.putExtra("type",getIntent().getStringExtra("type"));
+                                        startActivity(intent);
+                                        return true;
             case R.id.nav_item_three :  intent= new Intent(HomeActivity.this, AmbulanceActivity.class);
-                intent.putExtra("type",getIntent().getStringExtra("type"));
-                startActivity(intent);
-                return true;
+                                        intent.putExtra("type",getIntent().getStringExtra("type"));
+                                        startActivity(intent);
+                                        return true;
             case R.id.nav_item_four : if(getIntent().getStringExtra("type").equals("Doctor")) {
-                intent = new Intent(HomeActivity.this, ProfileActivity.class);
-                intent.putExtra("type", getIntent().getStringExtra("type"));
-                startActivity(intent);
-                return true;
-            }
-            else{
-                intent = new Intent(HomeActivity.this, UserProfile.class);
-                intent.putExtra("type", getIntent().getStringExtra("type"));
-                startActivity(intent);
-                return true; }
-            case R.id.nav_item_five : Toast.makeText(getApplicationContext(),"SignOut",Toast.LENGTH_SHORT).show();
+                                        intent = new Intent(HomeActivity.this, ProfileActivity.class);
+                                        intent.putExtra("type", getIntent().getStringExtra("type"));
+                                        startActivity(intent);
+                                        return true;
+                                        }
+                                        else{
+                                            intent = new Intent(HomeActivity.this, UserProfile.class);
+                                            intent.putExtra("type", getIntent().getStringExtra("type"));
+                                            startActivity(intent);
+                                            return true; }
+            case R.id.nav_item_five :   signOut(); return true;
+
         }
-
-
-
         return true;
     }
+
+
+    private void signOut() {
+        mAuth.signOut();
+        finish();
+                //Add Alert dialogue Box
+                startActivity(new Intent(HomeActivity.this,OptionActivity.class));
+
+    }
+
+
 }
 
