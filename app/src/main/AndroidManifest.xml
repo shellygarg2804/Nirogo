@@ -20,7 +20,6 @@
         <activity android:name=".Activities.SearchActivity" />
         <activity android:name=".Activities.CartActivity" />
         <activity android:name=".Activities.AmbulanceActivity" />
-        <activity android:name=".Profile.DoctorProfile" />
         <activity android:name=".Post.PostUploadActivity"/>
         <activity android:name=".Activities.AppointmentsActivity"/>
         <activity android:name=".HomeScreen.MessagePreview" />
@@ -35,6 +34,7 @@
         <activity android:name=".Doctor.DoctorActivity" />
         <activity android:name=".Activities.OptionActivity" />
         <activity android:name=".Profile.UserProfile"/>
+        <activity android:name=".Activities.ProfileActivity"/>
         <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

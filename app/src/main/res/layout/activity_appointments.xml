@@ -94,14 +94,14 @@
         android:layout_height="match_parent"/>
 
     <com.gauravk.bubblenavigation.BubbleNavigationConstraintView
-        android:id="@+id/bottomNavApp"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom"
-        app:bnc_mode="spread"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/blue_bg"
-        >
+    android:id="@+id/bottomNavApp"
+    android:layout_alignParentBottom="true"
+    android:layout_gravity="bottom"
+    app:bnc_mode="spread"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@color/blue_bg"
+    >
 
     <com.gauravk.bubblenavigation.BubbleToggleView
         android:id="@+id/c_item_menu"
@@ -126,26 +126,37 @@
         app:bt_title="Appointment"
         />
 
-        <com.gauravk.bubblenavigation.BubbleToggleView
-            android:id="@+id/c_item_ambulance"
-            android:layout_width="wrap_content"
-            app:bt_shape="@drawable/item_bottombar"
-            android:layout_height="50dp"
-            app:bt_colorActive="@color/Black"
-            app:bt_colorInactive="@color/White"
-            app:bt_icon="@drawable/ambulance_dark"
-            app:bt_title="Ambulance"
-            />
+    <com.gauravk.bubblenavigation.BubbleToggleView
+        android:id="@+id/c_item_addpost"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        app:bt_active="true"
+        app:bt_shape="@drawable/item_bottombar"
+        app:bt_colorActive="@color/Black"
+        app:bt_colorInactive="@color/White"
+        app:bt_icon="@drawable/addpost"
+        />
 
     <com.gauravk.bubblenavigation.BubbleToggleView
-        android:id="@+id/c_item_user"
+        android:id="@+id/c_item_ambulance"
+        android:layout_width="wrap_content"
+        app:bt_shape="@drawable/item_bottombar"
+        android:layout_height="50dp"
+        app:bt_colorActive="@color/Black"
+        app:bt_colorInactive="@color/White"
+        app:bt_icon="@drawable/ambulance_dark"
+        app:bt_title="Ambulance"
+        />
+
+    <com.gauravk.bubblenavigation.BubbleToggleView
+        android:id="@+id/item_cart"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         app:bt_shape="@drawable/item_bottombar"
         app:bt_colorActive="@color/Black"
         app:bt_colorInactive="@color/White"
-        app:bt_icon="@drawable/user_black"
-        app:bt_title="@string/profile_tab"
+        app:bt_icon="@drawable/cart"
+        app:bt_title="Cart"
         />
-    </com.gauravk.bubblenavigation.BubbleNavigationConstraintView>
+</com.gauravk.bubblenavigation.BubbleNavigationConstraintView>
 </RelativeLayout>

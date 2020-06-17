@@ -142,6 +142,18 @@
                     />
 
                 <com.gauravk.bubblenavigation.BubbleToggleView
+                    android:id="@+id/c_item_addpost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    app:bt_active="true"
+                    app:bt_colorActive="@color/Black"
+                    app:bt_colorInactive="@color/White"
+                    app:bt_icon="@drawable/addpost"
+                    app:bt_shape="@drawable/item_bottombar"
+                    app:bt_badgeBackgroundColor="@color/blue_bg"
+                    />
+
+                <com.gauravk.bubblenavigation.BubbleToggleView
                     android:id="@+id/c_item_ambulance"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
@@ -157,7 +169,7 @@
 
 
                 <com.gauravk.bubblenavigation.BubbleToggleView
-                    android:id="@+id/c_item_user"
+                    android:id="@+id/cart"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     app:bt_shape="@drawable/item_bottombar"
@@ -165,11 +177,10 @@
                     app:bt_badgeBackgroundColor="@color/blue_bg"
                     app:bt_colorActive="@color/Black"
                     app:bt_colorInactive="@color/White"
-                    app:bt_icon="@drawable/user_black"
-                    app:bt_title="@string/profile_tab"
+                    app:bt_icon="@drawable/cart"
+                    app:bt_title="Cart"
                     />
-            </com.gauravk.bubblenavigation.BubbleNavigationConstraintView>
-        </RelativeLayout>
+            </com.gauravk.bubblenavigation.BubbleNavigationConstraintView>        </RelativeLayout>
 
     </LinearLayout>
 

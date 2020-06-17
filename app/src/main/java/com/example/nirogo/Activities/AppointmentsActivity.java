@@ -119,12 +119,17 @@ public class AppointmentsActivity extends Activity {
                     intent.putExtra("type",getIntent().getStringExtra("type"));
                     startActivity(intent);
                     Animatoo.animateFade(AppointmentsActivity.this);
-                   }
+                }
                 else if (position == 2) {
-                    Intent intent= new Intent(AppointmentsActivity.this, PostUploadActivity.class);
-                    intent.putExtra("type",getIntent().getStringExtra("type"));
-                    startActivity(intent);
-                    Animatoo.animateFade(AppointmentsActivity.this);
+                    if(getIntent().getStringExtra("type").equals("Doctor")) {
+                        Intent intent = new Intent(AppointmentsActivity.this, PostUploadActivity.class);
+                        intent.putExtra("type", getIntent().getStringExtra("type"));
+                        startActivity(intent);
+                        Animatoo.animateFade(AppointmentsActivity.this);
+                    }
+                    else {
+                        Toast.makeText(AppointmentsActivity.this,"User cannot upload post",Toast.LENGTH_LONG).show();
+                    }
                 }
                 else if (position == 3) {
                     Intent intent= new Intent(AppointmentsActivity.this, AmbulanceActivity.class);

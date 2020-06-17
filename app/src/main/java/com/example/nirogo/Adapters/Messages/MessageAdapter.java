@@ -12,7 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.nirogo.Profile.DoctorProfile;
+import com.example.nirogo.Activities.ProfileActivity;
 import com.example.nirogo.R;
 
 import java.util.List;
@@ -69,7 +69,7 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             nameUser.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), DoctorProfile.class);
+                    Intent intent = new Intent(v.getContext(), ProfileActivity.class);
                     intent.putExtra("docname", nameUser.getText());
                     v.getContext().startActivity(intent);
                 }

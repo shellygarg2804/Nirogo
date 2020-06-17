@@ -76,32 +76,32 @@
 
 
 
-        <LinearLayout
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/userprofileappointment"
-            android:layout_marginTop="20dp"
-            android:layout_centerHorizontal="true" >
+            <LinearLayout
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/userprofileappointment"
+                android:layout_marginTop="20dp"
+                android:layout_centerHorizontal="true" >
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/appointment">
-            </ImageView>
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/appointment">
+                </ImageView>
 
-            <TextView
-                android:textColor="@color/Black"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="PAST APPOINTMENTS"
-                android:textSize="25dp"
-                android:layout_marginLeft="10dp"
-                android:gravity="center"
-                />
+                <TextView
+                    android:textColor="@color/Black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="PAST APPOINTMENTS"
+                    android:textSize="25dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    />
 
 
-        </LinearLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="320dp"
@@ -112,116 +112,55 @@
                 android:layout_centerHorizontal="true"
                 android:layout_below="@id/userprofileappointment">
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/reports"
-                android:layout_gravity="center">
-            </ImageView>
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/reports"
+                    android:layout_gravity="center">
+                </ImageView>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="REPORTS"
-                android:textSize="25dp"
-                android:layout_marginLeft="10dp"
-                android:gravity="center"
-                android:textColor="@color/Black"
-                />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="REPORTS"
+                    android:textSize="25dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:textColor="@color/Black"
+                    />
 
             </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/userprofilenotification"
-            android:layout_marginTop="20dp"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/userprofilereports"
-            android:layout_marginBottom="20dp">
+            <LinearLayout
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/userprofilenotification"
+                android:layout_marginTop="20dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/userprofilereports"
+                android:layout_marginBottom="20dp">
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/notification"
-                android:layout_gravity="center">
-            </ImageView>
-            <TextView
-                android:textColor="@color/Black"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="NOTIFICATIONS"
-                android:textSize="25dp"
-                android:layout_marginLeft="10dp"
-                android:gravity="center"
-                />
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/notification"
+                    android:layout_gravity="center">
+                </ImageView>
+                <TextView
+                    android:textColor="@color/Black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="NOTIFICATIONS"
+                    android:textSize="25dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    />
 
-        </LinearLayout>
+            </LinearLayout>
 
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
 
-    <com.gauravk.bubblenavigation.BubbleNavigationConstraintView
-        android:id="@+id/bottomNavUserProf"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom"
-        app:bnc_mode="spread"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/blue_bg"
-        >
-
-
-        <com.gauravk.bubblenavigation.BubbleToggleView
-            android:id="@+id/c_item_menu"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            app:bt_shape="@drawable/item_bottombar"
-            app:bt_colorActive="@color/Black"
-            app:bt_colorInactive="@color/White"
-            app:bt_icon="@drawable/home"
-            app:bt_title="Home"
-            />
-
-
-        <com.gauravk.bubblenavigation.BubbleToggleView
-            android:id="@+id/c_item_add"
-            android:layout_width="wrap_content"
-            app:bt_shape="@drawable/item_bottombar"
-            android:layout_height="50dp"
-            app:bt_colorActive="@color/Black"
-            app:bt_colorInactive="@color/White"
-            app:bt_icon="@drawable/list"
-            app:bt_title="Appointment"
-            />
-
-        <com.gauravk.bubblenavigation.BubbleToggleView
-            android:id="@+id/c_item_ambulance"
-            android:layout_width="wrap_content"
-            app:bt_shape="@drawable/item_bottombar"
-            android:layout_height="50dp"
-            app:bt_colorActive="@color/Black"
-            app:bt_colorInactive="@color/White"
-            app:bt_icon="@drawable/ambulance_dark"
-            app:bt_title="Ambulance"
-            />
-
-        <com.gauravk.bubblenavigation.BubbleToggleView
-            android:id="@+id/c_item_user"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            app:bt_active="true"
-            app:bt_shape="@drawable/item_bottombar"
-            app:bt_colorActive="@color/Black"
-            app:bt_colorInactive="@color/White"
-            app:bt_icon="@drawable/user_black"
-            app:bt_title="@string/profile_tab"
-            />
-
-    </com.gauravk.bubblenavigation.BubbleNavigationConstraintView>
-
-
-
-    </RelativeLayout>
+</RelativeLayout>

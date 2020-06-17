@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.nirogo.Activities.ProfileActivity;
 import com.example.nirogo.R;
 
 public class updateprofile extends Activity {
@@ -30,7 +31,7 @@ public class updateprofile extends Activity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), DoctorProfile.class));
+                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
             }
         });
 
@@ -70,7 +71,7 @@ public class updateprofile extends Activity {
                 String phonestring= phone.getText().toString();
                 Log.i("Phone no.",phonestring);
 
-                Intent i= new Intent(updateprofile.this, DoctorProfile.class);
+                Intent i= new Intent(updateprofile.this, ProfileActivity.class);
 
                 i.putExtra("Activity","UpdateProfileActivity");
                 i.putExtra("namestring",namestring);

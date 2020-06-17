@@ -20,10 +20,11 @@ import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.nirogo.Activities.AppointmentsActivity;
+import com.example.nirogo.Activities.ProfileActivity;
 import com.example.nirogo.Adapters.Feed.FeedAdapter;
 import com.example.nirogo.Activities.AmbulanceActivity;
 import com.example.nirogo.Activities.CartActivity;
-import com.example.nirogo.Profile.DoctorProfile;
+import com.example.nirogo.Post.PostUploadActivity;
 import com.example.nirogo.Activities.OptionActivity;
 import com.example.nirogo.Post.PostUploadInfo;
 import com.example.nirogo.R;
@@ -152,24 +153,34 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     startActivity(intent);
                     Animatoo.animateFade(HomeActivity.this);
                 } else if (position == 2) {
+                    if(getIntent().getStringExtra("type").equals("Doctor")) {
+                        Intent intent = new Intent(HomeActivity.this, PostUploadActivity.class);
+                        intent.putExtra("type", getIntent().getStringExtra("type"));
+                        startActivity(intent);
+                        Animatoo.animateFade(HomeActivity.this);
+                    }
+                    else {
+                        Toast.makeText(HomeActivity.this,"User cannot upload post",Toast.LENGTH_LONG).show();
+                    }
+                } else if (position == 3) {
+
                     Intent intent= new Intent(HomeActivity.this, AmbulanceActivity.class);
                     intent.putExtra("type",getIntent().getStringExtra("type"));
                     startActivity(intent);
                     Animatoo.animateFade(HomeActivity.this);
-                } else if (position == 3) {
-                    if (getIntent().hasExtra("type")){
-                    if(getIntent().getStringExtra("type").equals("Doctor")) {
-                        startActivity(new Intent(getApplicationContext(), DoctorProfile.class));
-                        Animatoo.animateFade(HomeActivity.this);
-                    }
-                    else{
-                        startActivity(new Intent(getApplicationContext(), UserProfile.class));
-                        Animatoo.animateFade(HomeActivity.this);
-
-                    }}
-                }
 
                 }
+
+                else if (position == 4) {
+
+                    Intent intent= new Intent(HomeActivity.this, CartActivity.class);
+                    intent.putExtra("type",getIntent().getStringExtra("type"));
+                    startActivity(intent);
+                    Animatoo.animateFade(HomeActivity.this);
+
+                }
+
+            }
         });
     }
 
@@ -178,14 +189,31 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_item_one:  drawerLayout.closeDrawer(GravityCompat.START,true);
-                                        return true;
-            case R.id.nav_item_two : startActivity(new Intent(HomeActivity.this, CartActivity.class));
-                                        return true;
-            case R.id.nav_item_three : startActivity(new Intent(HomeActivity.this,AmbulanceActivity.class));
-                                        return true;
-            case R.id.nav_item_four : Toast.makeText(this, "SIGN OUT", Toast.LENGTH_SHORT).show();
-                                        return true;
+                return true;
+            case R.id.nav_item_two :  Intent intent= new Intent(HomeActivity.this, CartActivity.class);
+                intent.putExtra("type",getIntent().getStringExtra("type"));
+                startActivity(intent);
+                return true;
+            case R.id.nav_item_three :  intent= new Intent(HomeActivity.this, AmbulanceActivity.class);
+                intent.putExtra("type",getIntent().getStringExtra("type"));
+                startActivity(intent);
+                return true;
+            case R.id.nav_item_four : if(getIntent().getStringExtra("type").equals("Doctor")) {
+                intent = new Intent(HomeActivity.this, ProfileActivity.class);
+                intent.putExtra("type", getIntent().getStringExtra("type"));
+                startActivity(intent);
+                return true;
+            }
+            else{
+                intent = new Intent(HomeActivity.this, UserProfile.class);
+                intent.putExtra("type", getIntent().getStringExtra("type"));
+                startActivity(intent);
+                return true; }
+            case R.id.nav_item_five : Toast.makeText(getApplicationContext(),"SignOut",Toast.LENGTH_SHORT).show();
         }
+
+
+
         return true;
     }
 }
