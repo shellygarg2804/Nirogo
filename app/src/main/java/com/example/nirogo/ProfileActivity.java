@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
-import com.example.nirogo.Adapters.Appointments.AppointmentsActivity;
 import com.example.nirogo.HomeScreen.HomeActivity;
 
 public class ProfileActivity extends Activity {

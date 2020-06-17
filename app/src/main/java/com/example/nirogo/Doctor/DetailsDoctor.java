@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nirogo.HomeScreen.HomeActivity;
+import com.example.nirogo.NearbyDoctors.UploadInfo;
 import com.example.nirogo.R;
 import com.example.nirogo.ScreenSize;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -44,9 +45,13 @@ public class DetailsDoctor extends Activity {
     String Storage_Path = "";
     // Root Database Name for Firebase Database.
     String Database_Path = "Doctor/";
+    String Database_Path_Nearby = "DocNearby/";
+
     Uri FilePathUri;
     StorageReference storageReference ;
     DatabaseReference databaseReference;
+    DatabaseReference databaseReference2;
+
     int Image_Request_Code = 7;
     ProgressDialog progressDialog ;
     private static final int CAMERA_REQUEST = 1888;
@@ -85,8 +90,9 @@ public class DetailsDoctor extends Activity {
 
         // Assign FirebaseDatabase instance with root database name.
         databaseReference = FirebaseDatabase.getInstance().getReference(Database_Path);
+        databaseReference2 = FirebaseDatabase.getInstance().getReference(Database_Path_Nearby);
 
-        checkUser();
+
         nameIn = findViewById(R.id.nameDoc);
         ageIn = findViewById(R.id.ageDoc);
         specIn = findViewById(R.id.specDoc);
@@ -140,52 +146,11 @@ public class DetailsDoctor extends Activity {
                 }
 
                 else {
-
-
-
                     UploadImageFileToFirebaseStorage();
-
                 }
             }
         });
     }
-
-    private void checkUser() {
-        DatabaseReference databaseReference2;
-        databaseReference2 = FirebaseDatabase.getInstance().getReference(Database_Path);
-        databaseReference2.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//                if (id.equals(UUID.randomUUID().toString()))
-//                    Toast.makeText(DetailsDoctor.this, "Same User", Toast.LENGTH_LONG).show();
-//
-//                else  Toast.makeText(DetailsDoctor.this, "New User", Toast.LENGTH_LONG).show();
-
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-    }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -260,13 +225,16 @@ public class DetailsDoctor extends Activity {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                 String down = uri.toString();
-                                    Toast.makeText(getApplicationContext(), down, Toast.LENGTH_LONG).show();
 
                                     DocUploadInfo docUploadInfo = new DocUploadInfo(name,speciality, age, city, down);
+
+                                    //nearby
+                                    UploadInfo info = new UploadInfo(down, name, speciality, city);
 
                                     // Getting image upload ID.
                                     // Adding image upload id s child element into databaseReference.
                                     databaseReference.child(id).setValue(docUploadInfo);
+                                    databaseReference2.child(id).setValue(info);
 
                                     Intent intent = new Intent(DetailsDoctor.this, HomeActivity.class);
                                     intent.putExtra("type","Doctor");

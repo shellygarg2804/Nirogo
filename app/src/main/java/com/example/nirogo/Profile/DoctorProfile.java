@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.nirogo.Activities.AmbulanceActivity;
-import com.example.nirogo.Adapters.Appointments.AppointmentsActivity;
+import com.example.nirogo.Activities.AppointmentsActivity;
 import com.example.nirogo.HomeScreen.HomeActivity;
 import com.example.nirogo.Post.PostUploadActivity;
 import com.example.nirogo.R;

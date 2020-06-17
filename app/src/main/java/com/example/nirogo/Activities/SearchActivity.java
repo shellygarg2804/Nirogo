@@ -6,9 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.nirogo.Activities.AmbulanceActivity;
-import com.example.nirogo.Activities.CartActivity;
-import com.example.nirogo.Adapters.Appointments.AppointmentsActivity;
 import com.example.nirogo.HomeScreen.HomeActivity;
 import com.example.nirogo.Profile.DoctorProfile;
 import com.example.nirogo.R;

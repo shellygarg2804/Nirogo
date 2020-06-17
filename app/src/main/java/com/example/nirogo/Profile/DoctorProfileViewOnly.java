@@ -10,8 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
-import com.example.nirogo.Adapters.Appointments.AppointmentsActivity;
 import com.example.nirogo.Activities.AmbulanceActivity;
+import com.example.nirogo.Activities.AppointmentsActivity;
 import com.example.nirogo.HomeScreen.HomeActivity;
 import com.example.nirogo.Post.PostUploadActivity;
 import com.example.nirogo.R;
@@ -34,9 +34,6 @@ public class DoctorProfileViewOnly extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dr_profile_viewonly);
-
-        LinearLayout addPost = findViewById(R.id.postAdd);
-
 
         name=(TextView) findViewById(R.id.nameProfile);
         about=(TextView)findViewById(R.id.aboutprofile);
@@ -81,41 +78,6 @@ public class DoctorProfileViewOnly extends Activity {
 
             }
         }
-
-        addPost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DoctorProfileViewOnly.this, PostUploadActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
-        final BubbleNavigationConstraintView bubblenavigation = findViewById(R.id.bottomNavProf);
-        bubblenavigation.setNavigationChangeListener(new BubbleNavigationChangeListener() {
-            @Override
-            public void onNavigationChanged(View view, int position) {
-
-                if (position == 0) {
-                    Intent intent= new Intent(DoctorProfileViewOnly.this, HomeActivity.class);
-                    intent.putExtra("type","Doctor");
-                    startActivity(intent);
-                    Animatoo.animateFade(DoctorProfileViewOnly.this);
-                    }
-
-                   else if (position == 1) {
-                    Intent intent= new Intent(DoctorProfileViewOnly.this, AppointmentsActivity.class);
-                    intent.putExtra("type","Doctor");
-                    startActivity(intent);
-                    Animatoo.animateFade(DoctorProfileViewOnly.this);
-                }
-                else if (position == 2) {
-                    Intent intent= new Intent(DoctorProfileViewOnly.this, AmbulanceActivity.class);
-                    intent.putExtra("type","Doctor");
-                    startActivity(intent);
-                    Animatoo.animateFade(DoctorProfileViewOnly.this);
-                }
-            }});
 
             }
 

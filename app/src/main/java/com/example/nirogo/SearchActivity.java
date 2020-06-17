@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.nirogo.Activities.AmbulanceActivity;
+import com.example.nirogo.Activities.AppointmentsActivity;
 import com.example.nirogo.Activities.CartActivity;
-import com.example.nirogo.Adapters.Appointments.AppointmentsActivity;
 import com.example.nirogo.HomeScreen.HomeActivity;
 import com.gauravk.bubblenavigation.BubbleNavigationConstraintView;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;

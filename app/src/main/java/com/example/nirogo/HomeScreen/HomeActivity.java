@@ -19,8 +19,8 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+import com.example.nirogo.Activities.AppointmentsActivity;
 import com.example.nirogo.Adapters.Feed.FeedAdapter;
-import com.example.nirogo.Adapters.Appointments.AppointmentsActivity;
 import com.example.nirogo.Activities.AmbulanceActivity;
 import com.example.nirogo.Activities.CartActivity;
 import com.example.nirogo.Profile.DoctorProfile;
@@ -68,7 +68,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.i("USER TYPE",getIntent().getStringExtra("type"));
 
         ScreenSize screenSize = new ScreenSize();
         String size = screenSize.screenCheck(HomeActivity.this);
@@ -114,7 +113,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onClick(View v) {
                 drawerLayout.openDrawer(GravityCompat.START, true);
-
             }
         });
 

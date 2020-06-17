@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
-import com.example.nirogo.Adapters.Appointments.AppointmentsActivity;
 import com.example.nirogo.Profile.DoctorProfile;
 import com.example.nirogo.HomeScreen.HomeActivity;
 import com.example.nirogo.R;

@@ -20,13 +20,14 @@
         <activity android:name=".Activities.SearchActivity" />
         <activity android:name=".Activities.CartActivity" />
         <activity android:name=".Activities.AmbulanceActivity" />
-        <activity android:name=".Adapters.Appointments.AppointmentsActivity" />
         <activity android:name=".Profile.DoctorProfile" />
         <activity android:name=".Post.PostUploadActivity"/>
+        <activity android:name=".Activities.AppointmentsActivity"/>
         <activity android:name=".HomeScreen.MessagePreview" />
         <activity android:name=".Supplier.DetailsSupplier" />
         <activity android:name=".User.DetailsUser" />
         <activity android:name=".Doctor.DetailsDoctor" />
+        <activity android:name=".Profile.DoctorProfileViewOnly"/>
         <activity android:name=".Activities.LoginActivity" />
         <activity android:name=".HomeScreen.HomeActivity" />
         <activity android:name=".Supplier.SupplierActivity" />
