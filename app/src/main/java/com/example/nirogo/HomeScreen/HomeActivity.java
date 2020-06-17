@@ -157,6 +157,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     startActivity(intent);
                     Animatoo.animateFade(HomeActivity.this);
                 } else if (position == 3) {
+                    if (getIntent().hasExtra("type")){
                     if(getIntent().getStringExtra("type").equals("Doctor")) {
                         startActivity(new Intent(getApplicationContext(), DoctorProfile.class));
                         Animatoo.animateFade(HomeActivity.this);
@@ -165,7 +166,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                         startActivity(new Intent(getApplicationContext(), UserProfile.class));
                         Animatoo.animateFade(HomeActivity.this);
 
-                    }
+                    }}
                 }
 
                 }

@@ -19,7 +19,8 @@ public class DocUploadInfo {
     public DocUploadInfo() {
     }
 
-    public DocUploadInfo(String name, String speciality , String age, String city, String url) {
+    public DocUploadInfo(String id, String name, String speciality , String age, String city, String url) {
+        this.id = id;
         this.name = name;
         this.age = age;
         this.city = city;

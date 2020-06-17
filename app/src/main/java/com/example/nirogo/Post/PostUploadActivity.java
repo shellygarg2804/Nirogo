@@ -70,6 +70,9 @@ public class PostUploadActivity extends Activity {
 
         firebaseAuth= FirebaseAuth.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference();
+
+
+        final String id = firebaseAuth.getCurrentUser().getUid();
         // Assign FirebaseDatabase instance with root database name.
         databaseReference = FirebaseDatabase.getInstance().getReference(Database_Path);
 
@@ -100,14 +103,7 @@ public class PostUploadActivity extends Activity {
                 return;
             }
             else{
-                checkUser();
-
-                String id = firebaseAuth.getCurrentUser().getUid();
-
-                if (id.isEmpty())
-                    Toast.makeText(getApplicationContext(), "Empty Id", Toast.LENGTH_LONG).show();
                 final String Database_Path_Fetch = "Doctor/";
-
 
                 databaseReference_fetch = FirebaseDatabase.getInstance().getReference(Database_Path_Fetch);
                 databaseReference_fetch.addValueEventListener(new ValueEventListener() {
@@ -115,12 +111,15 @@ public class PostUploadActivity extends Activity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                             DocUploadInfo docUploadInfo = postSnapshot.getValue(DocUploadInfo.class);
-
-                            String name = docUploadInfo.getName();
-                           String spec = docUploadInfo.getSpeciality();
-                           String docimage = docUploadInfo.imageURL;
-                            UploadImageFileToFirebaseStorage(name, spec, docimage);
-                        }
+                            String idCheck = docUploadInfo.getId();
+                            if (idCheck.equalsIgnoreCase(id))
+                            {
+                                String name = docUploadInfo.getName();
+                                String spec = docUploadInfo.getSpeciality();
+                                String docimage = docUploadInfo.imageURL;
+                                UploadImageFileToFirebaseStorage(name, spec, docimage);
+                            }
+                           }
                     }
 
                     @Override
@@ -129,41 +128,10 @@ public class PostUploadActivity extends Activity {
                     }
                 });
             }
-
-
             }
         });
     }
-    private void checkUser() {
-        DatabaseReference databaseReference2;
-        databaseReference2 = FirebaseDatabase.getInstance().getReference(Database_Path);
-        databaseReference2.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-            }
 
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-    }
 
 
     @Override
@@ -248,8 +216,6 @@ public class PostUploadActivity extends Activity {
 
                     // Hiding the progressDialog after done uploading.
                     progressDialog.dismiss();
-
-
 
                     storageReference2nd.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override

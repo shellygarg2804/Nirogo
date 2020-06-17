@@ -69,7 +69,7 @@ public class DetailsDoctor extends Activity {
         ScreenSize size_check = new ScreenSize();
         String size = size_check.screenCheck(DetailsDoctor.this);
 
-        mAuth= FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
 
         if ((size).equalsIgnoreCase("Small")) {
             setContentView(R.layout.activity_details_doctor_small);
@@ -84,14 +84,11 @@ public class DetailsDoctor extends Activity {
              Log.i("DETAILS USER UID",user_uid);
          }
 
-
-
         storageReference = FirebaseStorage.getInstance().getReference();
 
         // Assign FirebaseDatabase instance with root database name.
         databaseReference = FirebaseDatabase.getInstance().getReference(Database_Path);
         databaseReference2 = FirebaseDatabase.getInstance().getReference(Database_Path_Nearby);
-
 
         nameIn = findViewById(R.id.nameDoc);
         ageIn = findViewById(R.id.ageDoc);
@@ -226,7 +223,7 @@ public class DetailsDoctor extends Activity {
                                 public void onSuccess(Uri uri) {
                                 String down = uri.toString();
 
-                                    DocUploadInfo docUploadInfo = new DocUploadInfo(name,speciality, age, city, down);
+                                    DocUploadInfo docUploadInfo = new DocUploadInfo(id, name,speciality, age, city, down);
 
                                     //nearby
                                     UploadInfo info = new UploadInfo(down, name, speciality, city);
