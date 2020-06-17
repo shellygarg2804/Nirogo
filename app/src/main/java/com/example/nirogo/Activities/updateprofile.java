@@ -1,7 +1,6 @@
-package com.example.nirogo;
+package com.example.nirogo.Activities;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,10 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 
 import com.example.nirogo.Doctor.DocUploadInfo;
-import com.example.nirogo.Post.PostUploadInfo;
+import com.example.nirogo.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

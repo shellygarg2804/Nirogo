@@ -1,4 +1,4 @@
-package com.example.nirogo;
+package com.example.nirogo.Activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.nirogo.HomeScreen.HomeActivity;
+import com.example.nirogo.R;
 
 public class ProfileActivity extends Activity {
 
@@ -78,7 +79,7 @@ public class ProfileActivity extends Activity {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i= new Intent(ProfileActivity.this,updateprofile.class);
+                Intent i= new Intent(ProfileActivity.this, updateprofile.class);
                 i.putExtra("namep",name.getText());
                 i.putExtra("aboutp",about.getText());
                 i.putExtra("experiencep",experience.getText());
