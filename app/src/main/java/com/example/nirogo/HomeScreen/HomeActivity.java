@@ -19,19 +19,17 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+import com.example.nirogo.Activities.AmbulanceActivity;
 import com.example.nirogo.Activities.AppointmentsActivity;
-import com.example.nirogo.Activities.LoginActivity;
+import com.example.nirogo.Activities.CartActivity;
+import com.example.nirogo.Activities.OptionActivity;
 import com.example.nirogo.Activities.ProfileActivity;
 import com.example.nirogo.Adapters.Feed.FeedAdapter;
-import com.example.nirogo.Activities.AmbulanceActivity;
-import com.example.nirogo.Activities.CartActivity;
 import com.example.nirogo.Post.PostUploadActivity;
-import com.example.nirogo.Activities.OptionActivity;
 import com.example.nirogo.Post.PostUploadInfo;
+import com.example.nirogo.Profile.UserProfile;
 import com.example.nirogo.R;
 import com.example.nirogo.ScreenSize;
-import com.example.nirogo.Profile.UserProfile;
-import com.facebook.login.Login;
 import com.gauravk.bubblenavigation.BubbleNavigationConstraintView;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -167,7 +165,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 } else if (position == 2) {
                     if(getIntent().getStringExtra("type").equals("Doctor")) {
                         Intent intent = new Intent(HomeActivity.this, PostUploadActivity.class);
-                        intent.putExtra("type", getIntent().getStringExtra("type"));
+                 //       intent.putExtra("type", getIntent().getStringExtra("type"));
                         startActivity(intent);
                         Animatoo.animateFade(HomeActivity.this);
                     }

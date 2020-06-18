@@ -15,7 +15,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.nirogo.HomeScreen.HomeActivity;
 import com.example.nirogo.Activities.OptionActivity;
 import com.example.nirogo.R;
 import com.example.nirogo.ScreenSize;
@@ -33,7 +32,9 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.example.nirogo.HomeScreen.HomeActivity;
 import static android.content.ContentValues.TAG;
+
 
 public class DoctorActivity extends Activity {
 
@@ -255,14 +256,12 @@ public class DoctorActivity extends Activity {
                                 return;
 
                             } catch (FirebaseAuthUserCollisionException existEmail) {
-                                progressDialog.dismiss();
                                 Log.d(TAG, "onComplete: exist_email");
                                 Toast.makeText(DoctorActivity.this, "Email already Exist", Toast.LENGTH_SHORT).show();
                                 return;
 
 
                             } catch (Exception e) {
-                                progressDialog.dismiss();
                                 Toast.makeText(DoctorActivity.this,"Some error in signing up",Toast.LENGTH_LONG).show();
                                 Log.d(TAG, "onComplete: " + e.getMessage());
                             }
