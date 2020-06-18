@@ -1,5 +1,6 @@
 package com.example.nirogo.Activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -14,9 +15,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nirogo.Doctor.DocUploadInfo;
 import com.example.nirogo.HomeScreen.MessageActivity;
 import com.example.nirogo.HomeScreen.MessagePreview;
 import com.example.nirogo.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -27,6 +35,13 @@ public class AppointmentOption extends AppCompatActivity {
     String mode ;
     String docName ;
 
+    DatabaseReference databaseReference, databaseReference2 ;
+    String Database_Path = "UserAppointment/";
+    String Database_Path_Nearby = "Admin/";
+
+    DatabaseReference databaseReference_fetch;
+    FirebaseAuth firebaseAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +49,11 @@ public class AppointmentOption extends AppCompatActivity {
 
         offline = findViewById(R.id.offline);
         online = findViewById(R.id.online);
+
+        firebaseAuth= FirebaseAuth.getInstance();
+
+        databaseReference = FirebaseDatabase.getInstance().getReference(Database_Path);
+        databaseReference2 = FirebaseDatabase.getInstance().getReference(Database_Path_Nearby);
 
         TextView name = findViewById(R.id.drname);
          docName = getIntent().getStringExtra("docname");
@@ -161,6 +181,8 @@ public class AppointmentOption extends AppCompatActivity {
                     startActivity(intent);
                 }
 
+                addToDB();
+
                 Log.e("UPI", "payment successfull: "+approvalRefNo);
             }
             else if("Payment cancelled by user.".equals(paymentCancel)) {
@@ -178,6 +200,37 @@ public class AppointmentOption extends AppCompatActivity {
 
             Toast.makeText(getApplicationContext(), "Internet connection is not available. Please check and try again", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void addToDB() {
+        final String Database_Path_Fetch = "User/";
+
+        databaseReference_fetch = FirebaseDatabase.getInstance().getReference(Database_Path_Fetch);
+        final String id = firebaseAuth.getCurrentUser().getUid();
+
+        databaseReference_fetch.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    DocUploadInfo docUploadInfo = postSnapshot.getValue(DocUploadInfo.class);
+                    String idCheck = docUploadInfo.getId();
+
+                    if (idCheck.equalsIgnoreCase(id))
+                    {
+                        String name = docUploadInfo.getName();
+                        String spec = docUploadInfo.getSpeciality();
+                        String docimage = docUploadInfo.imageURL;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
     }
 
     public static boolean isConnectionAvailable(Context context) {

@@ -223,7 +223,7 @@ public class DetailsDoctor extends Activity {
                                 public void onSuccess(Uri uri) {
                                 String down = uri.toString();
 
-                                    DocUploadInfo docUploadInfo = new DocUploadInfo(id, name,speciality, age, city, down);
+                                    DocUploadInfo docUploadInfo = new DocUploadInfo(id, "9599656583", name,speciality, age, city, down);
 
                                     //nearby
                                     UploadInfo info = new UploadInfo(down, name, speciality, city);

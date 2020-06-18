@@ -61,7 +61,6 @@ public class PostUploadActivity extends Activity {
     Uri FilePathUri;
     FirebaseAuth firebaseAuth;
 
-    String docname, docspec, doccity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,8 +70,8 @@ public class PostUploadActivity extends Activity {
         firebaseAuth= FirebaseAuth.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference();
 
-
         final String id = firebaseAuth.getCurrentUser().getUid();
+
         // Assign FirebaseDatabase instance with root database name.
         databaseReference = FirebaseDatabase.getInstance().getReference(Database_Path);
 

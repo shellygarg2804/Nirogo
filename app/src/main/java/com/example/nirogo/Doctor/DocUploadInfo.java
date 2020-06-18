@@ -15,17 +15,27 @@ public class DocUploadInfo {
     public String age;
     public String city;
     public String speciality;
+    public String phone;
 
     public DocUploadInfo() {
     }
 
-    public DocUploadInfo(String id, String name, String speciality , String age, String city, String url) {
+    public DocUploadInfo(String id, String phone, String name, String speciality , String age, String city, String url) {
         this.id = id;
+        this.phone = phone;
         this.name = name;
         this.age = age;
         this.city = city;
         this.speciality = speciality;
         this.imageURL= url;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getName() {
