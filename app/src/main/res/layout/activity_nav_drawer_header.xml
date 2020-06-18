@@ -16,6 +16,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginLeft="10dp"
+        android:id="@+id/navheaderprofilepic"
         android:src="@drawable/user_4"
         ></de.hdodenhof.circleimageview.CircleImageView>
 
@@ -36,5 +37,6 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:text="xyzabc@gmail.com"
         android:layout_marginLeft="10dp"
+
         />
 </LinearLayout>

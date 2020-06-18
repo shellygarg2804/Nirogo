@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
@@ -59,6 +60,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     FeedAdapter postAdapter;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+    View HeaderView;
     Toolbar toolbar;
     ProgressBar progressBar;
     RecyclerView recyclerview;
@@ -68,6 +70,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     StorageReference storageReference;
     FirebaseAuth mAuth;
     String Database_Path = "Post/";
+    String Useremail;
 
 
     @Override
@@ -89,6 +92,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         } else
             setContentView(R.layout.activity_home);
         mAuth= FirebaseAuth.getInstance();
+        Useremail= mAuth.getCurrentUser().getEmail();
 
         progressBar = findViewById(R.id.progressBar);
 
@@ -107,6 +111,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(toggle);
         toggle.setDrawerIndicatorEnabled(false);
         toggle.syncState();
+
+        //change emailtext in nav header
+        HeaderView=navigationView.getHeaderView(0);
+        TextView NavEmailText= (TextView)HeaderView.findViewById(R.id.nav_header_email);
+        NavEmailText.setText(Useremail);
+
 
 
         navigationView.setNavigationItemSelectedListener(this);
