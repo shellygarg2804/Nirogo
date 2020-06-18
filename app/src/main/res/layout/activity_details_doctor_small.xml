@@ -47,9 +47,14 @@
                     android:src="@drawable/user_white"/>
             </LinearLayout>
 
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/image">
+
             <LinearLayout
                 android:layout_alignParentBottom="true"
-                android:layout_below="@id/image"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -182,6 +187,35 @@
                         android:id="@+id/specDoc"/>
 
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Phone No."
+                        android:textStyle="bold"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/Black"
+                        android:textSize="20sp"/>
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@color/Black"
+                        android:hint="Enter Phone no."
+                        android:padding="5dp"
+                        android:textColorHighlight="#000"
+                        android:background="@drawable/rounded_rectangle"
+                        android:id="@+id/phoneNo_Doc"/>
+
+                </LinearLayout>
+
+
 
 
                 <TextView
@@ -202,5 +236,6 @@
 
 
             </LinearLayout>
+            </ScrollView>
         </RelativeLayout>
 </RelativeLayout>

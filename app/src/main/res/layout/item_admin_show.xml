@@ -44,14 +44,16 @@
             />
 
         <TextView
-            android:id="@+id/time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:textSize="15sp"
-            android:layout_toRightOf="@id/date"
-            android:layout_centerVertical="true"
-            />
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:textSize="15sp"
+        android:layout_toRightOf="@id/date"
+        android:layout_centerVertical="true"
+        />
+
+
 
         <ImageView
             android:background="@drawable/call_icon"

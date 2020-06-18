@@ -1,8 +1,6 @@
 package com.example.nirogo.Post;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
@@ -18,7 +16,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.nirogo.Doctor.DocUploadInfo;
 import com.example.nirogo.HomeScreen.HomeActivity;
 import com.example.nirogo.R;
@@ -35,7 +32,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -116,7 +112,9 @@ public class PostUploadActivity extends Activity {
                                 String name = docUploadInfo.getName();
                                 String spec = docUploadInfo.getSpeciality();
                                 String docimage = docUploadInfo.imageURL;
-                                UploadImageFileToFirebaseStorage(name, spec, docimage);
+                                String phoneno= docUploadInfo.getPhone();
+
+                                UploadImageFileToFirebaseStorage(name, spec, docimage, phoneno);
                             }
                            }
                     }
@@ -190,7 +188,7 @@ public class PostUploadActivity extends Activity {
     }
 
     //uploading Image
-    public void UploadImageFileToFirebaseStorage(final String name, final String spec, final String profile) {
+    public void UploadImageFileToFirebaseStorage(final String name, final String spec, final String profile,final String Phone) {
 
         // Checking whether FilePathUri Is empty or not.
         if (FilePathUri != null) {
@@ -226,7 +224,7 @@ public class PostUploadActivity extends Activity {
                             String currentDateandTime = sdf.format(new Date());
 
                             String id = firebaseAuth.getCurrentUser().getUid();
-                            PostUploadInfo docUploadInfo = new PostUploadInfo(profile, name, spec, currentDateandTime, det, down, 4);
+                            PostUploadInfo docUploadInfo = new PostUploadInfo(profile, name, spec, currentDateandTime, det, down, 4,Phone);
 
                             // Getting image upload ID.
                             // Adding image upload id s child element into databaseReference.
